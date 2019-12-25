@@ -1,0 +1,905 @@
+[
+    {
+        "name": "bondas83/mdb2_driver_mysqli",
+        "version": "v1.5.3",
+        "version_normalized": "1.5.3.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/bondas83/mdb2_driver_mysqli.git",
+            "reference": "821854e34b8ca0655b437d441ef40251dda38ff4"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/bondas83/mdb2_driver_mysqli/zipball/821854e34b8ca0655b437d441ef40251dda38ff4",
+            "reference": "821854e34b8ca0655b437d441ef40251dda38ff4",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.0",
+            "silverorange/mdb2": "*"
+        },
+        "time": "2017-08-04T14:29:40+00:00",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "classmap": [
+                "MDB2/Driver/mysqli.php"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "include-path": [
+            "./"
+        ],
+        "license": [
+            "BSD-2-Clause"
+        ],
+        "authors": [
+            {
+                "name": "Julius Smatavicius",
+                "email": "bondas83@gmail.com"
+            }
+        ],
+        "description": "This is the Mysqli MDB2 driver.",
+        "homepage": "https://github.com/bondas83/MDB2_Driver_mysqli",
+        "keywords": [
+            "PEAR",
+            "database",
+            "mdb2",
+            "mysqli"
+        ]
+    },
+    {
+        "name": "mobiledetect/mobiledetectlib",
+        "version": "2.8.33",
+        "version_normalized": "2.8.33.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/serbanghita/Mobile-Detect.git",
+            "reference": "cd385290f9a0d609d2eddd165a1e44ec1bf12102"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/serbanghita/Mobile-Detect/zipball/cd385290f9a0d609d2eddd165a1e44ec1bf12102",
+            "reference": "cd385290f9a0d609d2eddd165a1e44ec1bf12102",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.0.0"
+        },
+        "require-dev": {
+            "phpunit/phpunit": "~4.8.35||~5.7"
+        },
+        "time": "2018-09-01T15:05:15+00:00",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "classmap": [
+                "Mobile_Detect.php"
+            ],
+            "psr-0": {
+                "Detection": "namespaced/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Serban Ghita",
+                "role": "Developer",
+                "email": "serbanghita@gmail.com",
+                "homepage": "http://mobiledetect.net"
+            }
+        ],
+        "description": "Mobile_Detect is a lightweight PHP class for detecting mobile devices. It uses the User-Agent string combined with specific HTTP headers to detect the mobile environment.",
+        "homepage": "https://github.com/serbanghita/Mobile-Detect",
+        "keywords": [
+            "detect mobile devices",
+            "mobile",
+            "mobile detect",
+            "mobile detector",
+            "php mobile detect"
+        ]
+    },
+    {
+        "name": "nanasess/mdb2_driver_pgsql",
+        "version": "1.5.0",
+        "version_normalized": "1.5.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/nanasess/MDB2_Driver_pgsql.git",
+            "reference": "88eba9a1ad88838a6bf24b15efa438932055f2b8"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/nanasess/MDB2_Driver_pgsql/zipball/88eba9a1ad88838a6bf24b15efa438932055f2b8",
+            "reference": "88eba9a1ad88838a6bf24b15efa438932055f2b8",
+            "shasum": ""
+        },
+        "require": {
+            "silverorange/mdb2": "*"
+        },
+        "time": "2019-02-05T06:25:36+00:00",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "classmap": [
+                "MDB2/Driver/pgsql.php"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "include-path": [
+            "./"
+        ],
+        "license": [
+            "BSD-3-Clause"
+        ],
+        "authors": [
+            {
+                "name": "Lukas Kahwe Smith",
+                "email": "smith@pooteeweet.org"
+            },
+            {
+                "name": "Nathan Fredrickson",
+                "email": "nathan@silverorange.com"
+            },
+            {
+                "name": "Lorenzo Alberton",
+                "email": "l.alberton@quipo.it"
+            },
+            {
+                "name": "Kentaro Ohkouchi",
+                "email": "nanasess@fsm.ne.jp"
+            },
+            {
+                "name": "Ali Fazelzadeh",
+                "email": "afz@dev-code.com"
+            }
+        ],
+        "description": "This is the PostgreSQL MDB2 driver."
+    },
+    {
+        "name": "pear/archive_tar",
+        "version": "1.4.7",
+        "version_normalized": "1.4.7.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/pear/Archive_Tar.git",
+            "reference": "7e48add6f8edc3027dd98ad15964b1a28fd0c845"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/pear/Archive_Tar/zipball/7e48add6f8edc3027dd98ad15964b1a28fd0c845",
+            "reference": "7e48add6f8edc3027dd98ad15964b1a28fd0c845",
+            "shasum": ""
+        },
+        "require": {
+            "pear/pear-core-minimal": "^1.10.0alpha2",
+            "php": ">=5.2.0"
+        },
+        "require-dev": {
+            "phpunit/phpunit": "*"
+        },
+        "suggest": {
+            "ext-bz2": "Bz2 compression support.",
+            "ext-xz": "Lzma2 compression support.",
+            "ext-zlib": "Gzip compression support."
+        },
+        "time": "2019-04-08T13:15:55+00:00",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "1.4.x-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "Archive_Tar": ""
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "include-path": [
+            "./"
+        ],
+        "license": [
+            "BSD-3-Clause"
+        ],
+        "authors": [
+            {
+                "name": "Vincent Blavet",
+                "email": "vincent@phpconcept.net"
+            },
+            {
+                "name": "Greg Beaver",
+                "email": "greg@chiaraquartet.net"
+            },
+            {
+                "name": "Michiel Rook",
+                "email": "mrook@php.net"
+            }
+        ],
+        "description": "Tar file management class with compression support (gzip, bzip2, lzma2)",
+        "homepage": "https://github.com/pear/Archive_Tar",
+        "keywords": [
+            "archive",
+            "tar"
+        ]
+    },
+    {
+        "name": "pear/console_getopt",
+        "version": "v1.4.2",
+        "version_normalized": "1.4.2.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/pear/Console_Getopt.git",
+            "reference": "6c77aeb625b32bd752e89ee17972d103588b90c0"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/pear/Console_Getopt/zipball/6c77aeb625b32bd752e89ee17972d103588b90c0",
+            "reference": "6c77aeb625b32bd752e89ee17972d103588b90c0",
+            "shasum": ""
+        },
+        "time": "2019-02-06T16:52:33+00:00",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "Console": "./"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "include-path": [
+            "./"
+        ],
+        "license": [
+            "BSD-2-Clause"
+        ],
+        "authors": [
+            {
+                "name": "Greg Beaver",
+                "role": "Helper",
+                "email": "cellog@php.net"
+            },
+            {
+                "name": "Andrei Zmievski",
+                "role": "Lead",
+                "email": "andrei@php.net"
+            },
+            {
+                "name": "Stig Bakken",
+                "role": "Developer",
+                "email": "stig@php.net"
+            }
+        ],
+        "description": "More info available on: http://pear.php.net/package/Console_Getopt"
+    },
+    {
+        "name": "pear/mail",
+        "version": "v1.4.1",
+        "version_normalized": "1.4.1.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/pear/Mail.git",
+            "reference": "9609ed5e42ac5b221dfd9af85de005c59d418ee7"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/pear/Mail/zipball/9609ed5e42ac5b221dfd9af85de005c59d418ee7",
+            "reference": "9609ed5e42ac5b221dfd9af85de005c59d418ee7",
+            "shasum": ""
+        },
+        "require": {
+            "pear/pear-core-minimal": "~1.9",
+            "php": ">=5.2.1"
+        },
+        "require-dev": {
+            "pear/pear": "*"
+        },
+        "suggest": {
+            "pear/net_smtp": "Install optionally via your project's composer.json"
+        },
+        "time": "2017-04-11T17:27:29+00:00",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "Mail": "./"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "include-path": [
+            "./"
+        ],
+        "license": [
+            "BSD-2-Clause"
+        ],
+        "authors": [
+            {
+                "name": "Chuck Hagenbuch",
+                "role": "Lead",
+                "email": "chuck@horde.org"
+            },
+            {
+                "name": "Richard Heyes",
+                "role": "Developer",
+                "email": "richard@phpguru.org"
+            },
+            {
+                "name": "Aleksander Machniak",
+                "role": "Developer",
+                "email": "alec@alec.pl"
+            }
+        ],
+        "description": "Class that provides multiple interfaces for sending emails.",
+        "homepage": "http://pear.php.net/package/Mail"
+    },
+    {
+        "name": "pear/pear-core-minimal",
+        "version": "v1.10.9",
+        "version_normalized": "1.10.9.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/pear/pear-core-minimal.git",
+            "reference": "742be8dd68c746a01e4b0a422258e9c9cae1c37f"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/pear/pear-core-minimal/zipball/742be8dd68c746a01e4b0a422258e9c9cae1c37f",
+            "reference": "742be8dd68c746a01e4b0a422258e9c9cae1c37f",
+            "shasum": ""
+        },
+        "require": {
+            "pear/console_getopt": "~1.4",
+            "pear/pear_exception": "~1.0"
+        },
+        "replace": {
+            "rsky/pear-core-min": "self.version"
+        },
+        "time": "2019-03-13T18:15:44+00:00",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "include-path": [
+            "src/"
+        ],
+        "license": [
+            "BSD-3-Clause"
+        ],
+        "authors": [
+            {
+                "name": "Christian Weiske",
+                "role": "Lead",
+                "email": "cweiske@php.net"
+            }
+        ],
+        "description": "Minimal set of PEAR core files to be used as composer dependency"
+    },
+    {
+        "name": "pear/pear_exception",
+        "version": "v1.0.0",
+        "version_normalized": "1.0.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/pear/PEAR_Exception.git",
+            "reference": "8c18719fdae000b690e3912be401c76e406dd13b"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/pear/PEAR_Exception/zipball/8c18719fdae000b690e3912be401c76e406dd13b",
+            "reference": "8c18719fdae000b690e3912be401c76e406dd13b",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=4.4.0"
+        },
+        "require-dev": {
+            "phpunit/phpunit": "*"
+        },
+        "time": "2015-02-10T20:07:52+00:00",
+        "type": "class",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "1.0.x-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "PEAR": ""
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "include-path": [
+            "."
+        ],
+        "license": [
+            "BSD-2-Clause"
+        ],
+        "authors": [
+            {
+                "name": "Helgi Thormar",
+                "email": "dufuz@php.net"
+            },
+            {
+                "name": "Greg Beaver",
+                "email": "cellog@php.net"
+            }
+        ],
+        "description": "The PEAR Exception base class.",
+        "homepage": "https://github.com/pear/PEAR_Exception",
+        "keywords": [
+            "exception"
+        ]
+    },
+    {
+        "name": "pear/text_password",
+        "version": "1.2.1",
+        "version_normalized": "1.2.1.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/pear/Text_Password.git",
+            "reference": "9d112ec647e7e2efb78bd10dd9aaed21c899d739"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/pear/Text_Password/zipball/9d112ec647e7e2efb78bd10dd9aaed21c899d739",
+            "reference": "9d112ec647e7e2efb78bd10dd9aaed21c899d739",
+            "shasum": ""
+        },
+        "require": {
+            "pear/pear_exception": "*",
+            "php": ">=5.2.1"
+        },
+        "require-dev": {
+            "phpunit/phpunit": "*"
+        },
+        "time": "2016-02-26T19:57:20+00:00",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "Text": "./"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "include-path": [
+            "./"
+        ],
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Martin Jansen",
+                "role": "Lead",
+                "email": "mj@php.net"
+            },
+            {
+                "name": "Olivier Vanhoucke",
+                "role": "Lead",
+                "email": "olivier@php.net"
+            }
+        ],
+        "description": "More info available on: http://pear.php.net/package/Text_Password"
+    },
+    {
+        "name": "pear/xml_parser",
+        "version": "v1.3.8",
+        "version_normalized": "1.3.8.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/pear/XML_Parser.git",
+            "reference": "0134baa2df2054afcca41e9307b98a21db84365d"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/pear/XML_Parser/zipball/0134baa2df2054afcca41e9307b98a21db84365d",
+            "reference": "0134baa2df2054afcca41e9307b98a21db84365d",
+            "shasum": ""
+        },
+        "require": {
+            "pear/pear-core-minimal": "*"
+        },
+        "require-dev": {
+            "pear/pear": "*"
+        },
+        "time": "2019-04-10T18:19:34+00:00",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "XML": "./"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "include-path": [
+            "./"
+        ],
+        "license": [
+            "BSD-2-Clause"
+        ],
+        "authors": [
+            {
+                "name": "Stephan Schmidt",
+                "role": "Lead",
+                "email": "schst@php-tools.net"
+            },
+            {
+                "name": "Chuck Burgess",
+                "role": "Lead",
+                "email": "ashnazg@php.net"
+            },
+            {
+                "name": "Stig S&#230;ther Bakken",
+                "role": "Developer",
+                "email": "stig@php.net"
+            },
+            {
+                "name": "Tomas V.V.Cox",
+                "role": "Developer",
+                "email": "cox@php.net"
+            }
+        ],
+        "description": "XML parser"
+    },
+    {
+        "name": "pear/xml_serializer",
+        "version": "v0.22.0",
+        "version_normalized": "0.22.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/pear/XML_Serializer.git",
+            "reference": "f171521481144ba7fe1dd26fab5d56626248b173"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/pear/XML_Serializer/zipball/f171521481144ba7fe1dd26fab5d56626248b173",
+            "reference": "f171521481144ba7fe1dd26fab5d56626248b173",
+            "shasum": ""
+        },
+        "require": {
+            "ext-xml": "*",
+            "pear/pear-core-minimal": "*",
+            "pear/xml_parser": "*",
+            "pear/xml_util": "*"
+        },
+        "require-dev": {
+            "phpunit/phpunit": "*"
+        },
+        "time": "2018-02-13T14:04:37+00:00",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "XML": "./"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "include-path": [
+            "./"
+        ],
+        "license": [
+            "BSD-2-Clause"
+        ],
+        "authors": [
+            {
+                "name": "Stephan Schmidt",
+                "role": "Lead",
+                "email": "schst@php-tools.net"
+            },
+            {
+                "name": "Chuck Burgess",
+                "role": "Lead",
+                "email": "ashnazg@php.net"
+            }
+        ],
+        "description": "More info available on: http://pear.php.net/package/XML_Serializer"
+    },
+    {
+        "name": "pear/xml_util",
+        "version": "v1.4.3",
+        "version_normalized": "1.4.3.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/pear/XML_Util.git",
+            "reference": "c74278d925be9c2f7d39955cdce45d8275571a1d"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/pear/XML_Util/zipball/c74278d925be9c2f7d39955cdce45d8275571a1d",
+            "reference": "c74278d925be9c2f7d39955cdce45d8275571a1d",
+            "shasum": ""
+        },
+        "require": {
+            "pear/pear-core-minimal": "^1.10.1",
+            "php": ">=5.4"
+        },
+        "require-dev": {
+            "phpunit/phpunit": "@stable"
+        },
+        "time": "2017-06-28T19:21:19+00:00",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "XML_Util": "./"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "include-path": [
+            "./"
+        ],
+        "license": [
+            "BSD-3-Clause"
+        ],
+        "authors": [
+            {
+                "name": "Stephan Schmidt",
+                "role": "Lead",
+                "email": "schst@php-tools.net"
+            },
+            {
+                "name": "Chuck Burgess",
+                "role": "Lead",
+                "email": "ashnazg@php.net"
+            },
+            {
+                "name": "Davey Shafik",
+                "role": "Helper",
+                "email": "davey@php.net"
+            }
+        ],
+        "description": "Methods to work with XML documents",
+        "homepage": "http://pear.php.net/package/XML_Util"
+    },
+    {
+        "name": "setasign/fpdf",
+        "version": "1.7",
+        "version_normalized": "1.7.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/Setasign/FPDF.git",
+            "reference": "08de62a76d5860e0fd679a3fb4f8e2b7e6019ea1"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/Setasign/FPDF/zipball/08de62a76d5860e0fd679a3fb4f8e2b7e6019ea1",
+            "reference": "08de62a76d5860e0fd679a3fb4f8e2b7e6019ea1",
+            "shasum": ""
+        },
+        "time": "2015-05-11T08:23:28+00:00",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "classmap": [
+                "fpdf.php"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "no usage restriction"
+        ],
+        "authors": [
+            {
+                "name": "Olivier Plathey",
+                "email": "oliver@fpdf.org",
+                "homepage": "http://fpdf.org/"
+            }
+        ],
+        "description": "FPDF is a PHP class which allows to generate PDF files with pure PHP. F from FPDF stands for Free: you may use it for any kind of usage and modify it to suit your needs.",
+        "homepage": "http://www.fpdf.org",
+        "keywords": [
+            "fpdf",
+            "pdf"
+        ]
+    },
+    {
+        "name": "setasign/fpdi",
+        "version": "1.6.2",
+        "version_normalized": "1.6.2.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/Setasign/FPDI.git",
+            "reference": "a6ad58897a6d97cc2d2cd2adaeda343b25a368ea"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/Setasign/FPDI/zipball/a6ad58897a6d97cc2d2cd2adaeda343b25a368ea",
+            "reference": "a6ad58897a6d97cc2d2cd2adaeda343b25a368ea",
+            "shasum": ""
+        },
+        "suggest": {
+            "setasign/fpdf": "FPDI will extend this class but as it is also possible to use \"tecnickcom/tcpdf\" as an alternative there's no fixed dependency configured.",
+            "setasign/fpdi-fpdf": "Use this package to automatically evaluate dependencies to FPDF.",
+            "setasign/fpdi-tcpdf": "Use this package to automatically evaluate dependencies to TCPDF."
+        },
+        "time": "2017-05-11T14:25:49+00:00",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "classmap": [
+                "filters/",
+                "fpdi.php",
+                "fpdf_tpl.php",
+                "fpdi_pdf_parser.php",
+                "pdf_context.php"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Jan Slabon",
+                "email": "jan.slabon@setasign.com",
+                "homepage": "https://www.setasign.com"
+            }
+        ],
+        "description": "FPDI is a collection of PHP classes facilitating developers to read pages from existing PDF documents and use them as templates in FPDF. Because it is also possible to use FPDI with TCPDF, there are no fixed dependencies defined. Please see suggestions for packages which evaluates the dependencies automatically.",
+        "homepage": "https://www.setasign.com/fpdi",
+        "keywords": [
+            "fpdf",
+            "fpdi",
+            "pdf"
+        ]
+    },
+    {
+        "name": "setasign/fpdi-fpdf",
+        "version": "1.6.0",
+        "version_normalized": "1.6.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/Setasign/FPDI-FPDF.git",
+            "reference": "cefe1ae6e87b38e659ebb5089da493cb23deeb0b"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/Setasign/FPDI-FPDF/zipball/cefe1ae6e87b38e659ebb5089da493cb23deeb0b",
+            "reference": "cefe1ae6e87b38e659ebb5089da493cb23deeb0b",
+            "shasum": ""
+        },
+        "require": {
+            "setasign/fpdf": "1.7.*",
+            "setasign/fpdi": "1.6.*"
+        },
+        "time": "2015-10-12T15:37:35+00:00",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "classmap": [
+                "fpdi_bridge.php"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Jan Slabon",
+                "email": "jan.slabon@setasign.com",
+                "homepage": "https://www.setasign.com"
+            }
+        ],
+        "description": "Kind of metadata package for dependencies of the latest versions of FPDI and FPDF.",
+        "homepage": "https://www.setasign.com/fpdi",
+        "keywords": [
+            "fpdf",
+            "fpdi",
+            "pdf"
+        ]
+    },
+    {
+        "name": "silverorange/mdb2",
+        "version": "2.5.2-b.5",
+        "version_normalized": "2.5.2.0-beta5",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/silverorange/MDB2.git",
+            "reference": "8b8f064de2c468345968e6eb2797e301bbea4233"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/silverorange/MDB2/zipball/8b8f064de2c468345968e6eb2797e301bbea4233",
+            "reference": "8b8f064de2c468345968e6eb2797e301bbea4233",
+            "shasum": ""
+        },
+        "require": {
+            "pear/pear-core-minimal": "^1.9.0",
+            "php": ">=5.2.0"
+        },
+        "time": "2016-01-08T21:22:05+00:00",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "MDB2": ""
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "include-path": [
+            "./"
+        ],
+        "license": [
+            "BSD-2-Clause"
+        ],
+        "authors": [
+            {
+                "name": "Michael Gauthier",
+                "email": "mike@silverorange.com"
+            }
+        ],
+        "description": "PEAR MDB2 is a merge of the PEAR DB and Metabase php database abstraction layers.",
+        "homepage": "https://github.com/silverorange/MDB2",
+        "keywords": [
+            "database",
+            "dbal",
+            "metabase",
+            "orm"
+        ]
+    },
+    {
+        "name": "smarty/smarty",
+        "version": "v3.1.33",
+        "version_normalized": "3.1.33.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/smarty-php/smarty.git",
+            "reference": "dd55b23121e55a3b4f1af90a707a6c4e5969530f"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/smarty-php/smarty/zipball/dd55b23121e55a3b4f1af90a707a6c4e5969530f",
+            "reference": "dd55b23121e55a3b4f1af90a707a6c4e5969530f",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.2"
+        },
+        "time": "2018-09-12T20:54:16+00:00",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "3.1.x-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "files": [
+                "libs/bootstrap.php"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "LGPL-3.0"
+        ],
+        "authors": [
+            {
+                "name": "Monte Ohrt",
+                "email": "monte@ohrt.com"
+            },
+            {
+                "name": "Uwe Tews",
+                "email": "uwe.tews@googlemail.com"
+            },
+            {
+                "name": "Rodney Rehm",
+                "email": "rodney.rehm@medialize.de"
+            }
+        ],
+        "description": "Smarty - the compiling PHP template engine",
+        "homepage": "http://www.smarty.net",
+        "keywords": [
+            "templating"
+        ]
+    }
+]

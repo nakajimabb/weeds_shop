@@ -1,0 +1,46 @@
+{
+    "authors": [
+        {
+            "email": "schst@php-tools.net",
+            "name": "Stephan Schmidt",
+            "role": "Lead"
+        },
+        {
+            "email": "ashnazg@php.net",
+            "name": "Chuck Burgess",
+            "role": "Lead"
+        },
+        {
+            "email": "stig@php.net",
+            "name": "Stig S&#230;ther Bakken",
+            "role": "Developer"
+        },
+        {
+            "email": "cox@php.net",
+            "name": "Tomas V.V.Cox",
+            "role": "Developer"
+        }
+    ],
+    "autoload": {
+        "psr-0": {
+            "XML": "./"
+        }
+    },
+    "description": "XML parser",
+    "include-path": [
+        "./"
+    ],
+    "license": "BSD-2-Clause",
+    "name": "pear/xml_parser",
+    "support": {
+        "issues": "http://pear.php.net/bugs/search.php?cmd=display&package_name[]=XML_Parser",
+        "source": "https://github.com/pear/XML_Parser"
+    },
+    "type": "library",
+    "require": {
+        "pear/pear-core-minimal": "*"
+    },
+    "require-dev": {
+        "pear/pear": "*"
+    }
+}

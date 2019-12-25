@@ -1,0 +1,17 @@
+language: php
+
+before_install:
+  - pear upgrade pear
+  - pear upgrade --force XML_Util
+
+install:
+  - pear install package.xml
+
+php:
+  - 5.4
+  - 5.5
+  - 5.6
+  - 7.0
+  - 7.1
+
+script: phpunit -c tests/phpunit.xml tests/

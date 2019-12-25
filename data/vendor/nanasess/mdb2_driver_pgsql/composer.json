@@ -1,0 +1,41 @@
+{
+    "name": "nanasess/mdb2_driver_pgsql",
+    "description": "This is the PostgreSQL MDB2 driver.",
+    "type": "library",
+    "require": {
+        "silverorange/mdb2": "*"
+    },
+    "license": "BSD-3-Clause",
+    "authors": [
+        {
+            "name": "Lukas Kahwe Smith",
+            "email": "smith@pooteeweet.org"
+        },
+        {
+            "name": "Lorenzo Alberton",
+            "email": "l.alberton@quipo.it"
+        },
+        {
+            "name": "Nathan Fredrickson",
+            "email": "nathan@silverorange.com"
+        },
+        {
+            "email": "afz@dev-code.com",
+            "name": "Ali Fazelzadeh"
+        },
+        {
+            "name": "Kentaro Ohkouchi",
+            "email": "nanasess@fsm.ne.jp"
+        }
+    ],
+    "autoload": {
+        "classmap": [ "MDB2/Driver/pgsql.php" ]
+    },
+    "include-path": [
+        "./"
+    ],
+    "support": {
+        "issues": "https://github.com/nanasess/MDB2_Driver_pgsql/issues",
+        "source": "https://github.com/nanasess/MDB2_Driver_pgsql"
+    }
+}
