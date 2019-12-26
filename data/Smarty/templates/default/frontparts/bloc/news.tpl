@@ -20,29 +20,47 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  *}-->
 
+<style>
+    div#news_area {
+        padding : 10px 25px 15px 25px;
+    }
+    #news_area dl.newslist dd {
+        margin: 0;
+        padding: 5px 0 0 0;
+        font-size: 100%;
+        line-height: 180%;
+    }
+    #news_area dl.newslist {
+        background: none;
+        padding-bottom: 10px;
+    }
+</style>
+
+<!--{if count($arrNews) > 0}-->
 <!--{strip}-->
-    <div class="block_outer">
+<div class="block_outer clearfix">
+    <h2 class="block_title">お知らせ</h2>
         <div id="news_area">
-            <h2><img src="<!--{$TPL_URLPATH}-->img/title/tit_bloc_news.png" alt="新着情報" /><span class="rss"><a href="<!--{$smarty.const.ROOT_URLPATH}-->rss/<!--{$smarty.const.DIR_INDEX_PATH}-->" target="_blank"><img src="<!--{$TPL_URLPATH}-->img/button/btn_rss.jpg" alt="RSS" /></a></span></h2>
-            <div class="block_body">
-                <div class="news_contents">
+                <!-- <div class="news_contents"> -->
                 <!--{section name=data loop=$arrNews}-->
                 <!--{assign var="date_array" value="-"|explode:$arrNews[data].cast_news_date}-->
                 <dl class="newslist">
+                    <!--{if false}-->
                     <dt><!--{$date_array[0]}-->年<!--{$date_array[1]}-->月<!--{$date_array[2]}-->日</dt>
                     <dt>
+                    <!--{/if}-->
                         <a
                             <!--{if $arrNews[data].news_url}--> href="<!--{$arrNews[data].news_url}-->" <!--{if $arrNews[data].link_method eq "2"}--> target="_blank"
                                 <!--{/if}-->
                             <!--{/if}-->
                         >
-                            <!--{$arrNews[data].news_title|h|nl2br}--></a>
+                            <!--{$arrNews[data].news_title}--></a>
                     </dt>
-                    <dd class="mini"><!--{$arrNews[data].news_comment|h|nl2br}--></dd>
+                    <dd><!--{$arrNews[data].news_comment}--></dd>
                 </dl>
                 <!--{/section}-->
-                </div>
-            </div>
+                <!-- </div> -->
         </div>
     </div>
 <!--{/strip}-->
+<!--{/if}-->

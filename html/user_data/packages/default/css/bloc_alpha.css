@@ -13,11 +13,19 @@
 /* ログイン（ヘッダー用）
 ----------------------------------------------- */
 #header_login_area {
-    padding: 0 10px;
+/*    padding: 0 10px;
     border: solid 1px #ffc979;
     height: 30px;
     background: #fef3d3;
     letter-spacing: -0.075em;
+*/
+    padding: 0 10px;
+    border: solid 1px #ccc;
+    height: 32px;
+    background: #fff;
+    letter-spacing: -0.075em;
+    font-size: 10px!important;
+    line-height:17px;
 }
 #header_login_area ul.formlist {
     margin-top: 5px;
@@ -26,9 +34,9 @@
     float: left;
 }
 #header_login_area ul.formlist li.mail {
-    padding-left: 28px;
+    /*padding-left: 28px;*/
     width: 155px;
-    background: url("../img/common/ico_arrow_login.gif") no-repeat left;
+    /*background: url("../img/common/ico_arrow_login.gif") no-repeat left;*/
     font-size: 90%;
 }
 #header_login_area ul.formlist li.password {

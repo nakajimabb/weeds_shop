@@ -43,11 +43,19 @@
 /* 外枠
 ----------------------------------------------- */
 #container .block_outer {
-    padding: 0 15px 10px; /* #container の背景色を欠けさせないため敢えて padding */
+    /*padding: 0 15px 10px;  #container の背景色を欠けさせないため敢えて padding */
+    background-color: white;
+    border: 1px solid #ccc;    
+    border-radius: 5px;
+    margin-bottom: 20px;
+    box-shadow: 2px 2px 5px #ccc;    /* firefox　*/
+    -moz-box-shadow: 2px 2px 5px #ccc;    /* firefox　*/
+    -webkit-box-shadow: 2px 2px 5px #ccc;  /* safari、chorme */
 }
-#container #main_column .block_outer {
+/*#container #main_column .block_outer {
     padding: 0 0 20px;
 }
+*/
 #container .side_column .block_outer {
     padding: 0 7% 10px;
 }
@@ -63,7 +71,8 @@
 }
 #container .block_outer .block_body dl.formlist dt {
     margin-bottom: 3px;
-    padding-left: 15px;
+    /*padding-left: 15px;*/
+    padding: 0;
     background: url("../img/icon/ico_arrow_03.gif") no-repeat left;
     font-size: 90%;
 }
@@ -104,6 +113,13 @@
     background: url('../img/background/bg_btn_bloc_02.jpg') repeat-x left bottom #fef3d8;
 }
 
+h2.block_title {
+    color: #59493f;
+    font-size: 15px;
+    padding: 5px;
+    margin: 2px 15px;
+    border-bottom: 1px dashed #ccc;
+}
 
 /* ***********************************************
 ▼各機能ブロックの指定
@@ -160,6 +176,7 @@
 /* ===============================================
 ▼カテゴリ
 =============================================== */
+/*
 #container #category_area .block_body {
     background-color: #fffaf0;
 }
@@ -194,7 +211,10 @@ a.onlink:visited {
 a.onlink:hover {
     color: #f00;
 }
-
+*/
+#category_area li.level1 {
+    background: url("../img/icon/ico_arrow_01.gif") 10px 9px no-repeat;
+}
 
 /* ===============================================
 ▼ガイドリンク
@@ -241,14 +261,15 @@ ul.button_like li a {
 }
 #container .login_area dl.formlist {
     margin-bottom: 8px;
-    width: 450px;
+    /*width: 420px;*/
+    width: 400px;
 }
 #container .login_area dl.formlist dt {
     margin-bottom: 3px;
-    padding-left: 15px;
+    /*padding-left: 15px;*/
     color: #333;
-    background: url("../img/icon/ico_arrow_03.gif") no-repeat left;
-    width: 120px;
+    /*background: url("../img/icon/ico_arrow_03.gif") no-repeat left;*/
+    /*width: 90px;*/
     float: left;
     font-size: 90%;
 }
@@ -340,7 +361,7 @@ ul.button_like li a {
 #whobought_area .product_item {
     padding: 10px 0 10px;
     border: none;
-    background: url("../img/background/line_dot_01.gif") repeat-x bottom;
+    /*background: url("../img/background/line_dot_01.gif") repeat-x bottom;*/
 }
 
 #recommend_area .block_body p,
@@ -387,9 +408,10 @@ ul.button_like li a {
 #main_column #recommend_area .product_item,
 #whobought_area .product_item {
     float: left;
-    width: 47.5%;
+    /*width: 47.5%;*/
+    width: 31%;
     padding-left: 1%;
-    padding-right: 1%;
+    /*padding-right: 1%;*/
 }
 
 
@@ -397,15 +419,15 @@ ul.button_like li a {
 ----------------------------------------------- */
 /* メインカラム用 1カラム時*/
 #main_column.colnum1 #recommend_area .block_body .productContents {
-    float: right;
-    width: 74%;
+    /*float: right;*/
+    /*width: 74%;*/
 }
 
 /* メインカラム用 2カラム時*/
 #main_column.colnum2 #recommend_area .block_body .productContents,
 #main_column.colnum2 #whobought_area .productContents {
     float: right;
-    width: 74%;
+    /*width: 74%;*/
 }
 
 /* メインカラム用 3カラム時*/

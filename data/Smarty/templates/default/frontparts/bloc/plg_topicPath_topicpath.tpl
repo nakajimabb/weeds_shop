@@ -17,6 +17,16 @@
  * License along with this library; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *}-->
+<style>
+div#topicpath_area {
+    margin: 5px auto 0 auto;
+    width: 960px;
+}
+div#topicpath_area li:last-child {
+    font-weight: bold;
+}
+
+</style>
 
 <!--▼ TopicPath-->
 <div id="topicpath_area">
@@ -24,9 +34,9 @@
          <li><a href="<!--{$smarty.const.HTTP_URL}-->index.php">ホーム</a></li>
          <!--{section name=cnt loop=$arrTopicPath}-->
              <!--{if $arrTopicPath[cnt].link != ""}-->
-             <li><a href="<!--{$arrTopicPath[cnt].link}-->"><!--{$arrTopicPath[cnt].name}--></a></li>
+             <li>＞ <a href="<!--{$arrTopicPath[cnt].link}-->"><!--{$arrTopicPath[cnt].name}--></a></li>
              <!--{else}-->
-             <li><!--{$arrTopicPath[cnt].name}--></li>
+             <li>＞ <!--{$arrTopicPath[cnt].name}--></li>
              <!--{/if}-->
          <!--{/section}-->
      </ul>

@@ -25,6 +25,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=<!--{$smarty.const.CHAR_CODE}-->" />
 <title><!--{$arrSiteInfo.shop_name|h}--><!--{if $tpl_subtitle|strlen >= 1}--> / <!--{$tpl_subtitle|h}--><!--{elseif $tpl_title|strlen >= 1}--> / <!--{$tpl_title|h}--><!--{/if}--></title>
+<meta name="robots" content="noindex,nofollow">
+<meta name="googlebot" content="noindex,nofollow,noarchive">
 <meta http-equiv="Content-Script-Type" content="text/javascript" />
 <meta http-equiv="Content-Style-Type" content="text/css" />
 <!--{if $arrPageLayout.author|strlen >= 1}-->

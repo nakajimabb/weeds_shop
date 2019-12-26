@@ -20,49 +20,115 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  *}-->
 
- <!--　div class="bloc_outer">
-    <div id="search_area">
-        <div class="bloc_body">
-　-->
+<style type="text/css">
+#main_search {
+    clear: both;
+    margin: 15px;
+    /*border: solid 1px black;*/
+}
+#main_search h1 {
+    padding-left: 5px;
+    font-size: 150%;
+    color:  green;
+}
+#main_search h2 {
+    font-size: 130%;
+    color: green;
+    font-weight: normal;
+}
+#main_search table {
+    border: none;
+}
+#main_search table tr {
+    padding: 0;
+    margin: 0;
+}
+#main_search table tr td {
+    padding: 10px;
+    margin: 0;
+    width: 270px;
+    vertical-align: top;
+    border: 1px solid #ccc;
+}
 
-<div id="main_search">
-    <h1>商品検索</h1>
-    <ul id="search_item_tab">
-        <!--{if $searchMode == 1}--><li class="select"><!--{else}--><li><!--{/if}-->
-            <a href="<!--{$smarty.const.ROOT_URLPATH}-->products/search_page.php?srch=1">ブランドから探す</a>
-        </li>
-        <!--{if $searchMode == 2}--><li class="select"><!--{else}--><li><!--{/if}-->
-            <a href="<!--{$smarty.const.ROOT_URLPATH}-->products/search_page.php?srch=2">商品カテゴリから探す</a>
-        </li>
-        <!--{if $searchMode == 3}--><li class="select"><!--{else}--><li><!--{/if}-->
-            <a href="<!--{$smarty.const.ROOT_URLPATH}-->products/search_page.php?srch=3">キーワードから探す</a>
-        </li>
-    </ul>
+#main_search table.search_keyword tr td {
+    padding: 3px;
+    margin: 0;
+    border: none;
+}
+
+div#search_item_tab li {
+    float: left;
+    margin: 10px 5px;
+    list-style: none;
+/*    cursor: pointer;
+    background: #f8f8f8;
+    border-radius: 5px 5px 0px 0px;
+    border: solid 1px black;
+    border-bottom: none;
+*/}
+div#search_item_tab li.select {
+  background: #ddd;
+}
+div#brand_list {
+    clear: both;
+    padding: 8px 0;
+}
+div#brand_list ul {
+    clear: both;
+}
+div#brand_list ul li {
+    list-style: none;
+    float: left;
+    padding: 1px;
+}
+ul.category_list {
+    padding: 5px 10px;
+}
+</style>
+
+<div class="block_outer clearfix">
+    <h2 class="block_title">化粧品検索</h2>
+
+    <div id="main_search">
+        <div id="search_item_tab">
+        <ul class="clearfix">
+            <li><label>
+                <input type="radio" name="method" value="1" onclick="location.href='<!--{$smarty.const.ROOT_URLPATH}-->products/cosmetic.php?srch=1'" <!--{if $searchMode == 1}-->checked<!--{/if}--> />
+                    ブランドから探す
+            </label></li>
+            <li><label>
+                <input type="radio" name="method" value="2" onclick="location.href='<!--{$smarty.const.ROOT_URLPATH}-->products/cosmetic.php?srch=2'" <!--{if $searchMode == 2}-->checked<!--{/if}--> />
+                商品カテゴリから探す
+            </label></li>
+            <li><label>
+                <input type="radio" name="method" value="3" onclick="location.href='<!--{$smarty.const.ROOT_URLPATH}-->products/cosmetic.php?srch=3'" <!--{if $searchMode == 3}-->checked<!--{/if}--> />
+                    キーワードから探す
+            </label></li>
+        </ul>
+        </div>
     
-    <!--{if $searchMode == 1}-->
-        <div class="content_wrap" style="border-radius: 0px 5px 5px 5px;">
+        <!--{if $searchMode == 1}-->
 
             <!--{foreach key=id item=maker name=makerinf from=$arrMakerInfo}-->
 
                 <!--{if is_array($arrBrandInfo[$id])}-->
+
+                <div id="brand_list">
                     <img src="<!--{$smarty.const.IMAGE_SAVE_URLPATH|sfTrimURL}-->/<!--{$maker.maker_image}-->" alt="<!--{$maker.name}-->" height=30px /><br> 
-                    <ul style="clear:both;padding:0;margin-left:5px;">
+                    <ul class="clearfix">
                     <!--{foreach key=id2 item=item from=$arrBrandInfo[$id]}-->
-                    <li style="list-style:none;float:left;padding:1px;margin:0;">
-                        <a href="<!--{$smarty.const.ROOT_URLPATH}-->products/list.php?maker_id=<!--{$id}-->&brand_id=<!--{$id2}-->&smode=1">
-                            <img src="<!--{$smarty.const.IMAGE_SAVE_URLPATH|sfTrimURL}-->/<!--{$item.brand_image}-->" alt="<!--{$item.name|h}-->" class="picture" />
-                        </a>
-                    </li>
+                        <li>
+                            <a href="<!--{$smarty.const.ROOT_URLPATH}-->products/list.php?maker_id=<!--{$id}-->&brand_id=<!--{$id2}-->&category_id=1&smode=1">
+                                <img src="<!--{$smarty.const.IMAGE_SAVE_URLPATH|sfTrimURL}-->/<!--{$item.brand_image}-->" alt="<!--{$item.name|h}-->" class="picture" />
+                            </a>
+                        </li>
                     <!--{/foreach}-->
                     </ul>
-
-                    <p style="clear:both;"></p>
+                </div>
                 <!--{/if}-->
             <!--{/foreach}-->
-        </div>
-    <!--{elseif $searchMode == 2}-->
-        <div id="tab2" class="content_wrap">
-
+        <!--{elseif $searchMode == 2}-->
         <table>
         <!--{foreach key=id item=cate_id from=$treeCategories.$CosmeticID.child_id name=cateLoop}-->
 
@@ -76,7 +142,7 @@
             <div style="font-weight:bold;">
                 <!--{$cur_cate.category_name}-->
             </div>
-            <ul>
+            <ul class="category_list">
             <!--{foreach item=cate_id2 from=$cur_cate.child_id}-->
                 <li><a href="<!--{$smarty.const.ROOT_URLPATH}-->products/list.php?category_id=<!--{$cate_id2}-->&smode=2">
                 <!--{$treeCategories.$cate_id2.category_name}-->
@@ -90,16 +156,13 @@
             <!--{/if}-->
         <!--{/foreach}-->
         </table>
+        <!--{elseif $searchMode == 3}-->
 
-        </div>
-
-    <!--{elseif $searchMode == 3}-->
-        <div class="content_wrap">
             <!--検索フォーム-->
             <form name="search_form" id="search_form" method="get" action="<!--{$smarty.const.ROOT_URLPATH}-->products/list.php">
             <input type="hidden" name="<!--{$smarty.const.TRANSACTION_ID_NAME}-->" value="<!--{$transactionid}-->" />
 
-            <table class="formlist">
+            <table class="search_keyword">
             <tr>
                 <td>カテゴリを指定</td>
                 <td>メーカーを指定</td>
@@ -132,6 +195,6 @@
             </table>
 
             </form>
-        </div>
     <!--{/if}-->
+    </div>
 </div>

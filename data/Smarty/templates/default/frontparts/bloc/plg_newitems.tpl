@@ -21,36 +21,30 @@
 
 <!--{* こちらはお客様ごとに編集してください*}-->
 <style type="text/css">
-#arrNewItems h2 {
- padding: 5px 0 8px 10px;
- margin-bottom:10px;
- border-style: solid;
- border-color: #f90 #ccc #ccc;
- border-width: 1px 1px 0;
- background: url('<!--{$TPL_URLPATH}-->img/background/bg_btn_bloc_02.jpg') repeat-x left bottom #fef3d8;
-}
 #arrNewItems{margin-bottom:10px;}
-#arrNewItems ul li {float:left; width:115px;}
+#arrNewItems ul li {float:left; width:115px; margin:10px 20px; height:200px;}
 #arrNewItems ul li p.item_image{ text-align:center;}
 #arrNewItems ul li p.price{ font-size:90%;}
 #arrNewItems ul li p.price em{ color:#FF0000;}
 </style>
 <!--{if $arrNewItems}-->
 <!-- arrNewItems -->
-<div id="arrNewItems">
-<h2><img src="<!--{$smarty.const.TOP_URLPATH}-->plugin/NewItems/media/images/tit_bloc_newitems.jpg" alt="*" class="title_icon" /></h2>
-<ul class="clearfix">
-<!--{section name=cnt loop=$arrNewItems}-->
-<li>
-<p class="item_image">
-<a href="<!--{$smarty.const.P_DETAIL_URLPATH}--><!--{$arrNewItems[cnt].product_id}-->">
-<img src="<!--{$smarty.const.ROOT_URLPATH}-->resize_image.php?image=<!--{$arrNewItems[cnt].main_list_image|sfNoImageMainList|h}-->&amp;width=110&amp;height=110" alt="<!--{$arrNewItems[cnt].name|h}-->" /></a>
-</p>
-<p class="checkItemname"><a href="<!--{$smarty.const.P_DETAIL_URLPATH}--><!--{$arrNewItems[cnt].product_id}-->"><!--{$arrNewItems[cnt].name}--></a></p>
-<p class="price"><!--{$smarty.const.SALE_PRICE_TITLE}-->(税込)<br /><em><!--{if $arrNewItems[cnt].price02_min_inctax == $arrNewItems[cnt].price02_max_inctax}--><!--{$arrNewItems[cnt].price02_min_inctax|number_format}--><!--{else}--><!--{$arrNewItems[cnt].price02_min_inctax|number_format}-->〜<!--{$arrNewItems[cnt].price02_max_inctax|number_format}--><!--{/if}-->円</em></p>
-</li>
-<!--{/section}-->
-</ul>
+<div class="block_outer clearfix">
+    <h2 class="block_title">新着商品</h2>
+    <div id="arrNewItems">
+        <ul class="clearfix">
+        <!--{section name=cnt loop=$arrNewItems}-->
+        <li>
+        <p class="item_image">
+        <a href="<!--{$smarty.const.P_DETAIL_URLPATH}--><!--{$arrNewItems[cnt].product_id}-->">
+        <img src="<!--{$smarty.const.ROOT_URLPATH}-->resize_image.php?image=<!--{$arrNewItems[cnt].main_list_image|sfNoImageMainList|h}-->&amp;width=110&amp;height=110" alt="<!--{$arrNewItems[cnt].name|h}-->" /></a>
+        </p>
+        <p class="checkItemname"><a href="<!--{$smarty.const.P_DETAIL_URLPATH}--><!--{$arrNewItems[cnt].product_id}-->"><!--{$arrNewItems[cnt].name}--></a></p>
+        <p class="price"><!--{$smarty.const.SALE_PRICE_TITLE}-->(税抜)<br /><em><!--{if $arrNewItems[cnt].price02_min == $arrNewItems[cnt].price02_max}--><!--{$arrNewItems[cnt].price02_min|number_format}--><!--{else}--><!--{$arrNewItems[cnt].price02_min|number_format}-->〜<!--{$arrNewItems[cnt].price02_max|number_format}--><!--{/if}-->円</em></p>
+        </li>
+        <!--{/section}-->
+        </ul>
+    </div>
 </div>
 <!-- / arrNewItems END -->
 <!--{/if}-->

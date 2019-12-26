@@ -117,7 +117,6 @@ $(function(){
  </style>
  
  <!--{if strlen($arrMainImages.arrFile.image[0].filepath) > 0}-->
- <div class="block_outer">
     <ul id="plgMainImage">
         <!--{foreach from=$arrMainImages.arrFile.image key=key item=item}-->
 
@@ -137,5 +136,4 @@ $(function(){
         </li>
         <!--{/foreach}-->
     </ul>
- </div>
  <!--{/if}-->
