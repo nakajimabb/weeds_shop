@@ -1,0 +1,9 @@
+@charset "utf-8";
+
+
+div.line_list {
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+}

@@ -1,0 +1,145 @@
+@charset "utf-8";
+
+
+div.clearlist {
+    clear: both;
+}
+form#page_navi_bottom {
+    clear: both;
+}
+#main_column.colnum1 div.line_list,
+#main_column.colnum2 div.line_list,
+#one_maincolumn div.line_list,
+#two_maincolumn_right div.line_list,
+#two_maincolumn_left div.line_list {
+    padding: 1%;
+    width: 21%;
+    overflow: auto;
+    margin: 0 12px 12px 0;
+    float: left;
+}
+#main_column.colnum3 div.line_list,
+#three_maincolumn div.line_list {
+    padding: 1%;
+    width: 28%;
+    overflow: auto;
+    margin: 0 1% 12px;
+    float: left;
+}
+
+div.listphoto {
+    float: none;
+    text-align: center;
+}
+
+div.line_list {
+    overflow: visible;
+}
+div.list_area {
+    padding-bottom: 1%;
+    overflow: hidden;
+    clear: both;
+}
+
+#main_column.colnum1 div.listrightbloc,
+#main_column.colnum2 div.listrightbloc,
+#main_column.colnum3 div.listrightbloc,
+#one_maincolumn div.listrightbloc,
+#two_maincolumn_right div.listrightbloc,
+#two_maincolumn_left div.listrightbloc,
+#three_maincolumn div.listrightbloc {
+    float: none;
+    width: 98%;
+}
+
+
+/* 商品情報 各種設定
+----------------------------------------------- */
+/* 商品コード */
+div.line_list div.product_code {
+    margin: 0 0 5px;
+}
+
+/* 商品ステータス */
+div.line_list ul.status_icon {
+    margin: 5px auto 0;
+}
+div.line_list ul.status_icon li {
+    margin: 0 2px;
+    float: left;
+}
+
+/* 商品名 */
+div.listrightbloc h3 {
+    margin: 5px 0 0;
+    text-align: left;
+}
+
+/* 買い物かご */
+div.listrightbloc .cart_area {
+    padding: 5px 0;
+    width: 100%;
+    margin-top: 5px;
+}
+
+/* 規格 */
+div.listrightbloc .classlist {
+    margin-bottom: 5px;
+    padding-bottom: 5px;
+}
+div.listrightbloc dl {
+    width: 100%;
+}
+div.listrightbloc dt {
+    display: inline-block;
+    vertical-align: top;
+    margin-left: 5px;
+}
+div.listrightbloc dd {
+    padding-bottom: 10px;
+    margin-left: 5px;
+    display: inline-block;
+}
+div.listrightbloc dd p.attention {
+    margin-top: 5px;
+}
+
+/* 価格 */
+div.listrightbloc .pricebox {
+    margin: 5px 0 0 0;
+}
+
+div.listrightbloc .listcomment {
+    margin: 5px 0 0 0;
+}
+
+/* カゴに入れる */
+div.listrightbloc .cartin {
+    margin: 0;
+    padding: 0;
+    float :none;
+}
+div.listrightbloc .cartin .quantity {
+    padding: 3px 10px 0 0;
+    width: 130px;
+    float :none;
+    text-align: center;
+}
+div.listrightbloc .cartin .quantity .box {
+    margin-bottom: 5px;
+}
+div.listrightbloc .cartin_btn {
+    width: 130px;
+    margin: 0 auto;
+    float :none;
+}
+div.listrightbloc .detail_btn {
+    text-align: center;
+    margin: 5px 0 0;
+}
+
+/* 在庫表示 */
+div.list_stock {
+    margin-top: 5px;
+    text-align: center;
+}

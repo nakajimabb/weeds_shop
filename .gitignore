@@ -2,6 +2,7 @@
 /data/logs/*
 /data/download/*
 /data/upload/*
-/html/install/*
 /data/config/config.php
 /data/Smarty/templates_c/*
+/html/install/*
+/html/upload/*
