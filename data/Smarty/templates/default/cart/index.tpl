@@ -21,15 +21,15 @@
  *}-->
 
 <div id="undercolumn">
+    <h2 class="title"><!--{$tpl_title|h}--></h2>
     <div id="undercolumn_cart">
-        <h2 class="title"><!--{$tpl_title|h}--></h2>
 
         <!--{if $smarty.const.USE_POINT !== false || count($arrProductsClass) > 0}-->
             <!--★ポイント案内★-->
             <!--{if $smarty.const.USE_POINT !== false}-->
                 <div class="point_announce">
                     <!--{if $tpl_login}-->
-                        <span class="user_name"><!--{$tpl_name|h}--> 様</span>の、現在の所持ポイントは「<span class="point"><!--{$tpl_user_point|n2s|default:0|h}--> pt</span>」です。<br />
+                        <span class="user_name"><!--{$tpl_name|h}--> 様</span>の、現在の所持ポイントは「<span class="point"><!--{$tpl_user_point|number_format|default:0|h}--> pt</span>」です。<br />
                     <!--{else}-->
                         ポイント制度をご利用になられる場合は、会員登録後ログインしてくださいますようお願い致します。<br />
                     <!--{/if}-->
@@ -38,7 +38,7 @@
             <!--{/if}-->
         <!--{/if}-->
 
-        <div class="totalmoney_area">
+        <p class="totalmoney_area">
             <!--{* カゴの中に商品がある場合にのみ表示 *}-->
             <!--{if count($cartKeys) > 1}-->
                 <span class="attentionSt"><!--{foreach from=$cartKeys item=key name=cartKey}--><!--{$arrProductType[$key]|h}--><!--{if !$smarty.foreach.cartKey.last}-->、<!--{/if}--><!--{/foreach}-->は同時購入できません。<br />
@@ -53,7 +53,7 @@
             <!--{if strlen($tpl_message) != 0}-->
                 <p class="attention"><!--{$tpl_message|h|nl2br}--></p>
             <!--{/if}-->
-        </div>
+        </p>
 
         <!--{if count($cartItems) > 0}-->
             <!--{foreach from=$cartKeys item=key}-->
@@ -72,11 +72,11 @@
                             <!--{assign var=purchasing_goods_name value="カゴの中の商品"}-->
                         <!--{/if}-->
                         <p>
-                            <!--{$purchasing_goods_name|h}-->の合計金額は「<span class="price"><!--{$tpl_total_inctax[$key]|n2s|h}-->円</span>」です。
+                            <!--{$purchasing_goods_name|h}-->の合計金額は「<span class="price"><!--{$tpl_total_inctax[$key]|number_format|h}-->円</span>」です。
                             <!--{if $key != $smarty.const.PRODUCT_TYPE_DOWNLOAD}-->
                                 <!--{if $arrInfo.free_rule > 0}-->
                                     <!--{if !$arrData[$key].is_deliv_free}-->
-                                        あと「<span class="price"><!--{$tpl_deliv_free[$key]|n2s|h}-->円</span>」で送料無料です！！
+                                        あと「<span class="price"><!--{$tpl_deliv_free[$key]|number_format|h}-->円</span>」で送料無料です！！
                                     <!--{else}-->
                                         現在、「<span class="attention">送料無料</span>」です！！
                                     <!--{/if}-->
@@ -101,7 +101,7 @@
                             </tr>
                             <!--{foreach from=$cartItems[$key] item=item}-->
                                 <tr style="<!--{if $item.error}-->background-color: <!--{$smarty.const.ERR_COLOR|h}-->;<!--{/if}-->">
-                                    <td class="alignC"><a href="?" onclick="eccube.fnFormModeSubmit('form<!--{$key|h}-->', 'cartDelete', 'cart_no', '<!--{$item.cart_no|h}-->'); return false;">削除</a>
+                                    <td class="alignC"><a href="?" onclick="eccube.fnFormModeSubmit('form<!--{$key|h}-->', 'delete', 'cart_no', '<!--{$item.cart_no|h}-->'); return false;">削除</a>
                                     </td>
                                     <td class="alignC">
                                     <!--{if $item.productsClass.main_image|strlen >= 1}-->
@@ -114,14 +114,15 @@
                                     </td>
                                     <td><!--{* 商品名 *}--><strong><!--{$item.productsClass.name|h}--></strong>
                                         <!--{if $item.productsClass.classcategory_name1 != ""}-->
-                                            <div><!--{$item.productsClass.class_name1|h}-->：<!--{$item.productsClass.classcategory_name1|h}--></div>
+                                            <div>種類：[<!--{$item.productsClass.classcategory_name1|h}-->]</div>
                                         <!--{/if}-->
                                         <!--{if $item.productsClass.classcategory_name2 != ""}-->
                                             <div><!--{$item.productsClass.class_name2|h}-->：<!--{$item.productsClass.classcategory_name2|h}--></div>
                                         <!--{/if}-->
                                     </td>
                                     <td class="alignR">
-                                        <!--{$item.price_inctax|n2s|h}-->円
+                                        <!-- 税抜き表記に変更 {$item.price_inctax|number_format|h} -->
+                                        <!--{$item.price|number_format|h}-->円
                                     </td>
                                     <td class="alignC"><!--{$item.quantity|h}-->
                                         <ul id="quantity_level">
@@ -131,23 +132,36 @@
                                             <!--{/if}-->
                                         </ul>
                                     </td>
-                                    <td class="alignR"><!--{$item.total_inctax|n2s|h}-->円</td>
+                                    <td class="alignR">
+                                        <!-- 税抜き表記に変更 {$item.total_inctax|number_format|h}　-->
+                                        <!--{$item.total|number_format|h}-->円
+                                    </td>
                                 </tr>
                             <!--{/foreach}-->
                             <tr>
+                                <th colspan="5" class="alignR">消費税</th>
+                                <td class="alignR"><!--{$arrData[$key].tax|number_format|h}-->円</td>
+                            </tr>
+                            <!--{if false}-->
+                            <tr>
+                                <th colspan="5" class="alignR">小計</th>
+                                <td class="alignR"><!--{$tpl_total_inctax[$key]|number_format|h}-->円</td>
+                            </tr>
+                            <!--{/if}-->
+                            <tr>
                                 <th colspan="5" class="alignR">合計</th>
-                                <td class="alignR"><span class="price"><!--{$arrData[$key].total-$arrData[$key].deliv_fee|n2s|h}-->円</span></td>
+                                <td class="alignR"><span class="price"><!--{$arrData[$key].total-$arrData[$key].deliv_fee|number_format|h}-->円</span></td>
                             </tr>
                             <!--{if $smarty.const.USE_POINT !== false}-->
                                 <!--{if $arrData[$key].birth_point > 0}-->
                                     <tr>
                                         <th colspan="5" class="alignR">お誕生月ポイント</th>
-                                        <td class="alignR"><!--{$arrData[$key].birth_point|n2s|h}-->pt</td>
+                                        <td class="alignR"><!--{$arrData[$key].birth_point|number_format|h}-->pt</td>
                                     </tr>
                                 <!--{/if}-->
                                 <tr>
                                     <th colspan="5" class="alignR">今回加算ポイント</th>
-                                    <td class="alignR"><!--{$arrData[$key].add_point|n2s|h}-->pt</td>
+                                    <td class="alignR"><!--{$arrData[$key].add_point|number_format|h}-->pt</td>
                                 </tr>
                             <!--{/if}-->
                         </table>

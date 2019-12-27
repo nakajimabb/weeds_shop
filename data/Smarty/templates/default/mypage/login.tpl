@@ -23,7 +23,7 @@
 *}-->
 
 <div id="undercolumn">
-    <h2 class="title"><!--{$tpl_title|h}--></h2>
+    <h2 class="title">ログイン</h2>
     <div id="undercolumn_login">
         <form name="login_mypage" id="login_mypage" method="post" action="<!--{$smarty.const.HTTPS_URL}-->frontparts/login_check.php" onsubmit="return eccube.checkLoginFormInputted('login_mypage')">
             <input type="hidden" name="<!--{$smarty.const.TRANSACTION_ID_NAME}-->" value="<!--{$transactionid}-->" />
@@ -39,11 +39,11 @@
                         <dt>メールアドレス&nbsp;：</dt>
                         <dd>
                             <span class="attention"><!--{$arrErr[$key]}--></span>
-                            <input type="text" name="<!--{$key}-->" value="<!--{$tpl_login_email|h}-->" maxlength="<!--{$arrForm[$key].length}-->" style="<!--{$arrErr[$key]|sfGetErrorColor}-->; ime-mode: disabled;" class="box300" />
+                            <input type="text" name="<!--{$key}-->" value="<!--{$tpl_login_email|h}-->" maxlength="<!--{$arrForm[$key].length}-->" style="<!--{$arrErr[$key]|sfGetErrorColor}-->; ime-mode: disabled;" class="box240" />
                             <p class="login_memory">
                                 <!--{assign var=key value="login_memory"}-->
                                 <input type="checkbox" name="<!--{$key}-->" value="1"<!--{$tpl_login_memory|sfGetChecked:1}--> id="login_memory" />
-                                <label for="login_memory">メールアドレスをコンピューターに記憶させる</label>
+                                <label for="login_memory">記憶させる</label>
                             </p>
                         </dd>
                     </dl>
@@ -54,40 +54,35 @@
                         </dt>
                         <dd>
                             <span class="attention"><!--{$arrErr[$key]}--></span>
-                            <input type="password" name="<!--{$key}-->" maxlength="<!--{$arrForm[$key].length}-->" style="<!--{$arrErr[$key]|sfGetErrorColor}-->" class="box300" />
+                            <input type="password" name="<!--{$key}-->" maxlength="<!--{$arrForm[$key].length}-->" style="<!--{$arrErr[$key]|sfGetErrorColor}-->" class="box240" />
                         </dd>
                     </dl>
-                    <div class="btn_area">
-                        <ul>
-                            <li>
-                                <input type="image" class="hover_change_image" src="<!--{$TPL_URLPATH}-->img/button/btn_login.jpg" alt="ログイン" name="log" id="log" />
-                            </li>
-                        </ul>
-                    </div>
+                </div>
+                <div class="btn_area">
+                    <input type="image" class="hover_change_image" src="<!--{$TPL_URLPATH}-->img/button/btn_login.jpg" alt="ログイン" name="log" id="log" />
                 </div>
                 <p>
-                    ※パスワードを忘れた方は<a href="<!--{$smarty.const.HTTPS_URL}-->forgot/<!--{$smarty.const.DIR_INDEX_PATH}-->" onclick="eccube.openWindow('<!--{$smarty.const.HTTPS_URL}-->forgot/<!--{$smarty.const.DIR_INDEX_PATH}-->','forget','600','460',{scrollbars:'no',resizable:'no'}); return false;" target="_blank">こちら</a>からパスワードの再発行を行ってください。<br />
+                    ※パスワードを忘れた方は<a href="<!--{$smarty.const.HTTPS_URL}-->forgot/<!--{$smarty.const.DIR_INDEX_PATH}-->" onclick="eccube.openWindow('<!--{$smarty.const.HTTPS_URL}-->forgot/<!--{$smarty.const.DIR_INDEX_PATH}-->','forget','600','460',{scrollbars:'no',resizable:'no'}); return false;" target="_blank">こちら</a>から再発行を行ってください。<br />
                     ※メールアドレスを忘れた方は、お手数ですが、<a href="<!--{$smarty.const.ROOT_URLPATH}-->contact/<!--{$smarty.const.DIR_INDEX_PATH}-->">お問い合わせページ</a>からお問い合わせください。
                 </p>
             </div>
 
+            <div style="background-color:#ccc; width:2px; height:320px;float:left;margin:6px;"></div>
+
             <div class="login_area">
                 <h3>まだ会員登録されていないお客様</h3>
-                <p class="inputtext">会員登録をすると便利なMyページをご利用いただけます。<br />
-                    また、ログインするだけで、毎回お名前や住所などを入力することなくスムーズにお買い物をお楽しみいただけます。
+                <p class="inputtext">ご注文するには会員登録が必要です。<br />
+                    会員登録をすると便利なMyページをご利用いただけます。<br />
                 </p>
-                <div class="inputbox">
                     <div class="btn_area">
-                        <ul>
-                            <li>
-                                <a href="<!--{$smarty.const.ROOT_URLPATH}-->entry/kiyaku.php">
-                                    <img class="hover_change_image" src="<!--{$TPL_URLPATH}-->img/button/btn_entry.jpg" alt="会員登録をする" />
-                                </a>
-                            </li>
-                        </ul>
+                        <!-- <a href="<!--{$smarty.const.ROOT_URLPATH}-->entry/kiyaku.php"> -->
+                        <a href="<!--{$smarty.const.ENTRY_URL}-->">
+                            <img class="hover_change_image" src="<!--{$TPL_URLPATH}-->img/button/btn_entry.jpg" alt="会員登録をする" />
+                        </a>
                     </div>
-                </div>
             </div>
+                    
+            <div style="clear:both;"> </div>
         </form>
     </div>
 </div>

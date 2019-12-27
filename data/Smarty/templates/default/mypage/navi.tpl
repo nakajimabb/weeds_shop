@@ -36,10 +36,6 @@
                 <!--{/if}-->
                 <li><a href="change.php" class="<!--{if $tpl_mypageno == 'change'}--> selected<!--{/if}-->">
                     会員登録内容変更</a></li>
-                <li><a href="delivery.php" class="<!--{if $tpl_mypageno == 'delivery'}--> selected<!--{/if}-->">
-                    お届け先追加・変更</a></li>
-                <li><a href="refusal.php" class="<!--{if $tpl_mypageno == 'refusal'}--> selected<!--{/if}-->">
-                    退会手続き</a></li>
 
             <!--{* 退会状態 *}-->
             <!--{else}-->
@@ -57,19 +53,6 @@
                     退会手続き</a></li>
             <!--{/if}-->
         </ul>
-
-        <!--▼現在のポイント-->
-        <!--{if $point_disp !== false}-->
-            <div class="point_announce clearfix">
-                <p>ようこそ&nbsp;／&nbsp;
-                    <span class="user_name"><!--{$CustomerName1|h}--> <!--{$CustomerName2|h}-->様</span>
-                    <!--{if $smarty.const.USE_POINT !== false}-->&nbsp;
-                        現在の所持ポイントは&nbsp;<span class="point st"><!--{$CustomerPoint|n2s|default:"0"|h}-->pt</span>&nbsp;です。
-                    <!--{/if}-->
-                </p>
-            </div>
-        <!--{/if}-->
-        <!--▲現在のポイント-->
     <!--{/strip}-->
 
 </div>

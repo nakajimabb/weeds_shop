@@ -22,17 +22,19 @@
  */
 *}-->
 
-<div id="mypagecolumn">
+<div id="undercolumn">
     <h2 class="title"><!--{$tpl_title|h}--></h2>
-    <!--{include file=$tpl_navi}-->
-    <div id="mycontents_area">
-        <h3><!--{$tpl_subtitle|h}--></h3>
+    <div id="mypagecolumn">
+        <!--{include file=$tpl_navi}-->
+        <div id="mycontents_area">
+            <h3><!--{$tpl_subtitle|h}--></h3>
 
-        <div id="complete_area">
-            <div class="message">
-                会員登録内容の変更が完了いたしました。<br />
+            <div id="complete_area">
+                <div class="message">
+                    会員登録内容の変更が完了いたしました。<br />
+                </div>
+                <p>今後ともご愛顧賜りますようよろしくお願い申し上げます。</p>
             </div>
-            <p>今後ともご愛顧賜りますようよろしくお願い申し上げます。</p>
         </div>
     </div>
 </div>
