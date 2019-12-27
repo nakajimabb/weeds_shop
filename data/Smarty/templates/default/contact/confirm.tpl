@@ -41,30 +41,6 @@
                     <td><!--{$arrForm.name01.value|h}-->　<!--{$arrForm.name02.value|h}--></td>
                 </tr>
                 <tr>
-                    <th>お名前(フリガナ)</th>
-                    <td><!--{$arrForm.kana01.value|h}-->　<!--{$arrForm.kana02.value|h}--></td>
-                </tr>
-                <tr>
-                    <th>郵便番号</th>
-                    <td>
-                        <!--{if strlen($arrForm.zip01.value) > 0 && strlen($arrForm.zip02.value) > 0}-->
-                            〒<!--{$arrForm.zip01.value|h}-->-<!--{$arrForm.zip02.value|h}-->
-                        <!--{/if}-->
-                    </td>
-                </tr>
-                <tr>
-                    <th>住所</th>
-                    <td><!--{$arrPref[$arrForm.pref.value]}--><!--{$arrForm.addr01.value|h}--><!--{$arrForm.addr02.value|h}--></td>
-                </tr>
-                <tr>
-                    <th>電話番号</th>
-                    <td>
-                        <!--{if strlen($arrForm.tel01.value) > 0 && strlen($arrForm.tel02.value) > 0 && strlen($arrForm.tel03.value) > 0}-->
-                            <!--{$arrForm.tel01.value|h}-->-<!--{$arrForm.tel02.value|h}-->-<!--{$arrForm.tel03.value|h}-->
-                        <!--{/if}-->
-                    </td>
-                </tr>
-                <tr>
                     <th>メールアドレス</th>
                     <td><a href="mailto:<!--{$arrForm.email.value|escape:'hex'}-->"><!--{$arrForm.email.value|escape:'hexentity'}--></a></td>
                 </tr>

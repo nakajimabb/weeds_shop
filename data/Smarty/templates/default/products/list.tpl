@@ -19,6 +19,74 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  *}-->
+<style>
+    div.product_navi {
+        padding: 5px 20px;    
+    }
+    div#product_list h3 {
+        text-align: center;
+        line-height: 100%;
+    }
+    div#product_list div.listphoto {
+        text-align: center;
+        margin: 10px auto;
+    }
+    div#product_list div.listphoto img {
+        height: 120px;
+    }
+    div#product_list table {
+        margin: 0;
+        padding: 0;
+        border: none;
+    }
+    div#product_list table td {
+        margin: 0;
+        padding: 8px 12px;
+        width: auto;
+        border: 1px solid #ccc;
+        vertical-align: top;
+    }
+    div#product_list table td:nth-child(3n) {
+        border-right: none;
+    }
+    div#product_list table td:nth-child(3n+1) {
+        border-left: none;
+    }
+    div#product_list .quantity {
+        float: left;
+        padding-right: 10px;
+    }
+    div#product_list .cartin_btn {
+        float: left;
+        width: auto;
+    }
+    div#product_list div.listcomment table {
+        border: solid 1px #ccc;
+        padding: 0px;
+        margin: 10px 0px;
+        border: 1px solid rgb(221, 221, 221);
+        font-size: 85%;
+    }
+    div#product_list div.listcomment table th {
+        border: solid 1px #ccc;
+        width: 40px;
+        margin: 0px;
+        padding: 3px 5px;
+    }
+    div#product_list div.listcomment table td {
+        border: solid 1px #ccc;
+        margin: 0px;
+        padding: 3px 5px;
+    }
+    div#product_list ul.detail_btn li {
+        margin: 0px;
+        padding: 0px;
+        float: left;
+    }
+    ul.pagecond_area {
+        border-radius: 10px;
+    }
+</style>
 
 <script type="text/javascript">//<![CDATA[
     function fnSetClassCategories(form, classcat_id2_selected) {
@@ -68,6 +136,7 @@
         <!--{* ▼検索条件 *}-->
         <input type="hidden" name="category_id" value="<!--{$arrSearchData.category_id|h}-->" />
         <input type="hidden" name="maker_id" value="<!--{$arrSearchData.maker_id|h}-->" />
+        <input type="hidden" name="brand_id" value="<!--{$arrSearchData.brand_id|h}-->" />
         <input type="hidden" name="name" value="<!--{$arrSearchData.name|h}-->" />
         <!--{* ▲検索条件 *}-->
         <!--{* ▼ページナビ関連 *}-->
@@ -76,20 +145,48 @@
         <input type="hidden" name="pageno" value="<!--{$tpl_pageno|h}-->" />
         <!--{* ▲ページナビ関連 *}-->
         <input type="hidden" name="rnd" value="<!--{$tpl_rnd|h}-->" />
-    </form>
+    <!-- </form> -->
 
-    <!--★タイトル★-->
-    <h2 class="title"><!--{$tpl_subtitle|h}--></h2>
+        <!--★タイトル★-->
+        <h2 class="title"><!--{$tpl_subtitle|h}--></h2>
 
-    <!--▼検索条件-->
-    <!--{if $tpl_subtitle == "検索結果"}-->
+        <!--▼検索条件-->
         <ul class="pagecond_area">
-            <li><strong>商品カテゴリ：</strong><!--{$arrSearch.category|h}--></li>
-        <!--{if $arrSearch.maker|strlen >= 1}--><li><strong>メーカー：</strong><!--{$arrSearch.maker|h}--></li><!--{/if}-->
-            <li><strong>商品名：</strong><!--{$arrSearch.name|h}--></li>
+            <!--{if $arrSearchData.maker_id > 0}-->
+                <li><strong>メーカー：</strong><!--{$arrSearch.maker|h}--></li>
+            <!--{/if}-->
+            <!--{if $arrSearchData.brand_id > 0}-->
+                <li><strong>ブランド：</strong><!--{$arrSearch.brand|h}--></li>
+            <!--{/if}-->
+            <!--{if $smode == 1}-->
+                <li>
+                    <strong>商品カテゴリ：</strong>
+                    <!--{assign var=key value="category_id"}-->
+                    <select name="<!--{$key}-->" class="top" style="width:200px;" onchange="fnSubmit(); return false;">
+                    <option value="">指定なし</option>
+                    <!--{html_options options=$arrSearchCate selected=$arrForm[$key] }-->
+                    </select>
+                </li>
+            <!--{elseif $arrSearchData.category_id > 0}-->
+                <li><strong>商品カテゴリ：</strong><!--{$arrSearch.category|h}--></li>
+            <!--{/if}-->
+            <!--{if $arrSearch.name|strlen >= 1}-->
+                <li><strong>キーワード：</strong><!--{$arrSearch.name|h}--></li>
+            <!--{/if}-->
+            <li>
+            <strong>商品ステータス：</strong>
+            <!--{assign var=key value="search_product_statuses"}-->
+            <span class="attention"><!--{$arrErr[$key]|h}--></span>
+            <!--{html_checkboxes name="$key" options=$arrSTATUS selected=$arrForm[$key] onclick="fnSubmit(); return false;" }-->
+            </li>
+            <!--{if false}-->
+            <li style="text-align: center;padding: 10px 0 0 0;">
+                <p class="btn"><input type="image" onmouseover="chgImgImageSubmit('<!--{$TPL_URLPATH}-->img/button/btn_bloc_search_on.jpg',this)" onmouseout="chgImgImageSubmit('<!--{$TPL_URLPATH}-->img/button/btn_bloc_search.jpg',this)" src="<!--{$TPL_URLPATH}-->img/button/btn_bloc_search.jpg" alt="検索" name="search" /></p>
+            </li>
+            <!--{/if}-->
         </ul>
-    <!--{/if}-->
-    <!--▲検索条件-->
+        <!--▲検索条件-->
+    </form>
 
     <!--▼ページナビ(本文)-->
     <!--{capture name=page_navi_body}-->
@@ -121,98 +218,122 @@
     <!--{/capture}-->
     <!--▲ページナビ(本文)-->
 
+    <div id="product_list">
     <!--{foreach from=$arrProducts item=arrProduct name=arrProducts}-->
 
         <!--{if $smarty.foreach.arrProducts.first}-->
-            <!--▼件数-->
-            <div>
-                <span class="attention"><!--{$tpl_linemax}-->件</span>の商品がございます。
-            </div>
-            <!--▲件数-->
+            <div class="product_navi">
+                <!--▼件数-->
+                <div>
+                    <span class="attention"><!--{$tpl_linemax}-->件</span>の商品がございます。
+                </div>
+                <!--▲件数-->
 
-            <!--▼ページナビ(上部)-->
-            <form name="page_navi_top" id="page_navi_top" action="?">
-                <input type="hidden" name="<!--{$smarty.const.TRANSACTION_ID_NAME}-->" value="<!--{$transactionid}-->" />
-                <!--{if $tpl_linemax > 0}--><!--{$smarty.capture.page_navi_body nofilter}--><!--{/if}-->
-            </form>
-            <!--▲ページナビ(上部)-->
+                <!--▼ページナビ(上部)-->
+                <form name="page_navi_top" id="page_navi_top" action="?">
+                    <input type="hidden" name="<!--{$smarty.const.TRANSACTION_ID_NAME}-->" value="<!--{$transactionid}-->" />
+                    <!--{if $tpl_linemax > 0}--><!--{$smarty.capture.page_navi_body|smarty:nodefaults}--><!--{/if}-->
+                </form>
+                <!--▲ページナビ(上部)-->
+            </div>
+
+                <table>
+                    <col width="33%" />
+                    <col width="33%" />
+                    <col width="33%" />
         <!--{/if}-->
 
         <!--{assign var=id value=$arrProduct.product_id}-->
         <!--{assign var=arrErr value=$arrProduct.arrErr}-->
+
+        <!--{if $smarty.foreach.arrProducts.index % 3 == 0}-->
+            <tr>
+        <!--{/if}-->
+
+        <td>
         <!--▼商品-->
-        <form name="product_form<!--{$id|h}-->" action="?">
+        <form name="product_form<!--{$id|h}-->" action="?" onsubmit="return false;">
             <input type="hidden" name="<!--{$smarty.const.TRANSACTION_ID_NAME}-->" value="<!--{$transactionid}-->" />
             <input type="hidden" name="product_id" value="<!--{$id|h}-->" />
             <input type="hidden" name="product_class_id" id="product_class_id<!--{$id|h}-->" value="<!--{$tpl_product_class_id[$id]}-->" />
+
             <div class="list_area clearfix">
                 <a name="product<!--{$id|h}-->"></a>
+
+                <!--★商品名★-->
+                <h3>
+                    <!--{assign var=key value=$arrProduct.brand_id}-->
+                    <div style="font-size:75%;margin:4px;" ><!--{$arrBrands.$key}--></div>
+                    <a href="<!--{$smarty.const.P_DETAIL_URLPATH}--><!--{$arrProduct.product_id|u}-->"><!--{$arrProduct.name|h}--></a>
+                </h3>
+
                 <div class="listphoto">
                     <!--★画像★-->
                     <a href="<!--{$smarty.const.P_DETAIL_URLPATH}--><!--{$arrProduct.product_id|u}-->">
-                        <img src="<!--{$smarty.const.IMAGE_SAVE_URLPATH}--><!--{$arrProduct.main_list_image|sfNoImageMainList|h}-->" alt="<!--{$arrProduct.name|h}-->" class="picture" /></a>
+                        <img src="<!--{$smarty.const.IMAGE_SAVE_URLPATH}--><!--{$arrProduct.main_list_image|sfNoImageMainList|h}-->" alt="<!--{$arrProduct.name|h}-->" /></a>
                 </div>
 
                 <div class="listrightbloc">
-                    <!--▼商品ステータス-->
-                    <!--{if !empty($productStatus[$id])}-->
-                        <ul class="status_icon clearfix">
-                            <!--{foreach from=$productStatus[$id] item=status}-->
-                                <li>
-                                    <img src="<!--{$TPL_URLPATH}--><!--{$arrSTATUS_IMAGE[$status]}-->" width="60" height="17" alt="<!--{$arrSTATUS[$status]}-->"/>
-                                </li>
-                            <!--{/foreach}-->
-                        </ul>
-                    <!--{/if}-->
-                    <!--▲商品ステータス-->
-
-                    <!--★商品名★-->
-                    <h3>
-                        <a href="<!--{$smarty.const.P_DETAIL_URLPATH}--><!--{$arrProduct.product_id|u}-->"><!--{$arrProduct.name|h}--></a>
-                    </h3>
-                    <!--★価格★-->
-                    <div class="pricebox sale_price">
-                        <!--{$smarty.const.SALE_PRICE_TITLE}-->(税込)：
-                        <span class="price">
-                            <span id="price02_default_<!--{$id}-->"><!--{strip}-->
-                                <!--{if $arrProduct.price02_min_inctax == $arrProduct.price02_max_inctax}-->
-                                    <!--{$arrProduct.price02_min_inctax|n2s}-->
-                                <!--{else}-->
-                                    <!--{$arrProduct.price02_min_inctax|n2s}-->～<!--{$arrProduct.price02_max_inctax|n2s}-->
-                                <!--{/if}-->
-                            </span><span id="price02_dynamic_<!--{$id}-->"></span><!--{/strip}-->
-                            円</span>
-                    </div>
-
-                    <!--★コメント★-->
-                    <div class="listcomment"><!--{$arrProduct.main_list_comment|h|nl2br}--></div>
-
-                    <!--★商品詳細を見る★-->
-                    <div class="detail_btn">
-                        <!--{assign var=name value="detail`$id`"}-->
-                        <a href="<!--{$smarty.const.P_DETAIL_URLPATH}--><!--{$arrProduct.product_id|u}-->">
-                            <img class="hover_change_image" src="<!--{$TPL_URLPATH}-->img/button/btn_detail.jpg" alt="商品詳細を見る" name="<!--{$name}-->" id="<!--{$name}-->" />
-                        </a>
-                    </div>
-
-                    <!--▼買い物カゴ-->
+                    <!--▼買い物かご-->
                     <div class="cart_area clearfix">
+                        <!--★販売価格★-->
+                        <div class="pricebox sale_price">
+                            <!--{$smarty.const.SALE_PRICE_TITLE}-->(税抜)：
+                            <span class="price">
+                                <span id="price02_default_<!--{$id}-->"><!--{strip}-->
+                                    <!--{if $arrProduct.price02_min == $arrProduct.price02_max}-->
+                                        <!--{$arrProduct.price02_min|number_format}-->
+                                    <!--{else}-->
+                                        <!--{$arrProduct.price02_min|number_format}-->～<!--{$arrProduct.price02_max|number_format}-->
+                                    <!--{/if}-->
+                                </span><span id="price02_dynamic_<!--{$id}-->"></span><!--{/strip}-->
+                                円</span>
+                        </div>
+                        <!--{if false}-->
+                        <div class="pricebox sale_price">
+                            <!--{$smarty.const.SALE_PRICE_TITLE}-->(税込)：
+                            <span class="price">
+                                <span id="price02_default_<!--{$id}-->"><!--{strip}-->
+                                    <!--{if $arrProduct.price02_min_inctax == $arrProduct.price02_max_inctax}-->
+                                        <!--{$arrProduct.price02_min_inctax|number_format}-->
+                                    <!--{else}-->
+                                        <!--{$arrProduct.price02_min_inctax|number_format}-->～<!--{$arrProduct.price02_max_inctax|number_format}-->
+                                    <!--{/if}-->
+                                </span><span id="price02_dynamic_<!--{$id}-->"></span><!--{/strip}-->
+                                円</span>
+                        </div>
+                        <!--{/if}-->
+                        <!--★通常販格★-->
+                        <!--{if false}-->
+                        <div class="pricebox normal_price">
+                            <div class="price">
+                                <!--{$smarty.const.NORMAL_PRICE_TITLE}-->(税抜)：
+                                <span id="price01_default"><!--{strip}-->
+                                    <!--{if $arrProduct.price01_min == $arrProduct.price01_max}-->
+                                        <!--{$arrProduct.price01_min|number_format}-->
+                                    <!--{else}-->
+                                        <!--{$arrProduct.price01_min|number_format}-->～<!--{$arrProduct.price01_max|number_format}-->
+                                    <!--{/if}-->
+                                <!--{/strip}--></span><span id="price01_dynamic"></span>
+                                円
+                            </div>
+                        </div>
+                        <!--{/if}-->
+
                         <!--{if $tpl_stock_find[$id]}-->
                             <!--{if $tpl_classcat_find1[$id]}-->
                                 <div class="classlist">
-                                    <dl class="size01 clearfix">
+                                    <div class="size01 clearfix">
                                             <!--▼規格1-->
-                                            <dt><!--{$tpl_class_name1[$id]|h}-->：</dt>
-                                            <dd>
-                                                <select name="classcategory_id1" style="<!--{$arrErr.classcategory_id1|sfGetErrorColor}-->">
-                                                    <!--{html_options options=$arrClassCat1[$id] selected=$arrProduct.classcategory_id1}-->
-                                                </select>
-                                                <!--{if $arrErr.classcategory_id1 != ""}-->
-                                                    <p class="attention">※ <!--{$tpl_class_name1[$id]}-->を入力して下さい。</p>
-                                                <!--{/if}-->
-                                            </dd>
+                                            種類：
+                                            <select name="classcategory_id1" style="<!--{$arrErr.classcategory_id1|sfGetErrorColor}-->">
+                                                <!--{html_options options=$arrClassCat1[$id] selected=$arrProduct.classcategory_id1}-->
+                                            </select>
+                                            <!--{if $arrErr.classcategory_id1 != ""}-->
+                                                <p class="attention">※ <!--{$tpl_class_name1[$id]}-->を入力して下さい。</p>
+                                            <!--{/if}-->
                                             <!--▲規格1-->
-                                    </dl>
+                                    </div>
                                     <!--{if $tpl_classcat_find2[$id]}-->
                                         <dl class="size02 clearfix">
                                             <!--▼規格2-->
@@ -229,9 +350,10 @@
                                     <!--{/if}-->
                                 </div>
                             <!--{/if}-->
-                            <div class="cartin clearfix">
+
+                            <div class="clearfix">
                                 <div class="quantity">
-                                    数量：<input type="text" name="quantity" class="box" value="<!--{$arrProduct.quantity|default:1|h}-->" maxlength="<!--{$smarty.const.INT_LEN}-->" style="<!--{$arrErr.quantity|sfGetErrorColor}-->" />
+                                    数量：<input type="text" name="quantity" class="box" size="4" value="<!--{$arrProduct.quantity|default:1|h}-->" maxlength="<!--{$smarty.const.INT_LEN}-->" style="<!--{$arrErr.quantity|sfGetErrorColor}-->" />
                                     <!--{if $arrErr.quantity != ""}-->
                                         <br /><span class="attention"><!--{$arrErr.quantity}--></span>
                                     <!--{/if}-->
@@ -239,7 +361,7 @@
                                 <div class="cartin_btn">
                                     <!--★カゴに入れる★-->
                                     <div id="cartbtn_default_<!--{$id}-->">
-                                        <input type="image" id="cart<!--{$id}-->" src="<!--{$TPL_URLPATH}-->img/button/btn_cartin.jpg" alt="カゴに入れる" onclick="fnInCart(this.form); return false;" class="hover_change_image" />
+                                        <input type="image" id="cart<!--{$id}-->" src="<!--{$TPL_URLPATH}-->img/button/btn_cartin_s.jpg" alt="カゴに入れる" onclick="fnInCart(this.form); return false;" class="hover_change_image" />
                                     </div>
                                     <div class="attention" id="cartbtn_dynamic_<!--{$id}-->"></div>
                                 </div>
@@ -248,23 +370,70 @@
                             <div class="cartbtn attention">申し訳ございませんが、只今品切れ中です。</div>
                         <!--{/if}-->
                     </div>
-                    <!--▲買い物カゴ-->
+                    <!--▲買い物かご-->
+
+                    <!--▼商品ステータス-->
+                    <!--{if count($productStatus[$id]) > 0}-->
+                        <ul class="status_icon clearfix">
+                            <!--{foreach from=$productStatus[$id] item=status}-->
+                                <li>
+                                    <img src="<!--{$TPL_URLPATH}--><!--{$arrSTATUS_IMAGE[$status]}-->" width="60" height="17" alt="<!--{$arrSTATUS[$status]}-->"/>
+                                </li>
+                            <!--{/foreach}-->
+                        </ul>
+                    <!--{/if}-->
+                    <!--▲商品ステータス-->
+
+                    <!--★コメント★-->
+                    <div class="listcomment"><!--{$arrProduct.main_list_comment|nl2br_html}--></div>
+
+                    <!--★商品詳細を見る★-->
+                    <!--{if $arrProduct.comment1|strlen >= 1}-->
+                        <ul class="detail_btn">
+                            <li>詳細説明：</li>
+                            <li style="font-size:90%;">
+                                <!--{assign var=key value=$arrProduct.maker_id}-->    
+                                <a href="<!--{$arrProduct.comment1|h}-->" target=_blank ><!--{$arrMakers.$key}-->のページへ</a>
+                                <p>(注文時は戻って下さい)</p>
+                            </li>
+                        </ul>
+                    <!--{/if}-->
                 </div>
             </div>
         </form>
         <!--▲商品-->
+        </td>
 
         <!--{if $smarty.foreach.arrProducts.last}-->
-            <!--▼ページナビ(下部)-->
-            <form name="page_navi_bottom" id="page_navi_bottom" action="?">
-                <input type="hidden" name="<!--{$smarty.const.TRANSACTION_ID_NAME}-->" value="<!--{$transactionid}-->" />
-                <!--{if $tpl_linemax > 0}--><!--{$smarty.capture.page_navi_body nofilter}--><!--{/if}-->
-            </form>
-            <!--▲ページナビ(下部)-->
+            <!--{if $smarty.foreach.arrProducts.index % 3 == 0}-->
+            <td></td><td></td>
+            <!--{elseif $smarty.foreach.arrProducts.index % 3 == 1}-->
+            <td></td>
+            <!--{/if}-->
         <!--{/if}-->
+
+        <!--{if $smarty.foreach.arrProducts.index % 3 == 2 || $smarty.foreach.arrProducts.last}-->
+            </tr>
+        <!--{/if}-->
+
+        <!--{if $smarty.foreach.arrProducts.last}-->
+            </table>
+        <!--{/if}-->
+
+            <!--{if $smarty.foreach.arrProducts.last}-->
+            <div class="product_navi">
+                <!--▼ページナビ(下部)-->
+                <form name="page_navi_bottom" id="page_navi_bottom" action="?">
+                    <input type="hidden" name="<!--{$smarty.const.TRANSACTION_ID_NAME}-->" value="<!--{$transactionid}-->" />
+                    <!--{if $tpl_linemax > 0}--><!--{$smarty.capture.page_navi_body|smarty:nodefaults}--><!--{/if}-->
+                </form>
+                <!--▲ページナビ(下部)-->
+            </div>
+            <!--{/if}-->
 
     <!--{foreachelse}-->
         <!--{include file="frontparts/search_zero.tpl"}-->
     <!--{/foreach}-->
+    </div>
 
 </div>

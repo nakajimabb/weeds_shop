@@ -43,7 +43,13 @@ class LC_Page_Movie_List extends LC_Page_Ex {
      * @return void
      */
     function action() {
-        $this->arrMovie = $this->lfGetMovie();
+        $objCustomer = new SC_Customer();
+        if ($objCustomer->isLoginSuccess(true)) {
+            $this->arrMovie = $this->lfGetMovie();
+        } else {
+            $url = "/mypage/login.php";
+            SC_Response_Ex::sendRedirect($this->getLocation($url));
+        }
     }
 
     /**

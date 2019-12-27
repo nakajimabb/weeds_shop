@@ -53,4 +53,18 @@ class LC_Page_Products_Detail_Ex extends LC_Page_Products_Detail
     {
         parent::process();
     }
+
+    public function action()
+    {
+        parent::action();
+        
+        $this->isCosmetic =  $this->isCosmeticCate($this->arrRelativeCat);
+    }
+
+    function isCosmeticCate($arrRelativeCat) {
+        foreach($arrRelativeCat as $i=>$arrCate) {
+                if($arrCate[0]['category_id'] == CATEGORY_COSMETIC_ID) return true;
+        }
+        return false;
+    }
 }
