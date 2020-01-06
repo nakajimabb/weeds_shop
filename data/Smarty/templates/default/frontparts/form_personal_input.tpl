@@ -135,7 +135,7 @@
                     <!--{/if}-->
                     <select name="default_shop_id" style="<!--{$arrErr[$key]|sfGetErrorColor}-->">
                     <option value="" selected="selected">選択してください</option>
-                    <!--{html_options options=$arrShop selected=$arrForm.default_shop_id|h}-->
+                    <!--{html_options options=$arrShop selected=$arrForm.default_shop_id}-->
                     </select>
                 </td>
             </tr>

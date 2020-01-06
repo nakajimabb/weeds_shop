@@ -81,7 +81,7 @@
         <font color="#FF0000"><!--{$arrErr.pref}--></font>
         <select name="pref">
             <option value="">都道府県を選択</option>
-            <!--{html_options options=$arrPref selected=$arrForm.pref.value|h}-->
+            <!--{html_options options=$arrPref selected=$arrForm.pref.value}-->
         </select><br>
 
         【住所1】<font color="#FF0000">*</font><br>

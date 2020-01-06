@@ -77,7 +77,7 @@
         <font color="#FF0000"><!--{$arrErr.country_id}--></font>
         <select name="country_id">
             <option value="">選択してください</option>
-            <!--{html_options options=$arrCountry selected=$arrForm.country_id.value|h}-->
+            <!---->
         </select><br>
         
         【ZIP CODE】<br>
@@ -147,7 +147,7 @@
         <font color="#FF0000"><!--{$arrErr.reminder}--></font>
         <select name="reminder">
             <option value="">選択してください</option>
-            <!--{html_options options=$arrReminder selected=$arrForm.reminder.value|h}-->
+            <!--{html_options options=$arrReminder selected=$arrForm.reminder.value}-->
         </select><br>
 
         【質問の答え】<font color="#FF0000">※</font><br>

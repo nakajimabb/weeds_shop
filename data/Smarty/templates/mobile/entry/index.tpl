@@ -67,10 +67,10 @@
         <font color="#FF0000"><!--{$arrErr.year}--><!--{$arrErr.month}--><!--{$arrErr.day}--></font>
         <input type="text" name="year" value="<!--{$arrForm.year.value|h}-->" size="4" maxlength="4" istyle="4">年<br>
         <select name="month">
-            <!--{html_options options=$arrMonth selected=$arrForm.month.value|h}-->
+            <!--{html_options options=$arrMonth selected=$arrForm.month.value}-->
         </select>月<br>
         <select name="day">
-            <!--{html_options options=$arrDay selected=$arrForm.day.value|h}-->
+            <!--{html_options options=$arrDay selected=$arrForm.day.value}-->
         </select>日<br>
 
         <!--{if $smarty.const.FORM_COUNTRY_ENABLE}-->
@@ -78,7 +78,7 @@
         <font color="#FF0000"><!--{$arrErr.country_id}--></font>
         <select name="country_id">
             <option value="">選択してください</option>
-            <!--{html_options options=$arrCountry selected=$arrForm.country_id.value|h|default:$smarty.const.DEFAULT_COUNTRY_ID}-->
+            <!--{html_options options=$arrCountry selected=$arrForm.country_id.value|default:$smarty.const.DEFAULT_COUNTRY_ID}-->
         </select><br>
         
         ●ZIP CODE<br>
@@ -150,7 +150,7 @@
         <font color="#FF0000"><!--{$arrErr.reminder}--></font>
         <select name="reminder">
             <option value="">選択してください</option>
-            <!--{html_options options=$arrReminder selected=$arrForm.reminder.value|h}-->
+            <!--{html_options options=$arrReminder selected=$arrForm.reminder.value}-->
         </select><br>
 
         ●質問の答え<font color="#FF0000"> *</font><br>
