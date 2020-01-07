@@ -118,16 +118,26 @@
     });
 //]]></script>
 <div id="undercolumn">
+    <h2 class="title"><!--{$tpl_title|h}--></h2>
     <div id="undercolumn_shopping">
-        <p class="flow_area">
-            <img src="<!--{$TPL_URLPATH}-->img/picture/img_flow_02.jpg" alt="購入手続きの流れ" />
-        </p>
-        <h2 class="title"><!--{$tpl_title|h}--></h2>
 
         <form name="form1" id="form1" method="post" action="?">
             <input type="hidden" name="<!--{$smarty.const.TRANSACTION_ID_NAME}-->" value="<!--{$transactionid}-->" />
             <input type="hidden" name="mode" value="confirm" />
             <input type="hidden" name="uniqid" value="<!--{$tpl_uniqid}-->" />
+
+            <div class="receive_shop">
+                <h3>受取店舗の指定</h3>
+                <p class="select-msg">受取店舗を指定してください。</p>
+
+                <!--{assign var=key value="receive_shop_id"}-->
+                <span class="attention"><!--{$arrErr[$key]}--></span>
+                店舗名：
+                <select name="<!--{$key}-->" id="<!--{$key}-->" style="<!--{$arrErr[$key]|sfGetErrorColor}-->">
+                    <option value="" selected="">選択してください</option>
+                    <!--{html_options options=$arrShop selected=$default_shop_id}-->
+                </select>
+            </div>
 
             <!--{assign var=key value="deliv_id"}-->
             <!--{if $is_single_deliv}-->
@@ -181,7 +191,7 @@
                     <tbody>
                         <!--{section name=cnt loop=$arrPayment}-->
                             <tr>
-                            <td class="alignC"><input type="radio" id="pay_<!--{$smarty.section.cnt.iteration}-->" name="<!--{$key}-->"  value="<!--{$arrPayment[cnt].payment_id}-->" style="<!--{$arrErr[$key]|sfGetErrorColor}-->" <!--{$arrPayment[cnt].payment_id|sfGetChecked:$arrForm[$key].value}--> /></td>
+                            <td class="alignC"><input type="radio" id="pay_<!--{$smarty.section.cnt.iteration}-->" name="<!--{$key}-->"  value="<!--{$arrPayment[cnt].payment_id}-->" style="<!--{$arrErr[$key]|sfGetErrorColor}-->" <!--{$arrPayment[cnt].payment_id|sfGetChecked:$arrForm[$key].value}--> <!--{if cnt == 0}-->checked<!--{/if}--> /></td>
                             <td>
                                 <label for="pay_<!--{$smarty.section.cnt.iteration}-->"><!--{$arrPayment[cnt].payment_method|h}--><!--{if $arrPayment[cnt].note != ""}--><!--{/if}--></label>
                             </td>
@@ -198,55 +208,16 @@
                 </table>
             </div>
 
-            <!--{if $cartKey != $smarty.const.PRODUCT_TYPE_DOWNLOAD}-->
-            <div class="pay_area02">
-                <h3>お届け時間の指定</h3>
-                <p class="select-msg">ご希望の方は、お届け時間を選択してください。</p>
-                <p class="non-select-msg">まずはじめに、配送方法を選択ください。</p>
-                <!--{foreach item=shippingItem name=shippingItem from=$arrShipping}-->
-                <!--{assign var=index value=$shippingItem.shipping_id}-->
-                <div class="delivdate top">
-                    <!--{if $is_multiple}-->
-                        <span class="st">▼<!--{$shippingItem.shipping_name01}--><!--{$shippingItem.shipping_name02}-->
-                        <!--{$arrPref[$shippingItem.shipping_pref]}--><!--{$shippingItem.shipping_addr01}--><!--{$shippingItem.shipping_addr02}--></span><br/>
-                    <!--{/if}-->
-                    <!--★お届け日★-->
-                    <!--{assign var=key value="deliv_date`$index`"}-->
-                    <span class="attention"><!--{$arrErr[$key]}--></span>
-                    お届け日：
-                    <!--{if !$arrDelivDate}-->
-                        ご指定頂けません。
-                    <!--{else}-->
-                        <select name="<!--{$key}-->" id="<!--{$key}-->" style="<!--{$arrErr[$key]|sfGetErrorColor}-->">
-                            <option value="" selected="">指定なし</option>
-                            <!--{assign var=shipping_date_value value=$arrForm[$key].value|default:$shippingItem.shipping_date}-->
-                            <!--{html_options options=$arrDelivDate selected=$shipping_date_value}-->
-                        </select>&nbsp;
-                    <!--{/if}-->
-                    <!--★お届け時間★-->
-                    <!--{assign var=key value="deliv_time_id`$index`"}-->
-                    <span class="attention"><!--{$arrErr[$key]}--></span>
-                    お届け時間：
-                    <select name="<!--{$key}-->" id="<!--{$key}-->" style="<!--{$arrErr[$key]|sfGetErrorColor}-->">
-                        <option value="" selected="">指定なし</option>
-                        <!--{assign var=shipping_time_value value=$arrForm[$key].value|default:$shippingItem.time_id}-->
-                        <!--{html_options options=$arrDelivTime selected=$shipping_time_value}-->
-                    </select>
-                </div>
-                <!--{/foreach}-->
-            </div>
-            <!--{/if}-->
-
             <!-- ▼ポイント使用 -->
             <!--{if $tpl_login == 1 && $smarty.const.USE_POINT !== false}-->
                 <div class="point_area">
                     <h3>ポイント使用の指定</h3>
-                        <p><span class="attention">1ポイントを<!--{$smarty.const.POINT_VALUE|n2s}-->円</span>として使用する事ができます。<br />
+                        <p><span class="attention">1ポイントを<!--{$smarty.const.POINT_VALUE|number_format}-->円</span>として使用する事ができます。<br />
                             使用する場合は、「ポイントを使用する」にチェックを入れた後、使用するポイントをご記入ください。
                         </p>
                         <div class="point_announce">
-                            <p><span class="user_name"><!--{$name01|h}--> <!--{$name02|h}-->様</span>の、現在の所持ポイントは「<span class="point"><!--{$tpl_user_point|default:0|n2s}-->Pt</span>」です。<br />
-                                今回ご購入合計金額：<span class="price"><!--{$arrPrices.subtotal|n2s}-->円</span> <span class="attention">(送料、手数料を含みません。)</span>
+                            <p><span class="user_name"><!--{$name01|h}--> <!--{$name02|h}-->様</span>の、現在の所持ポイントは「<span class="point"><!--{$tpl_user_point|default:0|number_format}-->Pt</span>」です。<br />
+                                今回ご購入合計金額：<span class="price"><!--{$arrPrices.subtotal|number_format}-->円</span> <span class="attention">(送料、手数料を含みません。)</span>
                             </p>
                             <ul>
                                 <li>

@@ -53,4 +53,13 @@ class LC_Page_Shopping_Ex extends LC_Page_Shopping
     {
         parent::process();
     }
+
+    public function getNextLocation($product_type_id, $uniqid, &$objCustomer, &$objPurchase, &$objSiteSess)
+    {
+        $objPurchase->unsetAllShippingTemp(true);
+        $objPurchase->saveOrderTemp($uniqid, array(), $objCustomer);
+        $objSiteSess->setRegistFlag();
+
+        return 'payment.php';
+    }
 }

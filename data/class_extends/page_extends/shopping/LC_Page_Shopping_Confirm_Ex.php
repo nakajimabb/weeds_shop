@@ -42,6 +42,9 @@ class LC_Page_Shopping_Confirm_Ex extends LC_Page_Shopping_Confirm
     function init()
     {
         parent::init();
+
+        // 受け取り店舗一覧の取得
+        $this->arrShop = SC_RealShop::GetRealShopNameList();
     }
 
     /**

@@ -21,11 +21,8 @@
  *}-->
 
 <div id="undercolumn">
+    <h2 class="title"><!--{$tpl_title|h}--></h2>
     <div id="undercolumn_shopping">
-        <p class="flow_area">
-            <img src="<!--{$TPL_URLPATH}-->img/picture/img_flow_04.jpg" alt="購入手続きの流れ" />
-        </p>
-        <h2 class="title"><!--{$tpl_title|h}--></h2>
 
         <!-- ▼その他決済情報を表示する場合は表示 -->
         <!--{if $arrOther.title.value}-->

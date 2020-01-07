@@ -35,9 +35,8 @@
 
 <!--CONTENTS-->
 <div id="undercolumn">
+    <h2 class="title"><!--{$tpl_title|h}--></h2>
     <div id="undercolumn_shopping">
-        <p class="flow_area"><img src="<!--{$TPL_URLPATH}-->img/picture/img_flow_03.jpg" alt="購入手続きの流れ" /></p>
-        <h2 class="title"><!--{$tpl_title|h}--></h2>
 
         <p class="information">下記ご注文内容で送信してもよろしいでしょうか？<br />
             よろしければ、「<!--{if $use_module}-->次へ<!--{else}-->ご注文完了ページへ<!--{/if}-->」ボタンをクリックしてください。</p>
@@ -92,7 +91,7 @@
                             <ul>
                                 <li><strong><!--{$item.productsClass.name|h}--></strong></li>
                                 <!--{if $item.productsClass.classcategory_name1 != ""}-->
-                                <li><!--{$item.productsClass.class_name1|h}-->：<!--{$item.productsClass.classcategory_name1|h}--></li>
+                                <li>種類：[<!--{$item.productsClass.classcategory_name1|h}-->]</li>
                                 <!--{/if}-->
                                 <!--{if $item.productsClass.classcategory_name2 != ""}-->
                                 <li><!--{$item.productsClass.class_name2|h}-->：<!--{$item.productsClass.classcategory_name2|h}--></li>
@@ -100,37 +99,47 @@
                             </ul>
                         </td>
                         <td class="alignR">
-                            <!--{$item.price_inctax|n2s}-->円
+                            <!-- 税抜き表記に変更 {$item.price_inctax|number_format} -->
+                            <!--{$item.price|number_format}-->円
                         </td>
-                        <td class="alignR"><!--{$item.quantity|n2s}--></td>
-                        <td class="alignR"><!--{$item.total_inctax|n2s}-->円</td>
+                        <td class="alignR"><!--{$item.quantity|number_format}--></td>
+                        <td class="alignR">
+                            <!-- 税抜き表記に変更 {$item.total_inctax|number_format}　-->
+                            <!--{$item.total|number_format}-->円
+                        </td>
                     </tr>
                 <!--{/foreach}-->
                 <tr>
-                    <th colspan="4" class="alignR" scope="row">小計</th>
-                    <td class="alignR"><!--{$tpl_total_inctax[$cartKey]|n2s}-->円</td>
+                    <th colspan="4" class="alignR" scope="row">消費税</th>
+                    <td class="alignR"><!--{$tpl_total_tax[$cartKey]|number_format}-->円</td>
                 </tr>
-                <!--{if $smarty.const.USE_POINT !== false}-->
-                    <!--{if $arrForm.use_point > 0}-->
+                <!--{if false}-->
                     <tr>
-                        <th colspan="4" class="alignR" scope="row">値引き（ポイントご使用時）</th>
-                        <td class="alignR">
-                            <!--{assign var=discount value="`$arrForm.use_point*$smarty.const.POINT_VALUE`"}-->
-                            -<!--{$discount|n2s|default:0}-->円</td>
+                        <th colspan="4" class="alignR" scope="row">小計</th>
+                        <td class="alignR"><!--{$tpl_total_inctax[$cartKey]|number_format}-->円</td>
                     </tr>
+                    <!--{if $smarty.const.USE_POINT !== false}-->
+                        <!--{if $arrForm.use_point > 0}-->
+                        <tr>
+                            <th colspan="4" class="alignR" scope="row">値引き（ポイントご使用時）</th>
+                            <td class="alignR">
+                                <!--{assign var=discount value=`$arrForm.use_point*$smarty.const.POINT_VALUE`}-->
+                                -<!--{$discount|number_format|default:0}-->円</td>
+                        </tr>
+                        <!--{/if}-->
                     <!--{/if}-->
+                    <tr>
+                        <th colspan="4" class="alignR" scope="row">送料</th>
+                        <td class="alignR"><!--{$arrForm.deliv_fee|number_format}-->円</td>
+                    </tr>
+                    <tr>
+                        <th colspan="4" class="alignR" scope="row">手数料</th>
+                        <td class="alignR"><!--{$arrForm.charge|number_format}-->円</td>
+                    </tr>
                 <!--{/if}-->
                 <tr>
-                    <th colspan="4" class="alignR" scope="row">送料</th>
-                    <td class="alignR"><!--{$arrForm.deliv_fee|n2s}-->円</td>
-                </tr>
-                <tr>
-                    <th colspan="4" class="alignR" scope="row">手数料</th>
-                    <td class="alignR"><!--{$arrForm.charge|n2s}-->円</td>
-                </tr>
-                <tr>
                     <th colspan="4" class="alignR" scope="row">合計</th>
-                    <td class="alignR"><span class="price"><!--{$arrForm.payment_total|n2s}-->円</span></td>
+                    <td class="alignR"><span class="price"><!--{$arrForm.payment_total|number_format}-->円</span></td>
                 </tr>
             </table>
 
@@ -141,26 +150,26 @@
                 <col width="70%" />
                     <tr>
                         <th scope="row">ご注文前のポイント</th>
-                        <td><!--{$tpl_user_point|n2s|default:0}-->Pt</td>
+                        <td><!--{$tpl_user_point|number_format|default:0}-->Pt</td>
                     </tr>
                     <tr>
                         <th scope="row">ご使用ポイント</th>
-                        <td>-<!--{$arrForm.use_point|n2s|default:0}-->Pt</td>
+                        <td>-<!--{$arrForm.use_point|number_format|default:0}-->Pt</td>
                     </tr>
                     <!--{if $arrForm.birth_point > 0}-->
                     <tr>
                         <th scope="row">お誕生月ポイント</th>
-                        <td>+<!--{$arrForm.birth_point|n2s|default:0}-->Pt</td>
+                        <td>+<!--{$arrForm.birth_point|number_format|default:0}-->Pt</td>
                     </tr>
                     <!--{/if}-->
                     <tr>
                         <th scope="row">今回加算予定のポイント</th>
-                        <td>+<!--{$arrForm.add_point|n2s|default:0}-->Pt</td>
+                        <td>+<!--{$arrForm.add_point|number_format|default:0}-->Pt</td>
                     </tr>
                     <tr>
-                    <!--{assign var=total_point value="`$tpl_user_point-$arrForm.use_point+$arrForm.add_point`"}-->
+                    <!--{assign var=total_point value=`$tpl_user_point-$arrForm.use_point+$arrForm.add_point`}-->
                         <th scope="row">加算後のポイント</th>
-                        <td><!--{$total_point|n2s}-->Pt</td>
+                        <td><!--{$total_point|number_format}-->Pt</td>
                     </tr>
                 </table>
             <!--{/if}-->
@@ -177,60 +186,12 @@
                         <td><!--{$arrForm.order_name01|h}--> <!--{$arrForm.order_name02|h}--></td>
                     </tr>
                     <tr>
-                        <th scope="row">お名前(フリガナ)</th>
-                        <td><!--{$arrForm.order_kana01|h}--> <!--{$arrForm.order_kana02|h}--></td>
-                    </tr>
-                    <tr>
-                        <th scope="row">会社名</th>
-                        <td><!--{$arrForm.order_company_name|h}--></td>
-                    </tr>
-                    <!--{if $smarty.const.FORM_COUNTRY_ENABLE}-->
-                    <tr>
-                        <th scope="row">国</th>
-                        <td><!--{$arrCountry[$arrForm.order_country_id]|h}--></td>
-                    </tr>
-                    <tr>
-                        <th scope="row">ZIPCODE</th>
-                        <td><!--{$arrForm.order_zipcode|h}--></td>
-                    </tr>
-                    <!--{/if}-->
-                    <tr>
-                        <th scope="row">郵便番号</th>
-                        <td>〒<!--{$arrForm.order_zip01|h}-->-<!--{$arrForm.order_zip02|h}--></td>
-                    </tr>
-                    <tr>
-                        <th scope="row">住所</th>
-                        <td><!--{$arrPref[$arrForm.order_pref]}--><!--{$arrForm.order_addr01|h}--><!--{$arrForm.order_addr02|h}--></td>
-                    </tr>
-                    <tr>
                         <th scope="row">電話番号</th>
                         <td><!--{$arrForm.order_tel01}-->-<!--{$arrForm.order_tel02}-->-<!--{$arrForm.order_tel03}--></td>
                     </tr>
                     <tr>
-                        <th scope="row">FAX番号</th>
-                        <td>
-                            <!--{if $arrForm.order_fax01 > 0}-->
-                                <!--{$arrForm.order_fax01}-->-<!--{$arrForm.order_fax02}-->-<!--{$arrForm.order_fax03}-->
-                            <!--{/if}-->
-                        </td>
-                    </tr>
-                    <tr>
                         <th scope="row">メールアドレス</th>
                         <td><!--{$arrForm.order_email|h}--></td>
-                    </tr>
-                    <tr>
-                        <th scope="row">性別</th>
-                        <td><!--{$arrSex[$arrForm.order_sex]|h}--></td>
-                    </tr>
-                    <tr>
-                        <th scope="row">職業</th>
-                        <td><!--{$arrJob[$arrForm.order_job]|default:'(未登録)'|h}--></td>
-                    </tr>
-                    <tr>
-                        <th scope="row">生年月日</th>
-                        <td>
-                            <!--{$arrForm.order_birth|regex_replace:"/ .+/":""|regex_replace:"/-/":"/"|default:'(未登録)'|h}-->
-                        </td>
                     </tr>
                 </tbody>
             </table>
@@ -269,7 +230,7 @@
                                 </td>
                                 <td class="alignC"><!--{$item.quantity}--></td>
                                 <td class="alignR">
-                                    <!--{$item.total_inctax|n2s}-->円
+                                    <!--{$item.total_inctax|number_format}-->円
                                 </td>
                             </tr>
                         <!--{/foreach}-->
@@ -342,6 +303,11 @@
                 <col width="30%" />
                 <col width="70%" />
                 <tbody>
+                <tr>
+                    <th scope="row">受取店舗</th>
+                    <!--{assign var=shop_id value=$arrForm.receive_shop_id}-->
+                    <td><!--{$arrShop[$shop_id]|h}--></td>
+                </tr>
                 <tr>
                     <th scope="row">配送方法</th>
                     <td><!--{$arrDeliv[$arrForm.deliv_id]|h}--></td>
