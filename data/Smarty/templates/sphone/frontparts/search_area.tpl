@@ -1,3 +1,4 @@
+<!--{if false}-->
 <!--▼検索バー -->
 <section id="search_area">
     <form method="get" action="<!--{$smarty.const.ROOT_URLPATH}-->products/list.php">
@@ -7,3 +8,4 @@
     </form>
 </section>
 <!--▲検索バー -->
+<!--{/if}-->

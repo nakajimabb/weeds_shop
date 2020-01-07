@@ -20,6 +20,96 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  *}-->
 
+<style>
+#main_search div.content_wrap {
+    /*margin: 10px auto 20px 2px;*/
+}
+#main_search ul li {
+    float: left;
+}
+#main_search img.picture {
+    border: #ccc solid 1px;
+    padding: 0;
+    margin: 2px;
+    text-align: center;
+}
+#main_search ul#search_item_tab {
+    margin-bottom: 10px;
+}
+ul.list_brand {
+    margin-bottom: 15px;
+}
+ul.list_brand a {
+    display: block;
+}
+ul.list_cate {
+    border-bottom: #ccc solid 1px;
+    margin:  0px;
+    padding: 15px;
+    background-color: #FEFEFE;
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0, #FEFEFE),color-stop(1, #EEEEEE));
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0, #FEFEFE),color-stop(1, #EEEEEE));
+}
+ul.list_cate li {
+    clear: both;
+}
+ul.list_cate li.cate_name {
+    font-weight: bold;
+    text-align: center;
+    font-size: 120%;
+    padding-bottom: 5px;
+}
+
+#main_search ul.navi {
+    width: auto;
+    clear: both;
+    margin: 0 auto;
+}
+#main_search ul.navi li {
+    float: left;
+    text-align: center;
+    border-left: #FFF solid 1px;
+    border-right: #CCC solid 1px;
+    border-bottom: #CCC solid 1px;
+    white-space: nowrap;
+    font-size: 70%;
+    /*width: 24.5%;*/
+    width: 32.8%;
+}
+#main_search ul.navi li.select {
+    font-weight: bold;
+}
+#main_search ul.navi li a {
+    color: #000;
+    padding: 9px 0 8px 0;
+    display: block;
+    text-shadow: 0px -1px 1px rgba(255,255,255,0.7);
+    background-color: #DAE0E5;
+    background: -moz-linear-gradient(center top, #EEF0F3 0%,#DAE0E5 90%,#DAE0E5 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0, #EEF0F3),color-stop(0.9, #DAE0E5),color-stop(1, #DAE0E5));
+}
+#main_search ul.navi li a:hover {
+    color: #FFF;
+    text-shadow: 0px -1px 1px rgba(0,0,0,0.5);
+    background: #5393c5;
+    background: -moz-linear-gradient(center top, #5393c5 10%,#80b6e2 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0, #5393c5),color-stop(1, #80b6e2));
+}
+
+#main_search table.formlist {
+    width: 95%;
+    margin: 5px auto;
+    /*border: solid #ccc 1px;*/
+}
+#main_search table.formlist td {
+    padding: 5px;
+}
+#main_search table.formlist select {
+    width: 100%;
+}
+   
+</style>
+
  <!--　div class="bloc_outer">
     <div id="search_area">
         <div class="bloc_body">
@@ -28,16 +118,13 @@
 <div id="main_search">
     <ul id="search_item_tab" class="navi">
         <!--{if $searchMode == 1}--><li class="select"><!--{else}--><li><!--{/if}-->
-            <a href="<!--{$smarty.const.ROOT_URLPATH}-->products/search_page.php?srch=1">ブランド検索</a>
+            <a href="<!--{$smarty.const.ROOT_URLPATH}-->products/cosmetic.php?srch=1">ブランド検索</a>
         </li>
         <!--{if $searchMode == 2}--><li class="select"><!--{else}--><li><!--{/if}-->
-            <a href="<!--{$smarty.const.ROOT_URLPATH}-->products/search_page.php?srch=2">カテゴリ検索</a>
+            <a href="<!--{$smarty.const.ROOT_URLPATH}-->products/cosmetic.php?srch=2">カテゴリ検索</a>
         </li>
         <!--{if $searchMode == 3}--><li class="select"><!--{else}--><li><!--{/if}-->
-            <a href="<!--{$smarty.const.ROOT_URLPATH}-->products/search_page.php?srch=3">キーワード検索</a>
-        </li>
-        <!--{if $searchMode == 4}--><li class="select"><!--{else}--><li><!--{/if}-->
-            <a href="<!--{$smarty.const.ROOT_URLPATH}-->products/list.php?smode=4">新着＆おすすめ</a>
+            <a href="<!--{$smarty.const.ROOT_URLPATH}-->products/cosmetic.php?srch=3">キーワード検索</a>
         </li>
     </ul>
     
@@ -47,7 +134,7 @@
             <!--{foreach key=id item=maker name=makerinf from=$arrMakerInfo}-->
 
                 <!--{if is_array($arrBrandInfo[$id])}-->
-                    <img src="<!--{$smarty.const.IMAGE_SAVE_URLPATH|sfTrimURL}-->/maker/<!--{$maker.maker_image}-->" alt="<!--{$maker.name}-->" height=30px /><br> 
+                    <img src="<!--{$smarty.const.IMAGE_SAVE_URLPATH|sfTrimURL}-->/<!--{$maker.maker_image}-->" alt="<!--{$maker.name}-->" height=30px /><br> 
                     <ul class="list_brand">
                     <!--{foreach key=id2 item=item from=$arrBrandInfo[$id]}-->
                         <li>

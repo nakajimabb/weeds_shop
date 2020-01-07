@@ -20,15 +20,29 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  *}-->
 
+<style>
+    #news_area {
+        margin-bottom: 0;
+    }
+    ul.newslist li {
+        padding: 5px 10px;
+    }
+    p.news_title {
+        padding : 5px;
+    }
+</style>
+
 <!-- ▼新着情報 -->
 <section id="news_area">
-    <h2 class="title_block">新着情報</h2>
+    <h2 class="title_block">お知らせ</h2>
     <ul class="newslist">
         <!--{section name=data loop=$arrNews max=3}-->
             <li>
-                <a id="windowcolumn<!--{$smarty.section.data.index}-->" href="javascript:getNewsDetail(<!--{$arrNews[data].news_id}-->);">
-                <span class="news_title"><!--{$arrNews[data].news_title|h}--></span></a><br />
-                <span class="news_date"><!--{$arrNews[data].cast_news_date|date_format:"%Y年 %m月 %d日"}--></span>
+                <!--{if false}-->
+                    <span class="news_date"><!--{$arrNews[data].cast_news_date|date_format:"%Y年 %m月 %d日"}--></span>
+                <!--{/if}-->
+                <p class="news_title"><!--{$arrNews[data].news_title}--></p>
+                <!--{$arrNews[data].news_comment}-->
             </li>
         <!--{/section}-->
     </ul>
@@ -46,7 +60,7 @@
     var newsPageNo = 2;
 
     function getNews(limit) {
-        eccube.showLoading();
+        $.mobile.showPageLoadingMsg();
         var i = limit;
 
         $.ajax({
@@ -57,7 +71,7 @@
             dataType: "json",
             error: function(XMLHttpRequest, textStatus, errorThrown){
                 alert(textStatus);
-                eccube.hideLoading();
+                $.mobile.hidePageLoadingMsg();
             },
             success: function(result){
                 if (result.error) {
@@ -92,7 +106,7 @@
 
                     newsPageNo++;
                 }
-                eccube.hideLoading();
+                $.mobile.hidePageLoadingMsg();
             }
         });
     }
@@ -101,7 +115,7 @@
     function getNewsDetail(newsId) {
         if (loadingState == 0) {
             loadingState = 1;
-            eccube.showLoading();
+            $.mobile.showPageLoadingMsg();
             $.ajax({
                 url: "<!--{$smarty.const.ROOT_URLPATH}-->frontparts/bloc/news.php",
                 type: "GET",
@@ -111,56 +125,45 @@
                 dataType: "json",
                 error: function(XMLHttpRequest, textStatus, errorThrown){
                     alert(textStatus);
-                    eccube.hideLoading();
+                    $.mobile.hidePageLoadingMsg();
                     loadingState = 0;
                 },
                 success: function(result){
                     if (result.error) {
                         alert(result.error);
-                        eccube.hideLoading();
+                        $.mobile.hidePageLoadingMsg();
                         loadingState = 0;
                     }
                     else if (result != null) {
-                        var dialog = $("#news-dialog");
+                        var news = result;
+                        var maxCnt = 0;
 
                         //件名をセット
-                        $("#news-dialog-title").remove();
-                        if (result.news_url != null) {
-                            dialog.find(".dialog-content").append(
-                                $('<h3 id="news-dialog-title">').append(
-                                    $('<a>')
-                                        .attr('href', result.news_url)
-                                        .attr('rel', "external")
-                                        .attr('target', "_blank")
-                                        .text(result.news_title)
-                                )
-                            );
+                        $($("#windowcolumn dl.view_detail dt a").get(maxCnt)).text(news.news_title);
+                        if (news.news_url != null) {
+                            $($("#windowcolumn dl.view_detail dt a").get(maxCnt)).attr("href", news.news_url);
                         } else {
-                            dialog.find(".dialog-content").append(
-                                $('<h3 id="news-dialog-title">').text(result.news_title)
-                            );
+                            $($("#windowcolumn dl.view_detail dt a").get(maxCnt)).attr("href", "#");
                         }
 
-                        //本文をセット
-                        $("#news-dialog-body").remove();
-                        if (result.news_comment != null) {
-                            dialog.find(".dialog-content").append(
-                                $('<div id="news-dialog-body">').html(result.news_comment.replace(/\n/g,"<br />"))
-                            );
-                        }
+                        //年月をセット
+                        //var newsDateDispArray = news.cast_news_date.split("-"); //ハイフンで年月日を分解
+                        //var newsDateDisp = newsDateDispArray[0] + "年 " + newsDateDispArray[1] + "月 " + newsDateDispArray[2] + "日";
+                        //$($("#windowcolumn dl.view_detail dt").get(maxCnt)).text(newsDateDisp);
 
-                        //ダイアログをモーダルウィンドウで表示
-                        $.colorbox({inline: true, href: dialog, onOpen: function(){
-                            dialog.show().css('width', String($('body').width() * 0.9) + 'px');
-                        }, onComplete: function(){
-                            eccube.hideLoading();
+                        //コメントをセット(iphone4の場合、innerHTMLの再描画が行われない為、タイマーで無理やり再描画させる)
+                        setTimeout( function() {
+                            news.news_comment == null ? $("#newsComment").html("") : $("#newsComment").html(news.news_comment.replace(/\n/g,"<br />"));
+                        }, 10);
+                        $.mobile.changePage('#windowcolumn', {transition: "slideup"});
+                        //ダイアログが開き終わるまで待機
+                        setTimeout( function() {
+                            $.mobile.hidePageLoadingMsg();
                             loadingState = 0;
-                        }, onClosed: function(){
-                            dialog.hide();
-                        }});
+                        }, 1000);
                     }
                     else {
-                        eccube.hideLoading();
+                        $.mobile.hidePageLoadingMsg();
                         loadingState = 0;
                         alert('取得できませんでした。');
                     }
@@ -169,5 +172,3 @@
         }
     }
 </script>
-
-<!--{include file="`$smarty.const.SMARTPHONE_TEMPLATE_REALDIR`frontparts/dialog_modal.tpl" dialog_id="news-dialog" dialog_title="新着情報"}-->

@@ -39,7 +39,7 @@
 <img src="<!--{$smarty.const.ROOT_URLPATH}-->resize_image.php?image=<!--{$arrBuyTogether[cnt].main_list_image|sfNoImageMainList|h}-->&amp;width=110&amp;height=110" alt="<!--{$arrBuyTogether[cnt].name|h}-->" /></a>
 </p>
 <p class="checkItemname"><a href="<!--{$smarty.const.P_DETAIL_URLPATH}--><!--{$arrBuyTogether[cnt].product_id}-->"><!--{$arrBuyTogether[cnt].name}--></a></p>
-<p class="price"><!--{$smarty.const.SALE_PRICE_TITLE}-->(税込)<br /><em><!--{if $arrBuyTogether[cnt].price02_min_inctax == $arrBuyTogether[cnt].price02_max_inctax}--><!--{$arrBuyTogether[cnt].price02_min_inctax|number_format}--><!--{else}--><!--{$arrBuyTogether[cnt].price02_min_inctax|number_format}-->〜<!--{$arrBuyTogether[cnt].price02_max_inctax|number_format}--><!--{/if}-->円</em></p>
+<p class="price"><!--{$smarty.const.SALE_PRICE_TITLE}-->(税抜)<br /><em><!--{if $arrBuyTogether[cnt].price02_min == $arrBuyTogether[cnt].price02_max}--><!--{$arrBuyTogether[cnt].price02_min|number_format}--><!--{else}--><!--{$arrBuyTogether[cnt].price02_min|number_format}-->〜<!--{$arrBuyTogether[cnt].price02_max|number_format}--><!--{/if}-->円</em></p>
 </li>
 <!--{/section}-->
 </ul>

@@ -29,11 +29,11 @@
         </form>
         <p>ようこそ <a rel="external" href="<!--{$smarty.const.HTTPS_URL}-->mypage/login.php" data-transition="slideup"><!--{$tpl_name1|h}--> <!--{$tpl_name2|h}-->さん</a></p>
         <!--{if $smarty.const.USE_POINT !== false}-->
-            <p>所持ポイント<!--{$tpl_user_point|n2s|default:0}-->pt</p>
+            <p>所持ポイント<!--{$tpl_user_point|number_format|default:0}-->pt</p>
         <!--{/if}-->
         <p><a rel="external" href="javascript:void(document.login_form_footer.submit())" class="btn_btm">ログアウト</a></p>
     <!--{else}-->
         <p>ようこそ ゲストさん</p>
-        <p><a rel="external" href="<!--{$smarty.const.HTTPS_URL}-->entry/kiyaku.php" class="btn_btm">新規会員登録</a></p>
+        <p><a rel="external" href="<!--{$smarty.const.ENTRY_URL}-->" class="btn_btm">新規会員登録</a></p>
     <!--{/if}-->
 </section>

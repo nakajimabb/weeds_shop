@@ -47,7 +47,7 @@
 <img src="<!--{$smarty.const.ROOT_URLPATH}-->resize_image.php?image=<!--{$arrCheckItems[cnt].main_list_image|sfNoImageMainList|h}-->&amp;width=110&amp;height=110" alt="<!--{$arrCheckItems[cnt].name|h}-->" /></a>
 </p>
 <p class="checkItemname"><a href="<!--{$smarty.const.P_DETAIL_URLPATH}--><!--{$arrCheckItems[cnt].product_id}-->"><!--{$arrCheckItems[cnt].name}--></a></p>
-<p class="price"><!--{$smarty.const.SALE_PRICE_TITLE}-->(税込)<br /><em><!--{if $arrCheckItems[cnt].price02_min_inctax == $arrCheckItems[cnt].price02_max_inctax}--><!--{$arrCheckItems[cnt].price02_min_inctax|number_format}--><!--{else}--><!--{$arrCheckItems[cnt].price02_min_inctax|number_format}-->〜<!--{$arrCheckItems[cnt].price02_max_inctax|number_format}--><!--{/if}-->円</em></p>
+<p class="price"><!--{$smarty.const.SALE_PRICE_TITLE}-->(税抜)<br /><em><!--{if $arrCheckItems[cnt].price02_min == $arrCheckItems[cnt].price02_max}--><!--{$arrCheckItems[cnt].price02_min|number_format}--><!--{else}--><!--{$arrCheckItems[cnt].price02_min|number_format}-->〜<!--{$arrCheckItems[cnt].price02_max|number_format}--><!--{/if}-->円</em></p>
 </li>
 <!--{/section}-->
 </ul>
