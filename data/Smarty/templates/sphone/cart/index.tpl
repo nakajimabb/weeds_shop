@@ -111,12 +111,12 @@
                                         <div>
                                             <p><em><!--{$arrItem.productsClass.name|h}--></em><br />
                                                 <!--{if $arrItem.productsClass.classcategory_name1 != ""}-->
-                                                    <span class="mini"><!--{$arrItem.productsClass.class_name1}-->：<!--{$arrItem.productsClass.classcategory_name1}--></span><br />
+                                                    <span class="mini">種類：[<!--{$arrItem.productsClass.classcategory_name1}-->]</span><br />
                                                 <!--{/if}-->
                                                 <!--{if $arrItem.productsClass.classcategory_name2 != ""}-->
                                                     <span class="mini"><!--{$arrItem.productsClass.class_name2}-->：<!--{$arrItem.productsClass.classcategory_name2}--></span><br />
                                                 <!--{/if}-->
-                                                <span class="mini">価格:</span><!--{$arrItem.price_inctax|n2s}-->円
+                                                <span class="mini">価格:</span><!--{$arrItem.price|n2s}-->円
                                             </p>
                                             <p class="btn_delete">
                                                 <img src="<!--{$TPL_URLPATH}-->img/button/btn_delete.png" onClick="eccube.fnFormModeSubmit('form<!--{$key}-->', 'delete', 'cart_no', '<!--{$arrItem.cart_no}-->');" class="pointer" width="21" height="20" alt="削除" /></p>
@@ -127,7 +127,7 @@
                                             <!--{if $arrItem.quantity > 1}-->
                                                 <li class="quantity_btn"><img src="<!--{$TPL_URLPATH}-->img/button/btn_minus.png" width="22" height="21" alt="-" onclick="eccube.fnFormModeSubmit('form<!--{$key}-->', 'down','cart_no','<!--{$arrItem.cart_no}-->'); return false" /></li>
                                             <!--{/if}-->
-                                            <li class="result"><span class="mini">小計：</span><!--{$arrItem.total_inctax|n2s}-->円</li>
+                                            <li class="result"><span class="mini">小計：</span><!--{$arrItem.total|n2s}-->円</li>
                                         </ul>
                                     </div>
                                 </div>
@@ -137,6 +137,8 @@
                         <!--▲カートの中の商品一覧ここまで -->
 
                         <div class="total_area">
+                            <div><span class="mini">消費税：</span><!--{$arrData[$key].tax|n2s}--> 円</div>
+
                             <div><span class="mini">合計：</span><span class="price fb"><!--{$arrData[$key].total-$arrData[$key].deliv_fee|n2s}--> 円</span></div>
                             <!--{if $smarty.const.USE_POINT !== false}-->
                                 <!--{if $arrData[$key].birth_point > 0}-->

@@ -19,19 +19,28 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  *}-->
+<style>
+header #logo_area img {
+    width: 150px;
+    height: 45px;
+    margin: 0 5px 0 5px;
+    padding: 0;
+    vertical-align: middle;
+}
+</style>
 
 <!--{strip}-->
     <header class="global_header clearfix">
         <div id="logo_area">
-            <a rel="external" href="<!--{$smarty.const.TOP_URL}-->"><img src="<!--{$TPL_URLPATH}-->img/header/logo.png" width="150" height="25" alt="<!--{$arrSiteInfo.shop_name|h}-->" /></a>
+            <a rel="external" href="<!--{$smarty.const.TOP_URL}-->"><img src="<!--{$TPL_URLPATH}-->img/header/logo.png" alt="<!--{$arrSiteInfo.shop_name|h}-->" /></a>
         </div>
         <div class="header_utility">
             <!--{* ▼HeaderInternal COLUMN *}-->
-            <!--{if !empty($arrPageLayout.HeaderInternalNavi)}-->
+            <!--{if $arrPageLayout.HeaderInternalNavi|@count > 0}-->
                 <!--{foreach key=HeaderInternalNaviKey item=HeaderInternalNaviItem from=$arrPageLayout.HeaderInternalNavi}-->
                     <!-- ▼<!--{$HeaderInternalNaviItem.bloc_name}--> -->
                     <!--{if $HeaderInternalNaviItem.php_path != ""}-->
-                        <!--{include_php_ex file=$HeaderInternalNaviItem.php_path items=$HeaderInternalNaviItem}-->
+                        <!--{include_php file=$HeaderInternalNaviItem.php_path items=$HeaderInternalNaviItem}-->
                     <!--{else}-->
                         <!--{include file=$HeaderInternalNaviItem.tpl_path items=$HeaderInternalNaviItem}-->
                     <!--{/if}-->

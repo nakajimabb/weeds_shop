@@ -25,10 +25,12 @@
 
     <nav class="guide_area">
         <p>
-            <a rel="external" href="<!--{$smarty.const.HTTP_URL}-->abouts/<!--{$smarty.const.DIR_INDEX_PATH|h}-->">当サイトについて</a>
             <a rel="external" href="<!--{$smarty.const.HTTPS_URL}-->contact/<!--{$smarty.const.DIR_INDEX_PATH|h}-->">お問い合わせ</a><br />
+            <!--{if false}-->            
+            <a rel="external" href="<!--{$smarty.const.HTTP_URL}-->abouts/<!--{$smarty.const.DIR_INDEX_PATH|h}-->">当サイトについて</a>
             <a rel="external" href="<!--{$smarty.const.HTTP_URL}-->order/<!--{$smarty.const.DIR_INDEX_PATH|h}-->">特定商取引法に基づく表記</a>
             <a rel="external" href="<!--{$smarty.const.HTTP_URL}-->guide/privacy.php">プライバシーポリシー</a>
+            <!--{/if}-->
         </p>
     </nav>
 
@@ -36,7 +38,8 @@
         <!--{if $smarty.const.RELEASE_YEAR !=  $smarty.now|date_format:"%Y"}-->
             <!--{$smarty.const.RELEASE_YEAR}-->-
         <!--{/if}-->
-        <!--{$smarty.now|date_format:"%Y"}--> <!--{$arrSiteInfo.shop_name_eng|default:$arrSiteInfo.shop_name|h}--> All rights reserved.</small></p>
+        <!--{$smarty.now|date_format:"%Y"}--> <br>
+        <!--{$arrSiteInfo.shop_name_eng|default:$arrSiteInfo.shop_name|h}--> All rights reserved.</small></p>
 
 </footer>
 <!--▲ FOOTER-->

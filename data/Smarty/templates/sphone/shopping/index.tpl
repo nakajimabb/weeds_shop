@@ -82,11 +82,11 @@
         <div class="login_area_btm">
             <nav>
                 <ul class="navBox">
-                    <li><a rel="external" href="<!--{$smarty.const.ROOT_URLPATH}-->entry/kiyaku.php" class="navBox_link">新規会員登録</a></li>
-                    <li><input type="submit" value="会員登録をせずに購入" class="nav_nonmember data-role-none" name="buystep" id="buystep" /></li>
+                    <li><a rel="external" href="<!--{$smarty.const.ENTRY_URL}-->" class="navBox_link">新規会員登録</a></li>
                 </ul>
             </nav>
-            <p class="message">会員登録をすると便利なMyページをご利用いただけます。</p>
+            <p class="message">ご注文するには会員登録が必要です。<br>
+            会員登録をすると便利なMyページをご利用いただけます。</p>
         </div>
     </form>
 </section>

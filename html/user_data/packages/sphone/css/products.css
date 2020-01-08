@@ -125,7 +125,7 @@ ul.status_icon li {
 
 /* アイテムリスト(div)の処理
 ----------------------------------------------- */
-.list_area {
+/*.list_area {
     margin: 0;
     padding: 10px 5px 15px 10px;
     background-color: #FEFEFE;
@@ -140,7 +140,7 @@ ul.status_icon li {
 }
 .list_area ul.status_icon {
     margin-bottom: 5px;
-}
+}*/
 .listphoto {
     margin: 0 10px 10px 0;
     float: left;
@@ -192,13 +192,11 @@ ul.status_icon li {
 #detailrightblock div#cartbtn_default {
     border-bottom: none;
 }
-#detailrightblock>div:last-child {
+#detailrightblock div:last-child {
+    border-bottom: none;
     border-radius: 0 0 7px 7px;
     -moz-border-radius: 0 0 7px 7px;
     -webkit-border-radius: 0 0 7px 7px;
-}
-#detailrightblock div:not(.ui-body-f):last-child {
-    border-bottom: none;
 }
 /* 商品ステータスアイコン */
 #detailrightblock .status_icon {
@@ -226,24 +224,24 @@ ul.status_icon li {
 }
 
 /*商品情報（規格部分）*/
-.classlist {
+.cart_area {
     padding: 12px;
 }
-.classlist dl {
+.cart_area dl {
     margin: 0;
     padding: 0;
 }
-.classlist dt {
+.cart_area dt {
     margin: 0;
     font-weight: bold;
     line-height: 1.3;
 }
-.classlist dd {
+.cart_area dd {
     padding: 0;
     clear: both;
     padding-bottom: 5px;
 }
-.classlist dd:last-child {
+.cart_area dd:last-child {
     padding-bottom: 0;
 }
 

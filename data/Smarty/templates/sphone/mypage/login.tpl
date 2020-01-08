@@ -34,6 +34,7 @@
         $.ajax({
             type: "POST",
             url: "<!--{$smarty.const.HTTPS_URL}-->frontparts/login_check.php",
+            // url: "<!--{$smarty.const.HTTP_URL}-->frontparts/login_check.php",
             data: postData,
             cache: false,
             dataType: "json",
@@ -52,7 +53,7 @@
 </script>
 
 <section id="slidewindow">
-    <h2 class="title"><!--{$tpl_title|h}--></h2>
+    <h2 class="title">ログイン</h2>
     <form name="login_mypage" id="login_mypage" method="post" action="javascript:;" onsubmit="return ajaxLogin();">
         <input type="hidden" name="<!--{$smarty.const.TRANSACTION_ID_NAME}-->" value="<!--{$transactionid}-->" />
         <input type="hidden" name="mode" value="login" />
@@ -84,10 +85,11 @@
         <div class="login_area_btm">
             <nav>
                 <ul class="navBox">
-                    <li><a rel="external" href="<!--{$smarty.const.ROOT_URLPATH}-->entry/kiyaku.php">新規会員登録</a></li>
+                    <li><a rel="external" href="<!--{$smarty.const.ENTRY_URL}-->">新規会員登録</a></li>
                 </ul>
             </nav>
-            <p>会員登録をすると便利なMyページをご利用いただけます。</p>
+            <p>ご注文するには会員登録が必要です。<br>
+            会員登録をすると便利なMyページをご利用いただけます。</p>
         </div>
     </form>
 </section>

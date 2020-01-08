@@ -513,6 +513,7 @@ hr.dashed {
 }
 
 /*index menu/トップページヘッダー3列ボタン*/
+/*
 .top_menu {
     width: 100%;
     margin-bottom: 10px;
@@ -561,7 +562,7 @@ hr.dashed {
     background: -moz-linear-gradient(center top, #5393C5 10%,#80B6E2 100%);
     background: -webkit-gradient(linear, left top, left bottom, color-stop(0, #5393C5),color-stop(1, #80B6E2));
     text-decoration: none;
-}
+}*/
 .top_menu li:first-child {
     border-left: none;
 }
@@ -674,40 +675,4 @@ footer.global_footer p.copyright {
 }
 .ui-input-text {
     width: 100% !important;
-}
-/*-------------------------------------------------
-ローディング画像
------------------------------------------------ */
-div.loading-overlay {
-    display: block;
-    opacity: .3;
-    padding: 0;
-    width: 32px;
-    height: 32px;
-    margin-left: -16px;
-    margin-top: -16px;
-    z-index: 9999999;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    border: 0;
-}
-div.loading-overlay span.loading-image {
-    display: block;
-    background: url(../img/common/ajax-loader.gif) 0 0 no-repeat;
-    background-size: 32px 32px;
-    margin: 0;
-    padding: 0;
-    width: 32px;
-    height: 32px;
-}
-/*-------------------------------------------------
-ダイアログ
------------------------------------------------ */
-.dialog-modal {
-    display: none;
-    background: #FFFFFF;
-}
-.dialog-inner {
-    padding: 1.5em;
 }

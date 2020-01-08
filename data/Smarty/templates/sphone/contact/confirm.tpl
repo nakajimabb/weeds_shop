@@ -41,24 +41,6 @@
             <dt>お名前</dt>
             <dd><!--{$arrForm.name01.value|h}-->&nbsp;<!--{$arrForm.name02.value|h}--></dd>
 
-            <dt>お名前(フリガナ)</dt>
-            <dd><!--{$arrForm.kana01.value|h}-->&nbsp;<!--{$arrForm.kana02.value|h}--></dd>
-
-            <dt>住所</dt>
-            <dd>
-                <!--{if strlen($arrForm.zip01.value) > 0 && strlen($arrForm.zip02.value) > 0}-->
-                〒<!--{$arrForm.zip01.value|h}-->-<!--{$arrForm.zip02.value|h}-->
-                <!--{/if}--><br />
-                <!--{$arrPref[$arrForm.pref.value]}--><!--{$arrForm.addr01.value|h}--><!--{$arrForm.addr02.value|h}-->
-            </dd>
-
-            <dt>電話番号</dt>
-            <dd>
-                <!--{if strlen($arrForm.tel01.value) > 0 && strlen($arrForm.tel02.value) > 0 && strlen($arrForm.tel03.value) > 0}-->
-                    <!--{$arrForm.tel01.value|h}-->-<!--{$arrForm.tel02.value|h}-->-<!--{$arrForm.tel03.value|h}-->
-                <!--{/if}-->
-            </dd>
-
             <dt>メールアドレス</dt>
             <dd><a href="mailto:<!--{$arrForm.email.value|escape:'hex'}-->"><!--{$arrForm.email.value|escape:'hexentity'}--></a></dd>
 

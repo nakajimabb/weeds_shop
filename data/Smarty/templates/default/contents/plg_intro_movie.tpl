@@ -1,11 +1,45 @@
+<style>
+#moviearea ul {
+    margin: 0;  /* 余分なマージンを消去 */
+    text-align: center; /* 中央寄せ */
+    list-style-type: none;
+    /*border: solid 1px #ccc;*/
+    padding: 20px 100px;
+}
+#moviearea ul li {
+    margin: 0;
+    /*width: 49%;*/
+    width: 100%;
+    /*float: left;*/
+}
+#moviearea ul li:nth-child(odd) {
+    padding-right: 15px;
+}
+
+#moviearea ul li p.title {
+    font-size: 150%;
+    padding-bottom: 10px;
+}
+
+#moviearea ul li p {
+    /*padding: 5px 15px;*/
+}
+
+#moviearea video {
+    width: 720px;
+    padding-bottom: 10px;
+}
+</style>
+
 <!--▼CONTENTS-->
 <div id="undercolumn">
-    <div id="container">
+    <h2 class="title">動画紹介</h2>
+    <div id="undercolumn_entry">
         <div id="moviearea" class="clearfix">
-        <ul>
+        <ul class="clearfix">
         <!--{foreach from=$arrMovie item=movie name=loop}--> 
             <li>
-                <p align="center"><!--{$movie.title}--></p>
+                <p class="title"><!--{$movie.title}--></p>
 
                 <!--{if true}-->
                 <div style="text-align:center;">

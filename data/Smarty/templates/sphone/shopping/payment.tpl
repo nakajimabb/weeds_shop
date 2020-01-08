@@ -112,6 +112,12 @@
     });
 //]]></script>
 
+<style>
+section.receive_shop ul {
+    padding: 10px 15px 20px 15px;
+}
+</style>
+
 <!--▼コンテンツここから -->
 <section id="undercolumn">
 
@@ -126,6 +132,21 @@
         <div class="information end">
             <p>各項目を選択してください。</p>
         </div>
+
+        <section class="receive_shop">
+            <h3 class="subtitle">受取店舗の指定</h3>
+
+            <!--★お届け時間★-->
+            <ul><li>
+                <!--{assign var=key value="receive_shop_id"}-->
+                <span class="attention"><!--{$arrErr[$key]}--></span>
+                受取店舗
+                <select name="<!--{$key}-->" id="<!--{$key}-->" style="<!--{$arrErr[$key]|sfGetErrorColor}-->" class="boxLong data-role-none" >
+                    <option value="" selected="">選択してください</option>
+                    <!--{html_options options=$arrShop selected=$default_shop_id}-->
+                </select>
+            </li></ul>
+        </section>
 
         <!--★配送方法の指定★-->
         <!--{assign var=key value="deliv_id"}-->
@@ -159,7 +180,7 @@
             <ul id="payment">
                 <!--{section name=cnt loop=$arrPayment}-->
                     <li>
-                        <input type="radio" id="pay_<!--{$smarty.section.cnt.iteration}-->" name="<!--{$key}-->" value="<!--{$arrPayment[cnt].payment_id}-->" style="<!--{$arrErr[$key]|sfGetErrorColor}-->" <!--{$arrPayment[cnt].payment_id|sfGetChecked:$arrForm[$key].value}--> class="data-role-none" />
+                        <input type="radio" id="pay_<!--{$smarty.section.cnt.iteration}-->" name="<!--{$key}-->" value="<!--{$arrPayment[cnt].payment_id}-->" style="<!--{$arrErr[$key]|sfGetErrorColor}-->" <!--{$arrPayment[cnt].payment_id|sfGetChecked:$arrForm[$key].value}--> class="data-role-none" <!--{if cnt == 0}-->checked<!--{/if}--> />
                         <label for="pay_<!--{$smarty.section.cnt.iteration}-->"><!--{$arrPayment[cnt].payment_method|h}--><!--{if $arrPayment[cnt].note != ""}--><!--{/if}--></label>
                         <!--{if $img_show}-->
                             <!--{if $arrPayment[cnt].payment_image != ""}-->
@@ -172,6 +193,7 @@
         </section>
 
 
+        <!--{if false}-->   <!-- お届け時間の指定なし -->
         <!--★お届け時間の指定★-->
         <!--{if $cartKey != $smarty.const.PRODUCT_TYPE_DOWNLOAD}-->
             <section class="pay_area02">
@@ -224,6 +246,7 @@
                 </div><!-- /.form_area -->
             </section>
         <!--{/if}-->
+        <!--{/if}-->   <!-- お届け時間の指定なし -->
 
         <!--★ポイント使用の指定★-->
         <!--{if $tpl_login == 1 && $smarty.const.USE_POINT !== false}-->

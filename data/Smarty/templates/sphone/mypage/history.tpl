@@ -98,6 +98,8 @@
                         <div class="cartinContents">
                             <div>
                                 <p><em><!--→商品名--><a<!--{if $orderDetail.enable}--> href="<!--{$smarty.const.P_DETAIL_URLPATH}--><!--{$orderDetail.product_id|u}-->"<!--{/if}--> rel="external"><!--{$orderDetail.product_name|h}--></a><!--←商品名--></em></p>
+                                <!--{if $orderDetail.classcategory_name1 != ""}-->種類：[<!--{$orderDetail.classcategory_name1}-->]<!--{/if}-->
+                                <!--{if $orderDetail.classcategory_name2 != ""}-->[<!--{$orderDetail.classcategory_name2}-->]<!--{/if}-->
                                 <p>
                                     <!--→金額-->
                                     <!--{assign var=price value="`$orderDetail.price`"}-->
@@ -125,7 +127,7 @@
                             <!--{assign var=tax_rule value="`$orderDetail.tax_rule`"}-->
                             <ul>
                                 <li><span class="mini">数量：</span><!--{$quantity|h}--></li>
-                                <li class="result"><span class="mini">小計：</span><!--{$price|sfCalcIncTax:$tax_rate:$tax_rule|sfMultiply:$quantity|n2s}-->円</li>
+                                <li class="result"><span class="mini">小計：</span><!--{$price|sfMultiply:$quantity|n2s}-->円</li>
                             </ul>
                         </div>
                     </div>
@@ -136,17 +138,28 @@
             <!--▲ カートの中の商品一覧 -->
 
             <div class="total_area">
-                <div><span class="mini">小計：</span><!--{$tpl_arrOrderData.subtotal|n2s}-->円</div>
-                <!--{if $tpl_arrOrderData.use_point > 0}-->
-                    <div><span class="mini">ポイント値引き：</span>&minus;<!--{$tpl_arrOrderData.use_point|n2s}-->円</div>
+                <!--{if false}-->
+                    <!--{if $tpl_arrOrderData.subtotal != $tpl_arrOrderData.payment_total}-->
+                        <div><span class="mini">小計：</span><!--{$tpl_arrOrderData.subtotal|n2s}-->円</div>
+                    <!--{/if}-->
+                    <!--{if $tpl_arrOrderData.use_point > 0}-->
+                        <div><span class="mini">ポイント値引き：</span>&minus;<!--{$tpl_arrOrderData.use_point|n2s}-->円</div>
+                    <!--{/if}-->
+                    <!--{if $tpl_arrOrderData.discount != '' && $tpl_arrOrderData.discount > 0}-->
+                        <div><span class="mini">値引き：</span>&minus;<!--{$tpl_arrOrderData.discount|n2s}-->円</div>
+                    <!--{/if}-->
+                    <!--{if $tpl_arrOrderData.deliv_fee > 0}-->
+                        <div><span class="mini">送料：</span><!--{$tpl_arrOrderData.deliv_fee|n2s}-->円</div>
+                    <!--{/if}-->
+                    <!--{if $tpl_arrOrderData.charge > 0}-->
+                        <div><span class="mini">手数料：</span><!--{$tpl_arrOrderData.charge|n2s}-->円</div>
+                    <!--{/if}-->
                 <!--{/if}-->
-                <!--{if $tpl_arrOrderData.discount != '' && $tpl_arrOrderData.discount > 0}-->
-                    <div><span class="mini">値引き：</span>&minus;<!--{$tpl_arrOrderData.discount|n2s}-->円</div>
-                <!--{/if}-->
-                <div><span class="mini">送料：</span><!--{$tpl_arrOrderData.deliv_fee|n2s}-->円</div>
-                <div><span class="mini">手数料：</span><!--{$tpl_arrOrderData.charge|n2s}-->円</div>
+                <div><span class="mini">消費税：</span><!--{$tpl_arrOrderData.tax|n2s}-->円<br>
                 <div><span class="mini">合計：</span><span class="price fb"><!--{$tpl_arrOrderData.payment_total|n2s}-->円</span></div>
+                <!--{if $tpl_arrOrderData.add_point > 0}-->
                 <div><span class="mini">今回加算ポイント：</span><!--{$tpl_arrOrderData.add_point|n2s|default:0}-->Pt</div>
+                <!--{/if}-->
             </div>
         </div><!-- /.formBox -->
 
@@ -191,33 +204,19 @@
                 eccube.hideLoading();
             },
             success: function(result){
-                var dialog = $("#mail-dialog");
-
-                //件名をセット
-                $("#mail-dialog-title").remove();
-                dialog.find(".dialog-content").append(
-                    $('<h3 id="mail-dialog-title">').text(result[0].subject)
-                );
-
-                //本文をセット
-                $("#mail-dialog-body").remove();
-                dialog.find(".dialog-content").append(
-                    $('<div id="mail-dialog-body">')
-                        .html(result[0].mail_body.replace(/\n/g,"<br />"))
-                        .css('font-family', 'monospace')
-                );
-
-                //ダイアログをモーダルウィンドウで表示
-                $.colorbox({inline: true, href: dialog, onOpen: function(){
-                    dialog.show().css('width', String($('body').width() * 0.9) + 'px');
-                }, onComplete: function(){
-                    eccube.hideLoading();
-                }, onClosed: function(){
-                    dialog.hide();
-                }});
+                var maxCnt = 0;
+                $("#windowcolumn h2").text('メール詳細');
+                $("#windowcolumn a[data-rel=back]").text('購入履歴詳細にもどる');
+                $($("#windowcolumn dl.view_detail dt").get(maxCnt)).text(result[0].subject);
+                $($("#windowcolumn dl.view_detail dd").get(maxCnt)).html(result[0].mail_body.replace(/\n/g,"<br />"));
+                $("#windowcolumn dl.view_detail dd").css('font-family', 'monospace');
+                $.mobile.changePage('#windowcolumn', {transition: "slideup"});
+                //ダイアログが開き終わるまで待機
+                setTimeout( function() {
+                                loadingState = 0;
+                                $.mobile.hidePageLoadingMsg();
+                }, 1000);
             }
         });
     }
 </script>
-
-<!--{include file="`$smarty.const.SMARTPHONE_TEMPLATE_REALDIR`frontparts/dialog_modal.tpl" dialog_id="mail-dialog" dialog_title="メール詳細"}-->

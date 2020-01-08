@@ -1,3 +1,24 @@
+<style>
+section#movie_area li {
+    display: block;
+    clear: both;
+    padding: 5px 10px;    
+    border-bottom: #ccc solid 1px;
+    margin:  0px;
+    padding: 15px;
+    background-color: #FEFEFE;
+
+/*    background: -webkit-gradient(linear, left top, left bottom, color-stop(0, #FEFEFE),color-stop(1, #EEEEEE));
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0, #FEFEFE),color-stop(1, #EEEEEE));
+*/
+}
+
+#movie_area p.movie_comment {
+    padding: 5px 10px;
+}
+    
+</style>    
+
 <section id="movie_area">
     <h2 class="title_block">動画紹介</h2>
         <ul>

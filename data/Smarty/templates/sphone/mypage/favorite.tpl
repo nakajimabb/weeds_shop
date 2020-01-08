@@ -57,10 +57,10 @@
                             <a rel="external" href="<!--{$smarty.const.P_DETAIL_URLPATH}--><!--{$product_id|u}-->"><img src="<!--{$smarty.const.IMAGE_SAVE_URLPATH}--><!--{$arrFavorite[cnt].main_list_image|sfNoImageMainList|h}-->" style="max-width: 80px;max-height: 80px;" class="photoL productImg"  /></a>
                             <div class="favoriteContents clearfix">
                                 <h4><a rel="external" href="<!--{$smarty.const.P_DETAIL_URLPATH}--><!--{$product_id|u}-->" class="productName"><!--{$arrFavorite[cnt].name}--></a></h4>
-                                <p><span class="mini productPrice"><!--{$smarty.const.SALE_PRICE_TITLE}-->：<!--{if $arrFavorite[cnt].price02_min_inctax == $arrFavorite[cnt].price02_max_inctax}-->
-                                    <!--{$arrFavorite[cnt].price02_min_inctax|n2s}-->
+                                <p><span class="mini productPrice"><!--{$smarty.const.SALE_PRICE_TITLE}-->：<!--{if $arrFavorite[cnt].price02_min == $arrFavorite[cnt].price02_max}-->
+                                    <!--{$arrFavorite[cnt].price02_min|n2s}-->
                                     <!--{else}-->
-                                    <!--{$arrFavorite[cnt].price02_min_inctax|n2s}-->～<!--{$arrFavorite[cnt].price02_max_inctax|n2s}-->
+                                    <!--{$arrFavorite[cnt].price02_min|n2s}-->～<!--{$arrFavorite[cnt].price02_max|n2s}-->
                                     <!--{/if}-->円</span></p>
                                 <p class="btn_delete"><img src="<!--{$TPL_URLPATH}-->img/button/btn_delete.png" width="21" height="20" alt="削除" onclick="javascript:eccube.setModeAndSubmit('delete_favorite','product_id','<!--{$product_id|h}-->');" class="pointer" /></p>
                             </div>
@@ -150,9 +150,9 @@
                         var priceVale = "";
                         //販売価格が範囲か判定
                         if (product.price02_min == product.price02_max) {
-                            priceVale = "<!--{$smarty.const.SALE_PRICE_TITLE}-->：" + product.price02_min_inctax_format + '円';
+                            priceVale = "<!--{$smarty.const.SALE_PRICE_TITLE}-->：" + product.price02_min_format + '円';
                         } else {
-                            priceVale = "<!--{$smarty.const.SALE_PRICE_TITLE}-->：" + product.price02_min_inctax_format + '～' + product.price02_max_inctax_format + '円';
+                            priceVale = "<!--{$smarty.const.SALE_PRICE_TITLE}-->：" + product.price02_min_format + '～' + product.price02_max_format + '円';
                         }
                         price.append(priceVale);
 

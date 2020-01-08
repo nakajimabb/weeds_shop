@@ -21,19 +21,31 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
 *}-->
+<style>
+#mypage_nav ul li.nav_history {
+    width: 33%;
+    border-right: #CCC solid 1px;
+}
+#mypage_nav ul li.nav_favorite {
+    width: 33%;
+    border-right: #CCC solid 1px;
+}
+#mypage_nav ul li.nav_change {
+    width: 33%;
+    border-right: none;
+}
+</style>
 
 <nav id="mypage_nav">
     <!--{strip}-->
         <ul>
             <!--{if $tpl_login}-->
                 <!--{* 会員状態 *}-->
-                <li class="nav_delivadd"><a href="delivery.php" class="<!--{if $tpl_mypageno == 'delivery'}--> selected<!--{/if}-->" rel="external">お届け先追加・変更</a></li>
-                <li class="nav_change"><a href="change.php" class="<!--{if $tpl_mypageno == 'change'}--> selected<!--{/if}-->" rel="external">会員内容変更</a></li>
                 <li class="nav_history"><a href="./<!--{$smarty.const.DIR_INDEX_PATH}-->" class="<!--{if $tpl_mypageno == 'index'}--> selected<!--{/if}-->" rel="external">購入履歴</a></li>
                 <!--{if $smarty.const.OPTION_FAVORITE_PRODUCT == 1}-->
                     <li class="nav_favorite"><a href="favorite.php" class="<!--{if $tpl_mypageno == 'favorite'}--> selected<!--{/if}-->" rel="external">お気に入り</a></li>
                 <!--{/if}-->
-                    <li class="nav_refusal"><a href="refusal.php" class="<!--{if $tpl_mypageno == 'refusal'}--> selected<!--{/if}-->" rel="external">退会手続き</a></li>
+                <li class="nav_change"><a href="change.php" class="<!--{if $tpl_mypageno == 'change'}--> selected<!--{/if}-->" rel="external">会員内容変更</a></li>
                 <!--{else}-->
 
                 <!--{* 退会状態 *}-->

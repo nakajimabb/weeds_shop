@@ -27,7 +27,8 @@
         <meta http-equiv="Content-Type" content="text/html; charset=<!--{$smarty.const.CHAR_CODE}-->" />
 
         <title><!--{$arrSiteInfo.shop_name|h}--><!--{if $tpl_subtitle|strlen >= 1}--> / <!--{$tpl_subtitle|h}--><!--{elseif $tpl_title|strlen >= 1}--> / <!--{$tpl_title|h}--><!--{/if}--></title>
-
+        <meta name="robots" content="noindex,nofollow">
+        <meta name="googlebot" content="noindex,nofollow,noarchive">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=0" />
         <meta name="format-detection" content="telephone=no">
         <!--{if $arrPageLayout.author|strlen >= 1}-->
@@ -85,11 +86,11 @@
         //]]></script>
 
         <!--{* ▼Head COLUMN *}-->
-            <!--{if !empty($arrPageLayout.HeadNavi)}-->
+            <!--{if $arrPageLayout.HeadNavi|@count > 0}-->
                 <!--{foreach key=HeadNaviKey item=HeadNaviItem from=$arrPageLayout.HeadNavi}-->
                     <!--{* ▼<!--{$HeadNaviItem.bloc_name}--> *}-->
                         <!--{if $HeadNaviItem.php_path != ""}-->
-                            <!--{include_php_ex file=$HeadNaviItem.php_path items=$HeadNaviItem}-->
+                            <!--{include_php file=$HeadNaviItem.php_path items=$HeadNaviItem}-->
                         <!--{else}-->
                             <!--{include file=$HeadNaviItem.tpl_path items=$HeadNaviItem}-->
                         <!--{/if}-->

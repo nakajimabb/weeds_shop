@@ -55,77 +55,6 @@
                     style="<!--{$arrErr.name02|sfGetErrorColor}-->" class="boxHarf text data-role-none" placeholder="名" />
             </dd>
 
-            <dt>お名前(フリガナ)&nbsp;<span class="attention">※</span></dt>
-            <dd>
-                <span class="attention"><!--{$arrErr.kana01}--><!--{$arrErr.kana02}--></span>
-                <input type="text" name="kana01"
-                    value="<!--{$arrForm.kana01.value|default:$arrData.kana01|h}-->"
-                    maxlength="<!--{$smarty.const.STEXT_LEN}-->"
-                    style="<!--{$arrErr.kana01|sfGetErrorColor}-->" class="boxHarf text data-role-none" placeholder="セイ"/>&nbsp;&nbsp;
-                <input type="text" name="kana02"
-                    value="<!--{$arrForm.kana02.value|default:$arrData.kana02|h}-->"
-                    maxlength="<!--{$smarty.const.STEXT_LEN}-->"
-                    style="<!--{$arrErr.kana02|sfGetErrorColor}-->" class="boxHarf text data-role-none" placeholder="メイ"/>
-            </dd>
-
-            <dt>郵便番号</dt>
-            <dd>
-                <!--{assign var=key1 value="`$prefix`zip01"}-->
-                <!--{assign var=key2 value="`$prefix`zip02"}-->
-                <!--{assign var=key3 value="`$prefix`pref"}-->
-                <!--{assign var=key4 value="`$prefix`addr01"}-->
-                <span class="attention"><!--{$arrErr.zip01}--><!--{$arrErr.zip02}--></span>
-                <p>
-                    <input type="tel" name="zip01"
-                        value="<!--{$arrForm.zip01.value|default:$arrData.zip01|h}-->"
-                        maxlength="<!--{$smarty.const.ZIP01_LEN}-->"
-                        style="<!--{$arrErr.zip01|sfGetErrorColor}-->;" class="boxShort text data-role-none" />&nbsp;－&nbsp;<input type="tel" name="zip02"
-                        value="<!--{$arrForm.zip02.value|default:$arrData.zip02|h}-->"
-                        maxlength="<!--{$smarty.const.ZIP02_LEN}-->"
-                        style="<!--{$arrErr.zip02|sfGetErrorColor}-->;" class="boxShort text data-role-none" />&nbsp;&nbsp;<a href="https://www.post.japanpost.jp/zipcode/" target="_blank" rel="external"><span class="fn">郵便番号検索</span></a>
-                </p>
-
-                <a href="javascript:eccube.getAddress('<!--{$smarty.const.INPUT_ZIP_URLPATH}-->', '<!--{$key1}-->', '<!--{$key2}-->', '<!--{$key3}-->', '<!--{$key4}-->');" class="btn_sub btn_inputzip" rel="external">郵便番号から住所自動入力</a>
-            </dd>
-
-            <dt>住所</dt>
-            <dd>
-                <span class="attention"><!--{$arrErr.pref}--><!--{$arrErr.addr01}--><!--{$arrErr.addr02}--></span>
-                <select name="pref" style="<!--{$arrErr.pref|sfGetErrorColor}-->" class="boxHarf top data-role-none">
-                    <option value="" selected="selected">都道府県</option>
-                    <!--{html_options options=$arrPref selected=$arrForm.pref.value|default:$arrData.pref}-->
-                </select>
-
-                <input type="text" name="addr01"
-                    value="<!--{$arrForm.addr01.value|default:$arrData.addr01|h}-->"
-                    class="boxLong top text data-role-none"
-                    style="<!--{$arrErr.addr01|sfGetErrorColor}-->" placeholder="市区町村名" />
-                <input type="text" name="addr02"
-                    value="<!--{$arrForm.addr02.value|default:$arrData.addr02|h}-->"
-                    class="boxLong text data-role-none"
-                    style="<!--{$arrErr.addr02|sfGetErrorColor}-->" placeholder="番地・ビル名" />
-            </dd>
-
-            <dt>電話番号</dt>
-            <dd>
-                <span class="attention"><!--{$arrErr.tel01}--><!--{$arrErr.tel02}--><!--{$arrErr.tel03}--></span>
-                <input type="tel" name="tel01"
-                       value="<!--{$arrForm.tel01.value|default:$arrData.tel01|h}-->"
-                       maxlength="<!--{$smarty.const.TEL_ITEM_LEN}-->"
-                       style="<!--{$arrErr.tel01|sfGetErrorColor}-->"
-                       class="boxShort text data-role-none" />&nbsp;－&nbsp;
-                <input type="tel" name="tel02"
-                       value="<!--{$arrForm.tel02.value|default:$arrData.tel02|h}-->"
-                       maxlength="<!--{$smarty.const.TEL_ITEM_LEN}-->"
-                       style="<!--{$arrErr.tel02|sfGetErrorColor}-->"
-                       class="boxShort text data-role-none" />&nbsp;－&nbsp;
-                <input type="tel" name="tel03"
-                       value="<!--{$arrForm.tel03.value|default:$arrData.tel03|h}-->"
-                       maxlength="<!--{$smarty.const.TEL_ITEM_LEN}-->"
-                       style="<!--{$arrErr.tel03|sfGetErrorColor}-->"
-                       class="boxShort text data-role-none" />
-            </dd>
-
             <dt>メールアドレス&nbsp;<span class="attention">※</span></dt>
             <dd>
                 <span class="attention"><!--{$arrErr.email}--><!--{$arrErr.email02}--></span>
@@ -135,7 +64,7 @@
                     maxlength="<!--{$smarty.const.MTEXT_LEN}-->" class="boxLong top text data-role-none" />
 
                 <!--{* ログインしていれば入力済みにする *}-->
-                <!--{if $smarty.session.customer}-->
+                <!--{if $smarty.server.REQUEST_METHOD != 'POST' && $smarty.session.customer}-->
                     <!--{assign var=email02 value=$arrData.email}-->
                 <!--{/if}-->
 

@@ -102,7 +102,7 @@
                                     <div>
                                         <p><em><!--{$item.productsClass.name|h}--></em><br />
                                         <!--{if $item.productsClass.classcategory_name1 != ""}-->
-                                                <span class="mini"><!--{$item.productsClass.class_name1|h}-->：<!--{$item.productsClass.classcategory_name1|h}--></span><br />
+                                                <span class="mini">種類：[<!--{$item.productsClass.classcategory_name1|h}-->]</span><br />
                                         <!--{/if}-->
                                         <!--{if $item.productsClass.classcategory_name2 != ""}-->
                                                 <span class="mini"><!--{$item.productsClass.class_name2|h}-->：<!--{$item.productsClass.classcategory_name2|h}--></span>
@@ -111,7 +111,7 @@
                                     </div>
                                     <ul>
                                         <li><span class="mini">数量：</span><!--{$item.quantity|n2s}--></li>
-                                        <li class="result"><span class="mini">小計：</span><!--{$item.total_inctax|n2s}-->円</li>
+                                        <li class="result"><span class="mini">小計：</span><!--{$item.total|n2s}-->円</li>
                                     </ul>
                                 </div>
                             </div>
@@ -120,6 +120,7 @@
                     </div>
                     <!--▲カートの中の商品一覧 -->
 
+                    <!--{if false}-->
                     <!--★合計内訳★-->
                     <div class="result_area">
                         <ul>
@@ -132,9 +133,11 @@
                             <li><span class="mini">手数料 ：</span><!--{$arrForm.charge|n2s}--> 円</li>
                         </ul>
                     </div>
-
+                    <!--{/if}-->
+                    
                     <!--★合計★-->
                     <div class="total_area">
+                        <span class="mini">消費税 ：</span><!--{$tpl_total_tax[$cartKey]|n2s}-->円<br>
                         <span class="mini">合計：</span><span class="price fb"><!--{$arrForm.payment_total|n2s}--> 円</span>
                     </div>
                 </div><!-- /.formBox -->
@@ -173,17 +176,9 @@
         <div class="formBox">
             <dl class="customer_confirm">
                 <dd>
-                    <p>〒<!--{$arrForm.order_zip01|h}-->-<!--{$arrForm.order_zip02|h}--><br />
-                        <!--{$arrPref[$arrForm.order_pref]}--><!--{$arrForm.order_addr01|h}--><!--{$arrForm.order_addr02|h}--></p>
-                    <p class="deliv_name"><!--{$arrForm.order_name01|h}--> <!--{$arrForm.order_name02|h}--></p>
-                    <p><!--{$arrForm.order_tel01}-->-<!--{$arrForm.order_tel02}-->-<!--{$arrForm.order_tel03}--></p>
-                    <!--{if $arrForm.order_fax01 > 0}-->
-                        <p><!--{$arrForm.order_fax01}-->-<!--{$arrForm.order_fax02}-->-<!--{$arrForm.order_fax03}--></p>
-                    <!--{/if}-->
-                    <p><!--{$arrForm.order_email|h}--></p>
-                    <p>性別：<!--{$arrSex[$arrForm.order_sex]|h}--></p>
-                    <p>職業：<!--{$arrJob[$arrForm.order_job]|default:'(未登録)'|h}--></p>
-                    <p>生年月日：<!--{$arrForm.order_birth|regex_replace:"/ .+/":""|regex_replace:"/-/":"/"|default:'(未登録)'|h}--></p>
+                    <p class="deliv_name">お名前：<!--{$arrForm.order_name01|h}--> <!--{$arrForm.order_name02|h}--></p>
+                    <p>電話番後：<!--{$arrForm.order_tel01}-->-<!--{$arrForm.order_tel02}-->-<!--{$arrForm.order_tel03}--></p>
+                    <p>メールアドレス：<!--{$arrForm.order_email|h}--></p>
                 </dd>
             </dl>
         </div>
@@ -268,6 +263,11 @@
             <div class="form_area">
                 <!--▼フォームボックスここから -->
                 <div class="formBox">
+                    <div class="innerBox">
+                        <em>受取店舗</em>：
+                        <!--{assign var=shop_id value=$arrForm.receive_shop_id}-->
+                        <!--{$arrShop[$shop_id]|h}-->
+                    </div>
                     <div class="innerBox">
                         <em>配送方法</em>：<!--{$arrDeliv[$arrForm.deliv_id]|h}-->
                     </div>
