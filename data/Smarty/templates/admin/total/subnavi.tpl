@@ -38,4 +38,7 @@
     <li id="navi-total-member"
         class="<!--{if ($tpl_mainno == 'total' && $arrForm.page.value == 'member')}-->on<!--{/if}-->"
     ><a href="<!--{$smarty.const.ROOT_URLPATH}--><!--{$smarty.const.ADMIN_DIR}-->total/<!--{$smarty.const.DIR_INDEX_PATH}-->?page=member"><span>会員別集計</span></a></li>
+    <li id="navi-every-member"
+        class="<!--{if ($tpl_mainno == 'total' && $arrForm.page.value == 'every')}-->on<!--{/if}-->"
+    ><a href="<!--{$smarty.const.ROOT_URLPATH}--><!--{$smarty.const.ADMIN_DIR}-->total/<!--{$smarty.const.DIR_INDEX_PATH}-->?page=every"><span>月別個別集計</span></a></li>
 </ul>

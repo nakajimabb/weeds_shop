@@ -518,48 +518,48 @@ a[href]:hover {
     position: relative;
 }
 
-#navi li div,
-#navi li div span {
+#navi li a,
+#navi li a span {
     display: block;
     _float: left;/*IE6対策*/
     cursor: pointer;
 }
 
-#navi li div {
+#navi li a {
     color: #2d2f39;
     height: 28px;
     font-weight: bold;
     text-decoration: none;
 }
 
-#navi li div span {
+#navi li a span {
     padding: 7px 10px;
     _padding: 9px 10px 5px;/*IE6対策*/
     height: 15px;
     _height: 13px;/*IE6対策*/
 }
 
-#navi li div:hover {
+#navi li a:hover {
     background: url('../img/header/navi_on.jpg') left 0 repeat-x;
 }
 
-#navi li div:hover span {
+#navi li a:hover span {
     background: url('../img/header/navi_on.jpg') left 0 repeat-x;
 }
 
-#navi li.on div {
+#navi li.on a {
     background: url('../img/header/navi_on.jpg') left 0 repeat-x;
 }
 
-#navi li.on div span {
+#navi li.on a span {
     background: url('../img/header/navi_on.jpg') left 0 repeat-x;
 }
 
-#navi li.sfhover div {
+#navi li.sfhover a {
     background: url('../img/header/navi_on.jpg') left 0 repeat-x;
 }
 
-#navi li.sfhover div span {
+#navi li.sfhover a span {
     background: url('../img/header/navi_on.jpg') left 0 repeat-x;
 }
 
@@ -585,8 +585,7 @@ a[href]:hover {
     font-weight: normal;
 }
 
-#navi li li a,
-#navi li li div {
+#navi li li a {
     display: block;
     top: 2px;
     width: 180px;
@@ -597,8 +596,7 @@ a[href]:hover {
     font-weight: normal;
 }
 
-#navi li li a span,
-#navi li li div span {
+#navi li li a span {
     display: block;
     top: 2px;
     width: 180px;
@@ -614,51 +612,38 @@ a[href]:hover {
     border-width: 0 0 1px 0;
 }
 
-#navi li li a span,
-#navi li li div span {
+#navi li li a span {
     padding: 2px 0 0 8px;
     text-indent: 8px;
 }
 
-#navi li li a:hover,
-#navi li li div:hover {
+#navi li li a:hover {
     background: url('../img/header/subnavi_bak_on.gif') top left no-repeat #474747;
 }
 
-#navi li li a:hover span,
-#navi li li div:hover span {
+#navi li li a:hover span {
     background: #666;
 }
 
 #navi li.on li a,
 #navi li.on li a span,
 #navi li li.on a,
-#navi li li.on a span,
-#navi li.on li div,
-#navi li.on li div span,
-#navi li li.on div,
-#navi li li.on div span {
+#navi li li.on a span {
     background: transparent;
 }
 
 #navi li.sfhover li a,
 #navi li.sfhover li a span,
 #navi li li.sfhover a,
-#navi li li.sfhover a span,
-#navi li.sfhover li div,
-#navi li.sfhover li div span,
-#navi li li.sfhover div,
-#navi li li.sfhover div span {
+#navi li li.sfhover a span {
     background: transparent;
 }
 
-#navi li.sfhover li a:hover,
-#navi li.sfhover li div:hover {
+#navi li.sfhover li a:hover {
     background: url('../img/header/subnavi_bak_on.gif') top left no-repeat #474747;
 }
 
-#navi li li.sfhover a:hover,
-#navi li li.sfhover div:hover {
+#navi li li.sfhover a:hover {
     background: url('../img/header/subnavi_bak_on.gif') top left no-repeat #474747;
 }
 
@@ -674,9 +659,7 @@ a[href]:hover {
 
 #navi li li li,
 #navi li li a,
-#navi li li li a span,
-#navi li li div,
-#navi li li li div span {
+#navi li li li a span {
     margin-left: 0;
     display: block;
     width: 180px;
@@ -689,7 +672,6 @@ a[href]:hover {
     background: url('../img/header/subnavi_bak.gif') top left no-repeat #787878;
 }
 
-#navi li li li.sfhover div:hover,
 #navi li li li.sfhover a:hover {
     width: 180px;
     top: 1px;
@@ -703,11 +685,16 @@ a[href]:hover {
     _margin: -28px 0 0 187px;/*IE6応急 */
 }
 
+#navi li:hover ul ul,
+#navi li:hover ul ul ul,
 #navi li.sfhover ul ul,
 #navi li.sfhover ul ul ul {
     left: -9999px;
 }
 
+#navi li:hover ul,
+#navi li li:hover ul,
+#navi li li li:hover ul,
 #navi li.sfhover ul,
 #navi li li.sfhover ul,
 #navi li li li.sfhover ul {
@@ -718,13 +705,11 @@ a[href]:hover {
     background: url('../img/header/subnavi_bak_l2.gif') top left no-repeat #787878;
 }
 
-#navi ul.level1 li.on_level2 a:hover,
-#navi ul.level1 li.on_level2 div:hover {
+#navi ul.level1 li.on_level2 a:hover {
     background: url('../img/header/subnavi_bak_l2_on.gif') top left no-repeat #787878;
 }
 
-#navi ul.level1 li.on_level2 ul.level2 li a:hover,
-#navi ul.level1 li.on_level2 ul.level2 li div:hover {
+#navi ul.level1 li.on_level2 ul.level2 li a:hover {
     background: url('../img/header/subnavi_bak_on.gif') top left no-repeat #474747;
 }
 
@@ -1516,10 +1501,27 @@ p.remark {
 /* 権限 */
 x-dummy,
 .authority_1 #navi-basis-masterdata,
+.authority_1 #navi-basis-tradelaw,
+.authority_1 #navi-basis-point,
+.authority_1 #navi-basis-delivery,
+.authority_1 #navi-basis-payment,
+.authority_1 #navi-basis-kiyaku,
+.authority_1 #navi-basis-mail,
+.authority_1 #navi-basis-seo,
+.authority_1 #navi-basis-zip,
+.authority_1 #navi-basis-holiday,
+.authority_1 #navi-products-uploadcsv,
+.authority_1 #navi-products-upload-csv-category,
+.authority_1 #navi-products-rank,
+.authority_1 #navi-products-discount,
+.authority_1 #navi-total-products,
+.authority_1 #navi-total-age,
+.authority_1 #navi-total-job,
+.authority_1 #navi-total-member,
+.authority_1 #navi-mail,
 .authority_1 #navi-contents-file,
-.authority_1 #navi-design-bloc,
-.authority_1 #navi-design-template,
-.authority_1 #navi-design-add,
+.authority_1 #navi-contents-csv,
+.authority_1 #navi-design,
 .authority_1 #navi-system,
 .authority_1 #navi-ownersstore {
     /* display: none; --- IE で不具合 */
