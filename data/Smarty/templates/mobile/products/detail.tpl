@@ -82,22 +82,22 @@
     <br>
 
     <!--★販売価格★-->
-    <font color="#FF0000"><!--{$smarty.const.SALE_PRICE_TITLE}-->(税込)：
-        <!--{if $arrProduct.price02_min_inctax == $arrProduct.price02_max_inctax}-->
-            <!--{$arrProduct.price02_min_inctax|n2s}-->
+    <font color="#FF0000"><!--{$smarty.const.SALE_PRICE_TITLE}-->(税抜)：
+        <!--{if $arrProduct.price02_min == $arrProduct.price02_max}-->
+            <!--{$arrProduct.price02_min|n2s}-->
         <!--{else}-->
-            <!--{$arrProduct.price02_min_inctax|n2s}-->～<!--{$arrProduct.price02_max_inctax|n2s}-->
+            <!--{$arrProduct.price02_min|n2s}-->～<!--{$arrProduct.price02_max|n2s}-->
         <!--{/if}-->
         円</font>
     <br>
 
-    <!--{if $arrProduct.price01_max_inctax > 0}-->
+    <!--{if $arrProduct.price01_max > 0}-->
         <!--★通常価格★-->
-        <font color="#FF0000"><!--{$smarty.const.NORMAL_PRICE_TITLE}-->(税込)：
-            <!--{if $arrProduct.price01_min_inctax == $arrProduct.price01_max_inctax}-->
-                <!--{$arrProduct.price01_min_inctax|n2s}-->
+        <font color="#FF0000"><!--{$smarty.const.NORMAL_PRICE_TITLE}-->(税抜)：
+            <!--{if $arrProduct.price01_min == $arrProduct.price01_max}-->
+                <!--{$arrProduct.price01_min|n2s}-->
             <!--{else}-->
-                <!--{$arrProduct.price01_min_inctax|n2s}-->～<!--{$arrProduct.price01_max_inctax|n2s}-->
+                <!--{$arrProduct.price01_min|n2s}-->～<!--{$arrProduct.price01_max|n2s}-->
             <!--{/if}-->
             円</font>
         <br>

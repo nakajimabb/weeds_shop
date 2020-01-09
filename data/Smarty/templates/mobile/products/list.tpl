@@ -33,10 +33,10 @@
         <!-- 商品名 --><!--{$arrProduct.name|h}--><br>
 
         <!--{$smarty.const.SALE_PRICE_TITLE}-->：
-        <!--{if $arrProduct.price02_min_inctax == $arrProduct.price02_max_inctax}-->
-            <!--{$arrProduct.price02_min_inctax|n2s}-->円
+        <!--{if $arrProduct.price02_min == $arrProduct.price02_max}-->
+            <!--{$arrProduct.price02_min|number_format}-->円
         <!--{else}-->
-            <!--{$arrProduct.price02_min_inctax|n2s}-->円～<!--{$arrProduct.price02_max_inctax|n2s}-->円
+            <!--{$arrProduct.price02_min|number_format}-->円～<!--{$arrProduct.price02_max|number_format}-->円
         <!--{/if}-->
         <br>
 

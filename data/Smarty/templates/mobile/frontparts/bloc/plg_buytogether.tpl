@@ -25,7 +25,7 @@
 <!--{section name=cnt loop=$arrBuyTogether}-->
 <p><img src="<!--{$smarty.const.ROOT_URLPATH}-->resize_image.php?image=<!--{$arrBuyTogether[cnt].main_list_image|sfNoImageMainList|h}-->&amp;width=50&amp;height=50" alt="&lt;!--{$arrBuyTogether[cnt].name|h}--&gt;" align="left" />
 <a href="<!--{$smarty.const.P_DETAIL_URLPATH}--><!--{$arrBuyTogether[cnt].product_id}-->"><!--{$arrBuyTogether[cnt].name}--></a><br>
-<!--{$smarty.const.SALE_PRICE_TITLE}-->(税込)：<em style="color:red;"><!--{if $arrBuyTogether[cnt].price02_min_inctax == $arrBuyTogether[cnt].price02_max_inctax}--><!--{$arrBuyTogether[cnt].price02_min_inctax|number_format}--><!--{else}--><!--{$arrBuyTogether[cnt].price02_min_inctax|number_format}-->〜<!--{$arrBuyTogether[cnt].price02_max_inctax|number_format}--><!--{/if}-->円</em></p>
+<!--{$smarty.const.SALE_PRICE_TITLE}-->(税抜)：<em style="color:red;"><!--{if $arrBuyTogether[cnt].price02_min == $arrBuyTogether[cnt].price02_max}--><!--{$arrBuyTogether[cnt].price02_min|number_format}--><!--{else}--><!--{$arrBuyTogether[cnt].price02_min|number_format}-->〜<!--{$arrBuyTogether[cnt].price02_max|number_format}--><!--{/if}-->円</em></p>
 <!--{/section}-->
 </div>
 <hr>
