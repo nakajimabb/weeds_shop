@@ -53,6 +53,7 @@ class LC_Page_Admin_Products_Product extends LC_Page_Admin_Products_Ex
         $this->arrSTATUS_IMAGE = $masterData->getMasterData('mtb_status_image');
         $this->arrDELIVERYDATE = $masterData->getMasterData('mtb_delivery_date');
         $this->arrMaker = SC_Helper_Maker_Ex::getIDValueList();
+        $this->arrBrand = SC_Helper_Brand::getIDValueList();
         $this->arrAllowedTag = $masterData->getMasterData('mtb_allowed_tag');
     }
 
@@ -340,6 +341,7 @@ class LC_Page_Admin_Products_Product extends LC_Page_Admin_Products_Ex
         $objFormParam->addParam('発送日目安', 'deliv_date_id', INT_LEN, 'n', array('NUM_CHECK'));
         $objFormParam->addParam('販売制限数', 'sale_limit', AMOUNT_LEN, 'n', array('SPTAB_CHECK', 'ZERO_CHECK', 'NUM_CHECK', 'MAX_LENGTH_CHECK', 'ZERO_START'));
         $objFormParam->addParam('メーカー', 'maker_id', INT_LEN, 'n', array('NUM_CHECK'));
+        $objFormParam->addParam('ブランド', 'brand_id', INT_LEN, 'n', array('NUM_CHECK'));
         $objFormParam->addParam('メーカーURL', 'comment1', URL_LEN, 'a', array('SPTAB_CHECK', 'URL_CHECK', 'MAX_LENGTH_CHECK'));
         $objFormParam->addParam('検索ワード', 'comment3', LLTEXT_LEN, 'KVa', array('SPTAB_CHECK', 'MAX_LENGTH_CHECK'));
         $objFormParam->addParam('備考欄(SHOP専用)', 'note', LLTEXT_LEN, 'KVa', array('SPTAB_CHECK', 'MAX_LENGTH_CHECK'));
@@ -1009,7 +1011,7 @@ __EOF__;
                             'main_list_comment', 'main_comment',
                             'deliv_fee', 'comment1', 'comment2', 'comment3',
                             'comment4', 'comment5', 'comment6',
-                            'sale_limit', 'deliv_date_id', 'maker_id', 'note');
+                            'sale_limit', 'deliv_date_id', 'maker_id', 'brand_id', 'note');
         $arrList = SC_Utils_Ex::arrayDefineIndexes($arrList, $checkArray);
 
         // INSERTする値を作成する。
@@ -1025,6 +1027,7 @@ __EOF__;
         $sqlval['comment6'] = $arrList['comment6'];
         $sqlval['deliv_date_id'] = $arrList['deliv_date_id'];
         $sqlval['maker_id'] = $arrList['maker_id'];
+        $sqlval['brand_id'] = $arrList['brand_id'];
         $sqlval['note'] = $arrList['note'];
         $sqlval['update_date'] = 'CURRENT_TIMESTAMP';
         $sqlval['creator_id'] = $_SESSION['member_id'];

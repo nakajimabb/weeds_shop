@@ -279,6 +279,16 @@
             </td>
         </tr>
         <tr>
+            <th>ブランド</th>
+            <td>
+                <span class="attention"><!--{$arrErr.brand_id}--></span>
+                <select name="brand_id" style="<!--{$arrErr.brand_id|sfGetErrorColor}-->">
+                    <option value="">選択してください</option>
+                    <!--{html_options options=$arrBrand selected=$arrForm.brand_id}-->
+                </select>
+            </td>
+        </tr>
+        <tr>
             <th>メーカーURL</th>
             <td>
                 <span class="attention"><!--{$arrErr.comment1}--></span>
