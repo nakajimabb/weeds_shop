@@ -94,7 +94,8 @@ class SC_Fpdf extends SC_Helper_FPDI
         $this->setEtcData();
     }
 
-    private function setShopData()
+    //private function setShopData()
+    protected function setShopData()    // mod by naka
     {
         // ショップ情報
 
@@ -132,17 +133,19 @@ class SC_Fpdf extends SC_Helper_FPDI
         $this->Image($logo_file, 124, 46, 40);
     }
 
-    private function setMessageData()
+    //private function setMessageData()
+    protected function setMessageData()     // mod by naka
     {
         // メッセージ
-        $this->lfText(27, 89, $this->arrData['msg1'], 8);  //メッセージ1
-        $this->lfText(27, 92, $this->arrData['msg2'], 8);  //メッセージ2
-        $this->lfText(27, 95, $this->arrData['msg3'], 8);  //メッセージ3
+        $this->lfText(27, 70, $this->arrData['msg1'], 8);  //メッセージ1
+        $this->lfText(27, 74, $this->arrData['msg2'], 8);  //メッセージ2
+        $this->lfText(27, 78, $this->arrData['msg3'], 8);  //メッセージ3
         $text = '作成日: '.$this->arrData['year'].'年'.$this->arrData['month'].'月'.$this->arrData['day'].'日';
         $this->lfText(158, 288, $text, 8);  //作成日
     }
 
-    private function setOrderData()
+    // private function setOrderData()
+    protected function setOrderData()     // mod by naka
     {
         $arrOrder = array();
         // DBから受注情報を読み込む
@@ -150,40 +153,12 @@ class SC_Fpdf extends SC_Helper_FPDI
 
         // 購入者情報
         $text = '〒 '.$this->arrDisp['order_zip01'].' - '.$this->arrDisp['order_zip02'];
-        $this->lfText(23, 43, $text, 8); //購入者郵便番号
-
-        $y = 47; // 住所1の1行目の高さ
-
-        $text = $this->arrPref[$this->arrDisp['order_pref']] . $this->arrDisp['order_addr01']; //購入者都道府県+住所1
-
-        while (mb_strwidth($text) > 68){
-            $line = mb_strimwidth($text, 0, 68); // 1行分の文字列
-            $this->lfText(27, $y, $line, 8);
-            $cut = strlen($line);
-            $text = substr($text, $cut , strlen($text) - $cut);
-            $y = $y + 3;
-        }
-        if ($text != ""){
-            $this->lfText(27, $y, $text, 8);
-            $y = $y + 3;
-        }
-
-        $text = $this->arrDisp['order_addr02']; //購入者住所2
-
-        while (mb_strwidth($text) > 68){
-            $line = mb_strimwidth($text, 0, 68); // 1行分の文字列
-            $this->lfText(27, $y, $line, 8);
-            $cut = strlen($line);
-            $text = substr($text, $cut , strlen($text) - $cut);
-            $y = $y + 3;
-        }
-        if ($text != ""){
-            $this->lfText(27, $y, $text, 8);
-            $y = $y + 3;
-        }
-
+        $this->lfText(23, 43, $text, 10); //購入者郵便番号
+        $text = $this->arrPref[$this->arrDisp['order_pref']] . $this->arrDisp['order_addr01'];
+        $this->lfText(27, 47, $text, 10); //購入者都道府県+住所1
+        $this->lfText(27, 51, $this->arrDisp['order_addr02'], 10); //購入者住所2
         $text = $this->arrDisp['order_name01'].'　'.$this->arrDisp['order_name02'].'　様';
-        $this->lfText(27, $y + 2, $text, 11); //購入者氏名
+        $this->lfText(27, 59, $text, 11); //購入者氏名
 
         // お届け先情報
         $this->SetFont('SJIS', '', 10);
@@ -291,9 +266,11 @@ class SC_Fpdf extends SC_Helper_FPDI
     /**
      * 備考の出力を行う
      *
+     * @param  string $str 入力文字列
      * @return string 変更後の文字列
      */
-    private function setEtcData()
+    // private function setEtcData()
+    protected function setEtcData()     // mod by naka
     {
         $this->Cell(0, 10, '', 0, 1, 'C', 0, '');
         $this->SetFont('Gothic', 'B', 9);
@@ -323,12 +300,8 @@ class SC_Fpdf extends SC_Helper_FPDI
     }
 
     // PDF_Japanese::Text へのパーサー
-
-    /**
-     * @param integer $x
-     * @param integer $y
-     */
-    private function lfText($x, $y, $text, $size = 0, $style = '')
+    // private function lfText($x, $y, $text, $size = 0, $style = '')
+    protected function lfText($x, $y, $text, $size = 0, $style = '')    // mod by naka
     {
         // 退避
         $bak_font_style = $this->FontStyle;
@@ -342,7 +315,8 @@ class SC_Fpdf extends SC_Helper_FPDI
     }
 
     // 受注データの取得
-    private function lfGetOrderData($order_id)
+    // private function lfGetOrderData($order_id)
+    protected function lfGetOrderData($order_id)    // mod by naka
     {
         if (SC_Utils_Ex::sfIsInt($order_id)) {
             // DBから受注情報を読み込む

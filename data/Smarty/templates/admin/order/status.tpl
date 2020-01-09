@@ -25,8 +25,8 @@
 <form name="form1" id="form1" method="post" action="?" >
     <input type="hidden" name="<!--{$smarty.const.TRANSACTION_ID_NAME}-->" value="<!--{$transactionid}-->" />
     <input type="hidden" name="mode" value="" />
-    <input type="hidden" name="status" value="<!--{if $arrForm.status == ""}-->1<!--{else}--><!--{$arrForm.status|h}--><!--{/if}-->" />
-    <input type="hidden" name="search_pageno" value="<!--{$tpl_pageno|h}-->" />
+    <input type="hidden" name="status" value="<!--{if $arrForm.status == ""}-->1<!--{else}--><!--{$arrForm.status}--><!--{/if}-->" />
+    <input type="hidden" name="search_pageno" value="<!--{$tpl_pageno}-->" />
     <input type="hidden" name="order_id" value="" />
     <div id="order" class="contents-main">
         <h2>抽出条件</h2>
@@ -53,7 +53,7 @@
                     <option value="<!--{$key}-->" ><!--{$item}--></option>
                     <!--{/if}-->
                     <!--{/foreach}-->
-                    <option value="delete">削除</option>
+                    <!-- <option value="delete">削除</option> -->
                 </select>
                 <a class="btn-normal" href="javascript:;" onclick="fnSelectCheckSubmit(); return false;"><span>移動</span></a>
             </div>
@@ -64,40 +64,45 @@
                 <!--{$tpl_strnavi}-->
             </p>
 
-            <table class="list">
+            <table class="list center">
                 <col width="5%" />
-                <col width="10%" />
-                <col width="8%" />
-                <col width="13%" />
+                <col width="7%" />
+                <col width="5%" />
                 <col width="20%" />
-                <col width="10%" />
-                <col width="10%" />
-                <col width="12%" />
-                <col width="12%" />
+                <col width="8%" />
+                <col width="20%" />
+                <col width="8%" />
+                <col width="5%" />
+                <col width="15%" />
+                <col width="7%" />
                 <tr>
-                    <th><label for="move_check">選択<br /></label> <input type="checkbox" name="move_check" id="move_check" onclick="eccube.checkAllBox(this, 'input[name=\'move[]\']')" /></th>
+                    <th><label for="move_check">選択</label> <input type="checkbox" name="move_check" id="move_check" onclick="fnAllCheck(this, 'input[name=move[]]')" /></th>
                     <th>対応状況</th>
                     <th>注文番号</th>
-                    <th>受注日</th>
                     <th>お名前</th>
                     <th>支払方法</th>
-                    <th>購入金額（円）</th>
-                    <th>入金日</th>
+                    <th>受取店舗</th>
+                    <th>受注日</th>
                     <th>発送日</th>
+                    <th>備考</th>
+                    <th>購入金額（円）</th>
                 </tr>
                 <!--{section name=cnt loop=$arrStatus}-->
                 <!--{assign var=status value="`$arrStatus[cnt].status`"}-->
                 <tr style="background:<!--{$arrORDERSTATUS_COLOR[$status]}-->;">
-                    <td class="center"><input type="checkbox" name="move[]" value="<!--{$arrStatus[cnt].order_id}-->" ></td>
-                    <td class="center"><!--{$arrORDERSTATUS[$status]}--></td>
-                    <td class="center"><a href="#" onclick="eccube.openWindow('./disp.php?order_id=<!--{$arrStatus[cnt].order_id}-->','order_disp','800','900',{resizable:'no',focus:false}); return false;" ><!--{$arrStatus[cnt].order_id}--></a></td>
-                    <td class="center"><!--{$arrStatus[cnt].create_date|sfDispDBDate}--></td>
-                    <td><!--{$arrStatus[cnt].order_name01|h}--> <!--{$arrStatus[cnt].order_name02|h}--></td>
+                    <td><input type="checkbox" name="move[]" value="<!--{$arrStatus[cnt].order_id}-->" ></td>
+                    <td><!--{$arrORDERSTATUS[$status]}--></td>
+                    <td><a href="#" onclick="fnOpenWindow('./disp.php?order_id=<!--{$arrStatus[cnt].order_id}-->','order_disp','800','900'); return false;" ><!--{$arrStatus[cnt].order_id}--></a></td>
+                    <td><p><!--{$arrStatus[cnt].order_name01|h}--><!--{$arrStatus[cnt].order_name02|h}--></p>
+                        <p><!--{$arrStatus[cnt].order_email}--></p>
+                    </td>
                     <!--{assign var=payment_id value="`$arrStatus[cnt].payment_id`"}-->
-                    <td class="center"><!--{$arrPayment[$payment_id]|h}--></td>
+                    <td><!--{$arrPayment[$payment_id]|h}--></td>
+                    <td><!--{assign var=shop_id value="`$arrStatus[cnt].receive_shop_id`"}--><!--{$arrShop[$shop_id]}--></td>
+                    <td><!--{$arrStatus[cnt].create_date|sfDispDBDate:false}--></td>
+                    <td><!--{if $arrStatus[cnt].status eq 5}--><!--{$arrStatus[cnt].commit_date|sfDispDBDate:false}--><!--{else}-->未発送<!--{/if}--></td>
+                    <td class="attention"><!--{$arrStatus[cnt].message|truncate:16}--></td>
                     <td class="right"><!--{$arrStatus[cnt].total|n2s}--></td>
-                    <td class="center"><!--{if $arrStatus[cnt].payment_date != ""}--><!--{$arrStatus[cnt].payment_date|sfDispDBDate:false}--><!--{else}-->未入金<!--{/if}--></td>
-                    <td class="center"><!--{if $arrStatus[cnt].status eq 5}--><!--{$arrStatus[cnt].commit_date|sfDispDBDate:false}--><!--{else}-->未発送<!--{/if}--></td>
                 </tr>
                 <!--{/section}-->
             </table>

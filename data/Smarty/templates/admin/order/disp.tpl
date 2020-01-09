@@ -86,30 +86,6 @@
             <th>TEL</th>
             <td><!--{$arrForm.order_tel01.value|h}--> - <!--{$arrForm.order_tel02.value|h}--> - <!--{$arrForm.order_tel03.value|h}--></td>
         </tr>
-        <tr>
-            <th>性別</th>
-            <td><!--{$arrSex[$arrForm.order_sex.value]|h}--></td>
-        </tr>
-        <tr>
-            <th>職業</th>
-            <td><!--{$arrJob[$arrForm.order_job.value]|h}--></td>
-        </tr>
-        <tr>
-            <th>生年月日</th>
-            <td>
-                <!--{assign var=key1 value="order_birth_year"}-->
-                <!--{assign var=key2 value="order_birth_month"}-->
-                <!--{assign var=key3 value="order_birth_day"}-->
-                <!--{if $arrForm[$key1].value == "" && $arrForm[$key2].value == "" && $arrForm[$key3].value == ""}-->
-                    指定無し
-                <!--{else}-->
-                <!--{$arrForm[$key1].value}-->年
-                <!--{$arrForm[$key2].value}-->月
-                <!--{$arrForm[$key3].value}-->日
-                <!--{/if}-->
-            </td>
-        </tr>
-
         <!--{if $smarty.const.FORM_COUNTRY_ENABLE}-->
         <tr>
             <th>国</th>
@@ -138,7 +114,7 @@
         <tr>
             <th>現在ポイント</th>
             <td>
-                <!--{if $arrForm.customer_id.value > 0}-->
+                <!--{if $arrForm.customer_id >0}-->
                     <!--{$arrForm.customer_point.value|n2s}-->
                     pt
                 <!--{else}-->
@@ -161,7 +137,6 @@
             <th class="name">商品名/規格1/規格2</th>
             <th class="price">単価</th>
             <th class="qty">数量</th>
-            <th class="price">税込み価格</th>
             <th class="price">小計</th>
         </tr>
         <!--{section name=cnt loop=$arrForm.quantity.value}-->
@@ -183,47 +158,52 @@
                 <!--{assign var=quantity value="`$arrForm.quantity.value[$product_index]`"}-->
                 <!--{assign var=tax_rate value="`$arrForm.tax_rate.value[$product_index]`"}-->
                 <!--{assign var=tax_rule value="`$arrForm.tax_rule.value[$product_index]`"}-->
-            <td class="right"><!--{$price|sfCalcIncTax:$tax_rate:$tax_rule|n2s}--> 円<br />(税率<!--{$tax_rate|n2s}-->%)</td>
-            <td class="right"><!--{$price|sfCalcIncTax:$tax_rate:$tax_rule|sfMultiply:$quantity|n2s}-->円</td>
+            <td class="right"><!--{$price|sfMultiply:$quantity|n2s}-->円</td>
         </tr>
         <!--{/section}-->
         <tr>
-            <th colspan="5" class="column right">小計</th>
-            <td class="right"><!--{$arrForm.subtotal.value|n2s}-->円</td>
+            <th colspan="4" class="column right">消費税</th>
+            <td class="right"><!--{$arrForm.tax.value|n2s}-->円</td>
         </tr>
+        <!--{if false}-->
+            <tr>
+                <th colspan="4" class="column right">小計</th>
+                <td class="right"><!--{$arrForm.subtotal.value|n2s}-->円</td>
+            </tr>
+            <tr>
+                <th colspan="4" class="column right">値引き</th>
+                <td class="right"><!--{$arrForm.discount.value|n2s|h}-->円</td>
+            </tr>
+            <tr>
+                <th colspan="4" class="column right">送料</th>
+                <td class="right"><!--{$arrForm.deliv_fee.value|n2s|h}-->円</td>
+            </tr>
+            <tr>
+                <th colspan="4" class="column right">手数料</th>
+                <td class="right"><!--{$arrForm.charge.value|n2s|h}-->円</td>
+            </tr>
+            <tr>
+                <th colspan="4" class="column right">合計</th>
+                <td class="right"><!--{$arrForm.total.value|n2s}--> 円</td>
+            </tr>
+        <!--{/if}-->
         <tr>
-            <th colspan="5" class="column right">値引き</th>
-            <td class="right"><!--{$arrForm.discount.value|n2s|h}-->円</td>
-        </tr>
-        <tr>
-            <th colspan="5" class="column right">送料</th>
-            <td class="right"><!--{$arrForm.deliv_fee.value|n2s|h}-->円</td>
-        </tr>
-        <tr>
-            <th colspan="5" class="column right">手数料</th>
-            <td class="right"><!--{$arrForm.charge.value|n2s|h}-->円</td>
-        </tr>
-        <tr>
-            <th colspan="5" class="column right">合計</th>
-            <td class="right"><!--{$arrForm.total.value|n2s}--> 円</td>
-        </tr>
-        <tr>
-            <th colspan="5" class="column right">お支払い合計</th>
+            <th colspan="4" class="column right">お支払い合計</th>
             <td class="right"><!--{$arrForm.payment_total.value|n2s}--> 円</td>
         </tr>
         <!--{if $smarty.const.USE_POINT !== false}-->
             <tr>
-                <th colspan="5" class="column right">使用ポイント</th>
+                <th colspan="4" class="column right">使用ポイント</th>
                 <td class="right"><!--{$arrForm.use_point.value|n2s|default:0|h}-->pt</td>
             </tr>
             <!--{if $arrForm.birth_point.value > 0}-->
                 <tr>
-                    <th colspan="5" class="column right">お誕生日ポイント</th>
+                    <th colspan="4" class="column right">お誕生日ポイント</th>
                     <td class="right"><!--{$arrForm.birth_point.value|n2s}-->pt</td>
                 </tr>
             <!--{/if}-->
             <tr>
-                <th colspan="5" class="column right">加算ポイント</th>
+                <th colspan="4" class="column right">加算ポイント</th>
                 <td class="right"><!--{$arrForm.add_point.value|n2s|default:0}-->pt</td>
             </tr>
         <!--{/if}-->
@@ -232,11 +212,11 @@
     <h2>お届け先情報</h2>
     <!--{if $arrForm.product_type_id.value[0] != $smarty.const.PRODUCT_TYPE_DOWNLOAD}-->
     <!--{foreach name=shipping from=$arrAllShipping item=arrShipping key=shipping_index}-->
-        <!--{if $tpl_shipping_quantity > 1}-->
+        <!--{if $arrForm.shipping_quantity.value > 1}-->
             <h3>お届け先<!--{$smarty.foreach.shipping.iteration}--></h3>
         <!--{/if}-->
         <!--{assign var=key value="shipping_id"}-->
-        <!--{if $tpl_shipping_quantity > 1}-->
+        <!--{if $arrForm.shipping_quantity.value > 1}-->
 
             <!--{if count($arrShipping.shipment_product_class_id) > 0}-->
                 <table class="list" id="order-edit-products">
@@ -321,7 +301,7 @@
                     <!--{assign var=key1 value="shipping_zipcode"}-->
                     <!--{$arrShipping[$key1]|h}-->
                 </td>
-            </tr>
+            </tr>            
             <!--{/if}-->
             <tr>
                 <th>住所</th>
@@ -382,7 +362,7 @@
                 </td>
             </tr>
 
-            <!--{if !empty($arrForm.payment_info)}-->
+            <!--{if $arrForm.payment_info|@count > 0}-->
             <tr>
                 <th><!--{$arrForm.payment_type}-->情報</th>
                 <td>
