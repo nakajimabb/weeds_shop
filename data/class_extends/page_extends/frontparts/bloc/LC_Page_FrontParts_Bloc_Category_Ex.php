@@ -53,4 +53,23 @@ class LC_Page_FrontParts_Bloc_Category_Ex extends LC_Page_FrontParts_Bloc_Catego
     {
         parent::process();
     }
+
+    public function lfGetCatTree($arrParentCategoryId, $count_check = false)
+    {
+        $objCategory = new SC_Helper_Category_Ex($count_check);
+        $arrTree = $objCategory->getTree();
+
+        $this->arrParentID = array();
+        foreach ($arrParentCategoryId as $category_id) {
+            $arrParentID = $objCategory->getTreeTrail($category_id);
+            $this->arrParentID = array_merge($this->arrParentID, $arrParentID);
+            $this->root_parent_id[] = $arrParentID[0];
+        }
+
+        // 医薬品は非表示 -> 後で削除 by naka
+        foreach ($arrTree as $key=>$value)
+            if($value['category_id'] >= 196) unset($arrTree[$key]);
+
+        return $arrTree;
+    }
 }

@@ -53,4 +53,20 @@ class LC_Page_FrontParts_Bloc_SearchProducts_Ex extends LC_Page_FrontParts_Bloc_
     {
         parent::process();
     }
+    
+    public function lfGetCategoryList()
+    {
+        $objDb = new SC_Helper_DB_Ex();
+        // カテゴリ検索用選択リスト
+        $arrCategoryList = $objDb->sfGetCategoryList('T1.level <= 2', true, '　');
+        if (is_array($arrCategoryList)) {
+            // 文字サイズを制限する
+            foreach ($arrCategoryList as $key => $val) {
+                $truncate_str = SC_Utils_Ex::sfCutString($val, SEARCH_CATEGORY_LEN, false);
+                $arrCategoryList[$key] = preg_replace('/　/u', '&nbsp;&nbsp;', $truncate_str);
+            }
+        }
+
+        return $arrCategoryList;
+    }
 }
