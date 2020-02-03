@@ -58,7 +58,7 @@
     <tr align="center">
             <td>
                 <!--{assign var="status" value="`$arrContacts[cnt].status`"}-->
-                <a href = "./admin_contact.php?contact_id=<!--{$arrContacts[cnt].contact_id}-->&amp;from=contact" <!--{if $status == 0}-->style="color:red; font-weight:bold;"<!--{ /if }-->>
+                <a href = "./admin_contact.php?contact_id=<!--{$arrContacts[cnt].contact_id}-->&amp;from=contact" <!--{if $status == 0}-->style="color:red; font-weight:bold;"<!--{/if}--> >
                     <!--{$arrCONTACTSTATUS[$status]}-->
                 </a>
             </td>
