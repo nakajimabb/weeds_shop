@@ -211,8 +211,8 @@
                     </td>
                     <td>
                     <!--{$arrProducts[cnt].name|h}-->
-                    <!--{assign var=class1 value=classcategory_id`$id`_1}-->
-                    <!--{assign var=class2 value=classcategory_id`$id`_2}-->
+                    <!--{assign var=class1 value="classcategory_id`$id`_1"}-->
+                    <!--{assign var=class2 value="classcategory_id`$id`_2"}-->
                     <!--{if $tpl_classcat_find1[$id]}-->
                     <dl>
                         <dt><!--{$tpl_class_name1[$id]|h}-->：</dt>
