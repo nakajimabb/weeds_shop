@@ -1034,6 +1034,15 @@ class LC_Page_Admin_Order_Edit extends LC_Page_Admin_Order_Ex
             $objProduct = new SC_Product_Ex();
             $arrAddProductInfo = $objProduct->getDetailAndProductsClass($add_product_class_id);
 
+            // --> エラーになるので追加
+            if (!is_array(arrShipmentProducts['shipment_product_code'][$select_shipping_id]))
+                $arrShipmentProducts['shipment_product_code'][$select_shipping_id]     = array();
+            if (!is_array(arrShipmentProducts['shipment_product_name'][$select_shipping_id]))
+                $arrShipmentProducts['shipment_product_name'][$select_shipping_id]     = array();
+            if (!is_array(arrShipmentProducts['shipment_price'][$select_shipping_id]))
+                $arrShipmentProducts['shipment_price'][$select_shipping_id]            = array();
+            // <--    
+
             $arrShipmentProducts['shipment_product_class_id'][$select_shipping_id][] = $add_product_class_id;
             $arrShipmentProducts['shipment_product_code'][$select_shipping_id][]     = $arrAddProductInfo['product_code'];
             $arrShipmentProducts['shipment_product_name'][$select_shipping_id][]     = $arrAddProductInfo['name'];
