@@ -129,7 +129,7 @@
                     <th rowspan="2">削除</th>
                 </tr>
                 <tr>
-                    <th>都道府県</th>
+                    <th>社員番号</th>
                     <th>メールアドレス</th>
                 </tr>
                 <!--{foreach from=$arrData item=row}-->
@@ -143,7 +143,7 @@
                         <td class="center" rowspan="2"><span class="icon_delete"><a href="#" onclick="return fnDelete('<!--{$row.customer_id|h}-->');">削除</a></span></td>
                     </tr>
                     <tr>
-                        <td><!--{assign var=pref value=$row.pref}--><!--{$arrPref[$pref]}--></td>
+                        <td><!--{$row.staff_no}--></td>
                         <td><!--{mailto address=$row.email encode="javascript" text=$row.email|truncate:60}--><!--{if $row.status eq 1}--><br /><a href="#" onclick="return fnReSendMail('<!--{$row.customer_id|h}-->');">仮登録メール再送</a><!--{/if}--></td>
                     </tr>
                 <!--{/foreach}-->

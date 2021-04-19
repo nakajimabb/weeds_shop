@@ -330,6 +330,13 @@ class SC_CustomerList extends SC_SelectSql_Ex
             }
         }
 
+        // 社員番号
+        if (!isset($this->arrSql['search_staff_no'])) $this->arrSql['search_staff_no'] = '';
+        if (strlen($this->arrSql['search_staff_no']) > 0) {
+            $this->setWhere('staff_no =  ?');
+            $this->arrVal[] = $this->arrSql['search_staff_no'];
+        }
+
         $this->setOrder('customer_id DESC');
     }
 
@@ -338,7 +345,7 @@ class SC_CustomerList extends SC_SelectSql_Ex
      */
     public function getList()
     {
-        $this->select = 'SELECT customer_id,name01,name02,kana01,kana02,sex,email,email_mobile,tel01,tel02,tel03,pref,status,update_date,mailmaga_flg FROM dtb_customer ';
+        $this->select = 'SELECT customer_id,name01,name02,kana01,kana02,sex,email,email_mobile,tel01,tel02,tel03,pref,status,update_date,mailmaga_flg,staff_no FROM dtb_customer ';
 
         return $this->getSql(2);
     }
