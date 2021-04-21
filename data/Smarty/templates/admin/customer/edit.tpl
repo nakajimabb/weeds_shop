@@ -85,6 +85,13 @@
                 </td>
             </tr>
             <tr>
+                <th>社員番号<span class="attention"> *</span></th>
+                <td>
+                    <span class="attention"><!--{$arrErr.staff_no}--></span>
+                    <input type="text" name="staff_no" value="<!--{$arrForm.staff_no|h}-->" maxlength="<!--{$smarty.const.STEXT_LEN}-->" size="30" class="box30" <!--{if $arrErr.staff_no != ""}--><!--{sfSetErrorStyle}--><!--{/if}--> />
+                </td>
+            </tr>
+            <tr>
                 <th>お名前<span class="attention"> *</span></th>
                 <td>
                     <span class="attention"><!--{$arrErr.name01}--><!--{$arrErr.name02}--></span>
@@ -162,7 +169,7 @@
                 </td>
             </tr>
             <tr>
-                <th>電話番号<span class="attention"> *</span></th>
+                <th>電話番号</th>
                 <td>
                     <span class="attention"><!--{$arrErr.tel01}--><!--{$arrErr.tel02}--><!--{$arrErr.tel03}--></span>
                     <input type="text" name="tel01" value="<!--{$arrForm.tel01|h}-->" maxlength="<!--{$smarty.const.TEL_ITEM_LEN}-->" size="6" class="box6" <!--{if $arrErr.tel01 != ""}--><!--{sfSetErrorStyle}--><!--{/if}--> /> - <input type="text" name="tel02" value="<!--{$arrForm.tel02|h}-->" maxlength="<!--{$smarty.const.TEL_ITEM_LEN}-->" size="6" class="box6" <!--{if $arrErr.tel01 != "" || $arrErr.tel02 != ""}--><!--{sfSetErrorStyle}--><!--{/if}--> /> - <input type="text" name="tel03" value="<!--{$arrForm.tel03|h}-->" maxlength="<!--{$smarty.const.TEL_ITEM_LEN}-->" size="6" class="box6" <!--{if $arrErr.tel01 != "" || $arrErr.tel03 != ""}--><!--{sfSetErrorStyle}--><!--{/if}--> />

@@ -68,6 +68,10 @@ function func_return(){
                 <td><!--{if $arrForm.status == 1}-->仮会員<!--{else}-->本会員<!--{/if}--></td>
             </tr>
             <tr>
+                <th>社員番号</th>
+                <td><!--{$arrForm.staff_no|h}--></td>
+            </tr>
+            <tr>
                 <th>お名前</th>
                 <td><!--{$arrForm.name01|h}--><!--{$arrForm.name02|h}-->　様</td>
             </tr>
