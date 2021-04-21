@@ -141,6 +141,20 @@
                 </td>
             </tr>
             <tr>
+                <th>社員番号</th>
+                <td>
+                <!--{assign var=key value="search_memo01"}-->
+                <span class="attention"><!--{$arrErr[$key]}--></span>
+                <input type="text" name="<!--{$key}-->" value="<!--{$arrForm[$key].value|h}-->" maxlength="<!--{$arrForm[$key].length}-->" style="<!--{$arrErr[$key]|sfGetErrorColor}-->" size="30" class="box30" />
+                </td>
+                <th>性別</th>
+                <td>
+                <!--{assign var=key value="search_order_sex"}-->
+                <span class="attention"><!--{$arrErr[$key]}--></span>
+                <!--{html_checkboxes name="$key" options=$arrSex selected=$arrForm[$key].value}-->
+                </td>
+            </tr>    
+            <tr>
                 <th>お名前</th>
                 <td>
                 <!--{assign var=key value="search_order_name"}-->
@@ -197,14 +211,6 @@
                     <option value="">--</option>
                     <!--{html_options options=$arrDay selected=$arrForm.search_ebirthday.value}-->
                     </select>日
-                </td>
-            </tr>
-            <tr>
-                <th>性別</th>
-                <td colspan="3">
-                <!--{assign var=key value="search_order_sex"}-->
-                <span class="attention"><!--{$arrErr[$key]}--></span>
-                <!--{html_checkboxes name="$key" options=$arrSex selected=$arrForm[$key].value}-->
                 </td>
             </tr>
             <tr>
@@ -366,7 +372,7 @@
                         <tr>
                             <th>受注日</th>
                             <th>注文番号</th>
-                            <th>お名前</th>
+                            <th>お名前(社員番号)</th>
                             <th>支払方法</th>
                             <th>購入金額(円)</th>
                             <th>全商品発送日</th>
@@ -382,7 +388,9 @@
                             <tr style="background:<!--{$arrORDERSTATUS_COLOR[$status]}-->;">
                                 <td class="center"><!--{$arrResults[cnt].create_date|sfDispDBDate}--></td>
                                 <td class="center"><!--{$arrResults[cnt].order_id}--></td>
-                                <td class="center"><!--{$arrResults[cnt].order_name01|h}--> <!--{$arrResults[cnt].order_name02|h}--></td>
+                                <td class="center"><!--{$arrResults[cnt].order_name01|h}--> <!--{$arrResults[cnt].order_name02|h}-->
+                                (<!--{$arrResults[cnt].memo01|h}-->)
+                                </td>
                                 <!--{assign var=payment_id value="`$arrResults[cnt].payment_id`"}-->
                                 <td class="center"><!--{$arrPayments[$payment_id]}--></td>
                                 <td class="right"><!--{$arrResults[cnt].total|number_format}--></td>

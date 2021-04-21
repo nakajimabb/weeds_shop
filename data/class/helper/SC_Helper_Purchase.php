@@ -487,13 +487,15 @@ class SC_Helper_Purchase
         $keys = array('name01', 'name02', 'kana01', 'kana02', 'company_name',
             'sex', 'zip01', 'zip02', 'country_id', 'zipcode', 'pref', 'addr01', 'addr02',
             'tel01', 'tel02', 'tel03', 'fax01', 'fax02', 'fax03',
-            'job', 'birth', 'email',
+            'job', 'birth', 'email', 'staff_no',
         )
     ) {
         if ($objCustomer->isLoginSuccess(true)) {
             foreach ($keys as $key) {
                 if (in_array($key, $keys)) {
-                    $dest[$prefix . '_' . $key] = $objCustomer->getValue($key);
+                    // memo01 を社員番号として使用
+                    $key2 = ($key == 'staff_no') ? 'memo01' : $prefix . '_' . $key;
+                    $dest[$key2] = $objCustomer->getValue($key);
                 }
             }
 

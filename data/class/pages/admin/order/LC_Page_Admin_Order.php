@@ -222,6 +222,8 @@ class LC_Page_Admin_Order extends LC_Page_Admin_Ex
         $objFormParam->addParam('購入商品名', 'search_product_name', STEXT_LEN, 'KVa', array('MAX_LENGTH_CHECK'));
         $objFormParam->addParam('ページ送り番号', 'search_pageno', INT_LEN, 'n', array('MAX_LENGTH_CHECK', 'NUM_CHECK'));
         $objFormParam->addParam('受注ID', 'order_id', INT_LEN, 'n', array('MAX_LENGTH_CHECK', 'NUM_CHECK'));
+        // 社員番号
+        $objFormParam->addParam('社員番号', 'search_memo01', INT_LEN, 'n', array('MAX_LENGTH_CHECK'));
     }
 
     /**
@@ -389,6 +391,10 @@ class LC_Page_Admin_Order extends LC_Page_Admin_Ex
                 break;
             case 'search_order_status':
                 $where.= ' AND status = ?';
+                $arrValues[] = $objFormParam->getValue($key);
+                break;
+            case 'search_memo01':   // 社員番号
+                $where.= ' AND memo01 = ?';
                 $arrValues[] = $objFormParam->getValue($key);
                 break;
             default:

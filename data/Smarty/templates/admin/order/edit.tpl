@@ -185,6 +185,10 @@
                 </td>
             </tr>
             <tr>
+                <th>社員番号</th>
+                <td><!--{$arrForm.memo01.value|h}--></td>
+            </tr>
+            <tr>
                 <th>お名前</th>
                 <td>
                     <!--{assign var=key1 value="order_name01"}-->
