@@ -375,6 +375,6 @@ __EOS__;
         } else {
             $objQuery->exec('SET SESSION storage_engine = InnoDB');
         }
-        $objQuery->exec("SET SESSION sql_mode = 'ANSI'");
+        // $objQuery->exec("SET SESSION sql_mode = 'ANSI'");
     }
 }
