@@ -46,7 +46,7 @@ class LC_Page_Shopping_Payment_Ex extends LC_Page_Shopping_Payment
         $this->tpl_title = '受け取り店舗・お支払方法等の指定';
 
         // 受け取り店舗一覧の取得
-        $this->arrShop = SC_RealShop::GetRealShopNameList();
+        $this->arrShop = SC_RealShop::GetRealShopNameList(true);
     }
 
     /**
