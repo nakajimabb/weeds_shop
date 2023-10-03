@@ -43,7 +43,7 @@ class LC_Page_Mypage_Change_Ex extends LC_Page_Mypage_Change
     {
         parent::init();
 
-        $this->arrShop = SC_RealShop::GetRealShopNameList();
+        $this->arrShop = SC_RealShop::GetRealShopNameList(true);
     }
 
     /**
