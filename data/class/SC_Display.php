@@ -154,7 +154,7 @@ class SC_Display
             //$nu = new Net_UserAgent_Mobile();
             $su = new SC_SmartphoneUserAgent_Ex();
             if ($su->isSmartphone()) {
-                SC_Display_Ex::$device = DEVICE_TYPE_SMARTPHONE;
+                SC_Display_Ex::$device = DEVICE_TYPE_PC;
             } else {
                 SC_Display_Ex::$device = DEVICE_TYPE_PC;
             }
